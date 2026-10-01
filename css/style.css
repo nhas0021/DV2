@@ -34,6 +34,7 @@ body {
     justify-content: center;
 
     max-width: 1150px;
+
     margin: 0 auto;
     padding: 80px 60px;
 }
@@ -52,9 +53,11 @@ body {
 
 .hero h1 {
     max-width: 850px;
+
     margin: 0;
 
     font-family: "Fraunces", serif;
+
     font-size: clamp(60px, 8vw, 110px);
     font-weight: 600;
 
@@ -105,13 +108,21 @@ body {
     max-width: 1150px;
 
     margin: 0 auto;
-    padding: 100px 60px;
+
+    /* Much tighter vertically */
+    padding: 26px 60px 32px;
+}
+
+.section-copy {
+    max-width: 850px;
+
+    margin: 0;
 }
 
 .section-number {
-    margin-bottom: 10px;
+    margin: 0 0 5px;
 
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.15em;
 
@@ -119,23 +130,27 @@ body {
 }
 
 .section h2 {
-    max-width: 760px;
+    max-width: 680px;
 
-    margin: 0 0 22px;
+    margin: 0 0 13px;
 
     font-family: "Fraunces", serif;
-    font-size: clamp(36px, 5vw, 58px);
+
+    /* Reduced heading size */
+    font-size: clamp(32px, 3.3vw, 42px);
     font-weight: 600;
 
-    line-height: 1.08;
+    line-height: 1.03;
+    letter-spacing: -0.025em;
 }
 
 .section-intro {
     max-width: 650px;
 
-    margin: 0 0 50px;
+    margin: 0;
 
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 1.6;
 
     color: #555b53;
 }
@@ -147,7 +162,18 @@ body {
 
 .visualisation {
     width: 100%;
-    margin-top: 35px;
+
+    /* Much smaller gap between paragraph and chart */
+    margin-top: 10px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.visualisation .vega-embed {
+    max-width: 100%;
 }
 
 
@@ -159,13 +185,18 @@ footer {
     max-width: 1150px;
 
     margin: 0 auto;
-    padding: 50px 60px;
+
+    padding: 38px 60px;
 
     border-top: 1px solid #d8d7cf;
 
     font-size: 13px;
 
     color: #777b74;
+}
+
+footer p {
+    margin: 0;
 }
 
 
@@ -188,5 +219,26 @@ footer {
 
     .subtitle {
         font-size: 17px;
+    }
+
+    .section {
+        padding-top: 25px;
+        padding-bottom: 35px;
+    }
+
+    .section h2 {
+        font-size: 34px;
+    }
+
+    .section-intro {
+        font-size: 15px;
+    }
+
+    .visualisation {
+        margin-top: 14px;
+
+        justify-content: flex-start;
+
+        overflow-x: auto;
     }
 }

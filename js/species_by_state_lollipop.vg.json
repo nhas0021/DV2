@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 650,
+  "height": 360,
+
+  "data": {
+    "url": "../data/australia_bird_species_by_state.csv"
+  },
+
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "ticks": false,
+        "domain": false,
+        "labelPadding": 10
+      }
+    },
+
+    "x": {
+      "field": "Total_Species",
+      "type": "quantitative",
+      "title": "Number of native bird species recorded",
+      "scale": {
+        "domain": [0, 680]
+      },
+      "axis": {
+        "grid": false,
+        "tickCount": 8,
+        "titlePadding": 20
+      }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 4,
+        "color": "#aab996"
+      }
+    },
+
+    {
+      "mark": {
+        "type": "circle",
+        "size": 170,
+        "color": "#68745d"
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 11,
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": 500,
+        "color": "#242722"
+      },
+
+      "encoding": {
+        "text": {
+          "field": "Total_Species",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "opacity": 0
+      },
+
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "Total_Species",
+            "type": "quantitative",
+            "title": "Bird species recorded"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "background": "#f7f4ed",
+
+    "font": "DM Sans",
+
+    "axis": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+
+      "labelFontSize": 14,
+      "titleFontSize": 14,
+
+      "labelFontWeight": 400,
+      "titleFontWeight": 600,
+
+      "labelColor": "#242722",
+      "titleColor": "#242722",
+
+      "domainColor": "#8b8e87",
+      "tickColor": "#8b8e87"
+    },
+
+    "view": {
+      "stroke": null
+    }
+  }
+}
