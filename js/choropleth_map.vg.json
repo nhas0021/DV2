@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 650,
+  "height": 480
+  ,
+
+  "projection": {
+    "type": "conicEqualArea",
+    "rotate": [-134, 0, 0],
+    "parallels": [-18, -36]
+  },
+
+  "data": {
+    "url": "australia_states.json",
+    "format": {
+      "type": "topojson",
+      "feature": "australian_states"
+    }
+  },
+
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "../data/australia_bird_choropleth_summary.csv"
+        },
+        "key": "State",
+        "fields": [
+          "Total_Species",
+          "EPBC_Threatened_Total",
+          "EPBC_Threatened_Percent"
+        ]
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#f7f4ed",
+    "strokeWidth": 1.3
+    }, 
+
+  "encoding": {
+    "color": {
+    "field": "EPBC_Threatened_Percent",
+    "type": "quantitative",
+    "title": "Threatened bird species (%)",
+    "scale": {
+        "range": [
+        "#e5eadc",
+        "#cbd5bd",
+        "#aab996",
+        "#879b73",
+        "#687d59",
+        "#43563a"
+        ]
+    },
+    "legend": {
+    "orient": "bottom",
+    "direction": "horizontal",
+    "titleFont": "DM Sans",
+    "labelFont": "DM Sans",
+    "titleFontSize": 14,
+    "labelFontSize": 12,
+    "gradientLength": 220,
+    "gradientThickness": 14
+  }
+    },
+
+    "tooltip": [
+    {
+        "field": "properties.name",
+        "type": "nominal",
+        "title": "State"
+    },
+    {
+        "field": "Total_Species",
+        "type": "quantitative",
+        "title": "Bird species"
+    },
+    {
+        "field": "EPBC_Threatened_Total",
+        "type": "quantitative",
+        "title": "Threatened species"
+    },
+    {
+        "field": "EPBC_Threatened_Percent",
+        "type": "quantitative",
+        "title": "Threatened share (%)",
+        "format": ".1f"
+    }
+    ]
+  }
+}
