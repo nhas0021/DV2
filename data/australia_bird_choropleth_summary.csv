@@ -1,0 +1,9 @@
+State,State_Code,Total_Species,EPBC_Critically_Endangered,EPBC_Endangered,EPBC_Vulnerable,EPBC_Threatened_Total,EPBC_Not_Threatened_or_Not_Listed,EPBC_Threatened_Percent
+Australian Capital Territory,ACT,336,4,6,18,28,308,8.33
+Northern Territory,NT,427,2,7,16,25,402,5.85
+New South Wales,NSW,562,6,16,36,58,504,10.32
+Queensland,QLD,642,6,15,26,47,595,7.32
+South Australia,SA,464,4,12,32,48,416,10.34
+Tasmania,TAS,307,4,11,25,40,267,13.03
+Victoria,VIC,498,6,14,34,54,444,10.84
+Western Australia,WA,550,4,17,28,49,501,8.91
