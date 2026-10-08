@@ -1749,15 +1749,15 @@
               "500+"
             ],
             "range": [
-              "#ecf1eb",
-              "#e4ede2",
-              "#ccdbc8",
-              "#acc2aa",
-              "#87a388",
-              "#658a70",
-              "#426b50",
-              "#254832"
-            ]
+            "#F1F1EE",
+            "#C8DDC4",
+            "#A3C5A5",
+            "#80AC8A",
+            "#5D9270",
+            "#3C7354",
+            "#24523C",
+            "#143726"
+          ]
           },
           "legend": {
             "title": "Observation records per hexagon",
@@ -1768,7 +1768,8 @@
             "symbolSize": 150,
             "labelFontSize": 12,
             "titleFontSize": 13,
-            "titlePadding": 8
+            "titlePadding": 8,
+            "titleLimit": 650
           }
         },
         "tooltip": [
@@ -1940,15 +1941,15 @@
               "500+"
             ],
             "range": [
-              "#ecf1eb",
-              "#e4ede2",
-              "#ccdbc8",
-              "#acc2aa",
-              "#87a388",
-              "#658a70",
-              "#426b50",
-              "#254832"
-            ]
+            "#F1F1EE",
+            "#C8DDC4",
+            "#A3C5A5",
+            "#80AC8A",
+            "#5D9270",
+            "#3C7354",
+            "#24523C",
+            "#143726"
+          ]
           },
           "legend": {
             "title": "Observation records per hexagon",
@@ -2132,15 +2133,15 @@
               "500+"
             ],
             "range": [
-              "#ecf1eb",
-              "#e4ede2",
-              "#ccdbc8",
-              "#acc2aa",
-              "#87a388",
-              "#658a70",
-              "#426b50",
-              "#254832"
-            ]
+            "#F1F1EE",
+            "#C8DDC4",
+            "#A3C5A5",
+            "#80AC8A",
+            "#5D9270",
+            "#3C7354",
+            "#24523C",
+            "#143726"
+          ]
           },
           "legend": {
             "title": "Observation records per hexagon",
