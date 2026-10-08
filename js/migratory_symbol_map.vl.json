@@ -1,0 +1,231 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 980,
+  "height": 595,
+  "background": "#ffffff",
+  "padding": {
+    "top": 16,
+    "right": 20,
+    "bottom": 10,
+    "left": 8
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans",
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
+    }
+  },
+  "params": [
+    {
+      "name": "agreement",
+      "value": "Combined",
+      "bind": {
+        "input": "select",
+        "options": [
+          "JAMBA",
+          "CAMBA",
+          "ROKAMBA"
+        ],
+        "labels": [
+          "JAMBA",
+          "CAMBA",
+          "ROKAMBA"
+        ],
+        "name": "Agreement: "
+      }
+    },
+    {
+      "name": "measure",
+      "value": "Count",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Count",
+          "Percentage"
+        ],
+        "labels": [
+          "Species count",
+          "Percentage of state's species"
+        ],
+        "name": "Show: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "conicEqualArea",
+    "rotate": [
+      -134,
+      0
+    ],
+    "parallels": [
+      -18,
+      -36
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australian_states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d5e0d6",
+        "stroke": "#ffffff",
+        "strokeWidth": 2.4
+      }
+    },
+    {
+      "data": {
+        "url": "../data/migratory_species_by_state.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Total_Species": "number",
+            "Combined": "number",
+            "JAMBA": "number",
+            "CAMBA": "number",
+            "ROKAMBA": "number",
+            "Longitude": "number",
+            "Latitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.State_Abbrev === 'NSW' ? -30.2 : datum.Latitude",
+          "as": "Symbol_Latitude"
+        },
+        {
+          "calculate": "agreement === 'JAMBA' ? datum.JAMBA : agreement === 'CAMBA' ? datum.CAMBA : agreement === 'ROKAMBA' ? datum.ROKAMBA : datum.Combined",
+          "as": "Selected_Count"
+        },
+        {
+          "calculate": "100 * datum.Selected_Count / datum.Total_Species",
+          "as": "Selected_Percentage"
+        },
+        {
+          "calculate": "measure === 'Count' ? datum.Selected_Count : datum.Selected_Percentage * 4",
+          "as": "Area_Value"
+        },
+        {
+          "calculate": "measure === 'Count' ? format(datum.Selected_Count, ',d') : format(datum.Selected_Percentage, '.1f') + '%'",
+          "as": "Circle_Label"
+        },
+        {
+          "calculate": "agreement === 'Combined' ? 'At least one of JAMBA, CAMBA, ROKAMBA' : agreement",
+          "as": "Selected_Agreement"
+        }
+      ],
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Symbol_Latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "Selected_Agreement",
+            "type": "nominal",
+            "title": "Agreement"
+          },
+          {
+            "field": "Selected_Count",
+            "type": "quantitative",
+            "title": "Listed species",
+            "format": ",d"
+          },
+          {
+            "field": "Total_Species",
+            "type": "quantitative",
+            "title": "All recorded species",
+            "format": ",d"
+          },
+          {
+            "field": "Selected_Percentage",
+            "type": "quantitative",
+            "title": "Share of recorded species",
+            "format": ".1f"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "fill": "#4e6d59",
+            "fillOpacity": 0.9,
+            "stroke": "#ffffff",
+            "strokeWidth": 2.4,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "size": {
+              "field": "Area_Value",
+              "type": "quantitative",
+              "scale": {
+                "type": "linear",
+                "domain": [
+                  0,
+                  75
+                ],
+                "range": [
+                  0,
+                  4500
+                ],
+                "zero": true
+              },
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "font": "DM Sans",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "fill": "#ffffff",
+            "align": "center",
+            "baseline": "middle",
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "text": {
+              "field": "Circle_Label",
+              "type": "nominal"
+            }
+          }
+        },
+        {
+
+          "mark": {
+            "type": "text",
+            "font": "DM Sans",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "fill": "#243529",
+            "align": "center",
+            "baseline": "bottom",
+            "dy": -53
+          }
+        }
+      ]
+    }
+  ]
+}
