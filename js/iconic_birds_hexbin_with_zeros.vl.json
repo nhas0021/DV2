@@ -2186,22 +2186,6 @@
           }
         ]
       }
-    },
-    {
-      "description": "Re-outline Victoria on top of hex cells to clarify geographic extent.",
-      "data": {
-        "url": "js/victoria.json",
-        "format": {
-          "type": "topojson",
-          "feature": "victoria"
-        }
-      },
-      "mark": {
-        "type": "geoshape",
-        "fillOpacity": 0,
-        "stroke": "#607d65",
-        "strokeWidth": 1.35
-      }
     }
   ],
   "resolve": {
