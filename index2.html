@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An illustrated data story exploring Australian bird species, threatened status, ecological roles and recorded sightings.">
+  <title>Australia's Native Birds | A Visual Field Guide</title>
+
+  <!-- Display heading + body typefaces -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+  <!-- Both Vega and Vega-Lite specs use the same embedding function -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Self-contained layout: no changes to your existing CSS are required -->
+  <style>
+    :root {
+      --outside: #e5e9e1;
+      --paper: #faf8f2;
+      --paper-bright: #ffffff;
+      --ink: #25342c;
+      --muted: #59665c;
+      --sage: #dce5d8;
+      --sage-pale: #edf1e9;
+      --olive: #54765c;
+      --olive-dark: #304e3a;
+      --line: #c6d1c3;
+      --sand: #efeadb;
+      --display: "Fraunces", Georgia, serif;
+      --body: "DM Sans", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--outside);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .dashboard {
+      width: min(100%, 1220px);
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 9px 42px rgba(27, 51, 34, .07);
+    }
+
+    .eyebrow {
+      color: var(--olive-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    /* Cover: more like a vertical Tableau story than a site homepage */
+    .cover {
+      padding: 30px clamp(22px, 4.9vw, 66px) 37px;
+      background: var(--sage);
+      border-bottom: 1px solid #c0cfbc;
+    }
+    .cover-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(48, 78, 58, .24);
+    }
+    .cover-topline .edition {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .cover-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(230px, .75fr);
+      gap: clamp(20px, 4.5vw, 70px);
+      align-items: end;
+      padding-top: 24px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .cover h1 {
+      margin-bottom: 10px;
+      font-family: var(--display);
+      font-size: clamp(43px, 6.8vw, 82px);
+      font-weight: 600;
+      letter-spacing: -.054em;
+      line-height: 1.06;
+    }
+    .cover .strapline {
+      margin-bottom: 0;
+      color: #425647;
+      font-size: clamp(14px, 1.5vw, 18px);
+      line-height: 1.55;
+      max-width: 550px;
+    }
+    .cover-aside {
+      border-left: 2px solid var(--olive);
+      padding: 0 0 1px 18px;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+    .cover-aside p { margin-bottom: 0; }
+
+    /* Editorial metric strip; intentionally no boxed navigation */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      background: var(--paper-bright);
+      border-bottom: 1px solid var(--line);
+    }
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 17px clamp(17px, 3vw, 42px);
+      min-width: 0;
+    }
+    .summary-item + .summary-item { border-left: 1px solid var(--line); }
+    .summary-number {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.6vw, 43px);
+      color: var(--olive-dark);
+      line-height: 1;
+    }
+    .summary-text {
+      max-width: 145px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .story-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(200px, .7fr);
+      gap: 30px;
+      padding: 31px clamp(22px, 5vw, 66px) 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .story-intro .lead {
+      margin: 9px 0 0;
+      font-family: var(--display);
+      font-size: clamp(18px, 2.2vw, 26px);
+      line-height: 1.48;
+    }
+    .intro-note {
+      align-self: center;
+      border-left: 1px solid var(--line);
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .intro-note p { margin: 5px 0 0; }
+
+    /* Main visual chapters */
+    .chapter {
+      padding: 40px clamp(18px, 4.7vw, 62px) 43px;
+      border-bottom: 1px solid var(--line);
+    }
+    .chapter--cool { background: var(--sage-pale); }
+    .chapter--warm { background: var(--sand); }
+    .chapter--paper { background: var(--paper); }
+    .chapter-heading {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr) minmax(0, 260px);
+      gap: 17px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+    .chapter-number {
+      font-family: var(--display);
+      color: var(--olive);
+      font-size: 36px;
+      line-height: 1.1;
+      border-right: 1px solid var(--line);
+      padding-right: 12px;
+    }
+    .chapter-title h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1.18;
+      font-size: clamp(25px, 3.0vw, 37px);
+      margin: 6px 0 8px;
+    }
+    .chapter-title .question {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .chapter-side {
+      padding-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .chapter-side p { margin: 6px 0 0; }
+
+    .chart-figure { margin: 0; }
+    .chart-shell {
+      min-height: 210px;
+      padding: 18px 17px 17px;
+      background: rgba(255, 255, 255, .83);
+      border: 1px solid rgba(158, 174, 154, .26);
+      overflow: hidden;
+    }
+    .chapter--cool .chart-shell { background: #fff; }
+    .chapter--warm .chart-shell { background: #fffdf9; }
+    .chart-shell .vega-embed { display: block; width: 100%; }
+    .chart-shell .vega-embed > div { max-width: 100%; }
+    .chart-shell .vega-embed svg {
+      display: block;
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .chart-shell .vega-bindings {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 22px;
+      width: 100%;
+      margin-top: 12px;
+      padding-top: 11px;
+      border-top: 1px solid #e2e7df;
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--ink);
+    }
+    .chart-shell .vega-bindings .vega-bind { margin: 0; }
+    .chart-shell .vega-bindings select,
+    .chart-shell .vega-bindings input {
+      font: inherit;
+      color: var(--ink);
+      background: var(--paper-bright);
+      border: 1px solid #aabbaa;
+      padding: 6px 8px;
+      max-width: min(100%, 230px);
+      border-radius: 0;
+    }
+    .chart-loading {
+      display: flex;
+      min-height: 180px;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .chart-error {
+      padding: 22px;
+      color: #7d352d;
+      background: #fbefeb;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+    .chart-caption {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 5px 18px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+    .finding {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 19px;
+      padding: 15px 18px;
+      border-left: 4px solid var(--olive);
+      background: rgba(220, 229, 216, .50);
+      font-size: 13px;
+    }
+    .finding .finding-label {
+      color: var(--olive-dark);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+    .finding p { margin: 0; }
+
+    /* Tableau-style chapter transition band */
+    .interlude {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      align-items: center;
+      gap: 28px;
+      padding: 24px clamp(23px, 5vw, 66px);
+      background: var(--olive-dark);
+      color: #f4f7ef;
+    }
+    .interlude .eyebrow { color: #cfe1cc; }
+    .interlude blockquote {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.35;
+    }
+    .interlude p { margin: 0; font-size: 12px; color: #d9e6d7; }
+
+    .closing {
+      background: #e1e7dc;
+      padding: 35px clamp(22px, 5vw, 66px) 38px;
+    }
+    .closing h2 {
+      font-family: var(--display);
+      font-size: clamp(25px, 3vw, 34px);
+      font-weight: 600;
+      margin: 7px 0 17px;
+    }
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 23px;
+    }
+    .source-grid h3 {
+      margin: 0 0 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .source-grid p { margin: 0; color: var(--muted); font-size: 11.5px; line-height: 1.65; }
+    .source-grid a { color: var(--olive-dark); overflow-wrap: anywhere; }
+    .footer-line {
+      margin-top: 27px;
+      padding-top: 12px;
+      border-top: 1px solid #b5c5b2;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #536354;
+      font-size: 10px;
+    }
+
+    @media (max-width: 850px) {
+      .chapter-heading { grid-template-columns: 59px minmax(0, 1fr); }
+      .chapter-side { grid-column: 2; padding-top: 0; }
+      .chapter-number { font-size: 29px; }
+      .cover-grid { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+      .cover-aside { max-width: 570px; }
+      .story-intro { grid-template-columns: minmax(0,1fr); gap: 13px; }
+      .intro-note { border-left: none; padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .summary-strip { grid-template-columns: 1fr 1fr 1fr; }
+      .summary-item { padding: 14px 9px; gap: 6px; flex-direction: column; align-items: flex-start; }
+      .summary-number { font-size: 25px; }
+      .summary-text { font-size: 9px; }
+      .cover { padding-top: 22px; padding-bottom: 23px; }
+      .cover h1 { font-size: clamp(42px, 9.5vw, 60px); }
+      .chapter { padding-top: 28px; padding-bottom: 31px; }
+      .chapter-heading { grid-template-columns: 44px minmax(0,1fr); gap: 11px; }
+      .chapter-number { font-size: 24px; padding-right: 4px; }
+      .chapter-title h2 { font-size: 25px; }
+      .chart-shell { padding: 7px 5px; }
+      .finding { grid-template-columns: 1fr; gap: 5px; }
+      .source-grid { grid-template-columns: 1fr; gap: 17px; }
+      .interlude { grid-template-columns: 1fr; gap: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="dashboard">
+    <!-- COVER -->
+    <header class="cover">
+      <div class="cover-topline">
+        <span class="eyebrow">Field notes &nbsp;/&nbsp; Australian birdlife</span>
+        <span class="edition">A visual data story &nbsp; · &nbsp; 2026</span>
+      </div>
+      <div class="cover-grid">
+        <div>
+          <h1>Australia's<br>Native Birds.</h1>
+          <p class="strapline">From the species recorded across our states to the habitats they inhabit and the places we see them.</p>
+        </div>
+        <div class="cover-aside">
+          <span class="eyebrow">The story</span>
+          <p>[Write a short two- or three-sentence introduction explaining why Australia's birdlife matters and what readers will discover in this visualisation.]</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="summary-strip" aria-label="Scope of the visualisation">
+      <div class="summary-item"><span class="summary-number">08</span><span class="summary-text">states and territories in the checklists</span></div>
+      <div class="summary-item"><span class="summary-number">03</span><span class="summary-text">different geographic map idioms</span></div>
+      <div class="summary-item"><span class="summary-number">25–26</span><span class="summary-text">years covered by the Victorian observation maps</span></div>
+    </div>
+
+    <section class="story-intro" aria-label="Introduction">
+      <div>
+        <div class="eyebrow">An introduction to the numbers</div>
+        <p class="lead">One continent. Many habitats. An extraordinary variety of birds — and no single way to understand their story.</p>
+      </div>
+      <div class="intro-note">
+        <span class="eyebrow">How to read this story</span>
+        <p>Move from broad patterns across Australia to bird families, ecological lifestyles and individual observation hotspots. Use the chart controls to compare selections.</p>
+      </div>
+    </section>
+
+    <!-- 01: LOLLIPOP -->
+    <section class="chapter chapter--paper" aria-labelledby="heading-richness">
+      <div class="chapter-heading">
+        <div class="chapter-number">01</div>
+        <div class="chapter-title">
+          <span class="eyebrow">The big picture &nbsp; / &nbsp; Species richness</span>
+          <h2 id="heading-richness">Where is birdlife most diverse?</h2>
+          <p class="question">Comparing the number of bird species recorded across Australian states and territories.</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Context</span>
+          <p>[Add a short explanation of what is included in the checklists and any differences in observation coverage.]</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="species_lollipop"><div class="chart-loading">Loading species comparison…</div></div>
+        <figcaption class="chart-caption"><span>State and territory species checklist totals</span><span>Source: [add exact checklist citation]</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">What stands out</div><p>[Write one clear finding about the difference between the highest- and lowest-ranked states, and what may explain that pattern.]</p></div>
+    </section>
+
+    <!-- 02: CHOROPLETH -->
+    <section class="chapter chapter--cool" aria-labelledby="heading-threatened">
+      <div class="chapter-heading">
+        <div class="chapter-number">02</div>
+        <div class="chapter-title">
+          <span class="eyebrow">A changing picture &nbsp; / &nbsp; Conservation</span>
+          <h2 id="heading-threatened">Where is the threatened share highest?</h2>
+          <p class="question">Percentage of recorded bird species listed as threatened in each state or territory.</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Map / Choropleth</span>
+          <p>State area is used for geography; colour shows the threatened species percentage — not the absolute number of birds.</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="threatened_choropleth"><div class="chart-loading">Loading conservation map…</div></div>
+        <figcaption class="chart-caption"><span>Hover over a state for its recorded and threatened species counts</span><span>Source: [add dataset and status reference]</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">The contrast</div><p>[Explain why the state with the most recorded bird species is not necessarily the state with the highest threatened percentage.]</p></div>
+    </section>
+
+    <!-- 03: HEATMAP -->
+    <section class="chapter chapter--paper" aria-labelledby="heading-families">
+      <div class="chapter-heading">
+        <div class="chapter-number">03</div>
+        <div class="chapter-title">
+          <span class="eyebrow">Looking closer &nbsp; / &nbsp; Bird families</span>
+          <h2 id="heading-families">Not all bird families are spread evenly.</h2>
+          <p class="question">How prominent are the 16 most frequently represented families within each state?</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Reading the heatmap</span>
+          <p>Each cell shows a family’s share of the total recorded species in that state, not its share of all birds seen.</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="family_heatmap"><div class="chart-loading">Loading bird-family heatmap…</div></div>
+        <figcaption class="chart-caption"><span>Families ranked by summed species appearances across the eight state checklists</span><span>Source: [add checklist citation]</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">A closer look</div><p>[Describe one striking difference in the composition of bird families, such as Tasmania compared with the mainland.]</p></div>
+    </section>
+
+    <aside class="interlude" aria-label="Transition to ecology">
+      <div><span class="eyebrow">Beyond geography</span><blockquote>Where birds live is only half the story.</blockquote></div>
+      <p>[Use one or two sentences to transition from geographic patterns to the relationships between habitat, feeding strategy and lifestyle.]</p>
+    </aside>
+
+    <!-- 04: SANKEY -->
+    <section class="chapter chapter--warm" aria-labelledby="heading-habits">
+      <div class="chapter-heading">
+        <div class="chapter-number">04</div>
+        <div class="chapter-title">
+          <span class="eyebrow">The lives they lead &nbsp; / &nbsp; Ecology</span>
+          <h2 id="heading-habits">Habitat, diet and lifestyle.</h2>
+          <p class="question">Following the connections between where native birds live, what they eat and how they forage.</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Interactive flows</span>
+          <p>Ribbon width represents the number of species sharing a combination. Hover to follow the connections.</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="habitat_sankey"><div class="chart-loading">Loading habitat-to-lifestyle diagram…</div></div>
+        <figcaption class="chart-caption"><span>Matched Australian native species with habitat, diet and lifestyle traits</span><span>Sources: Australian bird dataset + AVONET</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">What connects</div><p>[Highlight the strongest habitat → diet → lifestyle pathway and explain what it reveals in everyday language.]</p></div>
+    </section>
+
+    <!-- 05: MIGRATORY MAP -->
+    <section class="chapter chapter--paper" aria-labelledby="heading-migration">
+      <div class="chapter-heading">
+        <div class="chapter-number">05</div>
+        <div class="chapter-title">
+          <span class="eyebrow">Shared flyways &nbsp; / &nbsp; Migratory listings</span>
+          <h2 id="heading-migration">Where are migratory-listed birds recorded?</h2>
+          <p class="question">Explore JAMBA, CAMBA and ROKAMBA listings using counts or the share of recorded bird species.</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Map / Proportional symbols</span>
+          <p>Circle area reflects the selected measure. These are species listed under agreements, not tracked migration routes.</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="migratory_symbols"><div class="chart-loading">Loading migratory species map…</div></div>
+        <figcaption class="chart-caption"><span>Switch agreements and compare either number or percentage of listed species</span><span>Source: [add original checklist and agreement references]</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">Counts vs share</div><p>[Explain how a state with fewer migratory-listed species can still have a higher percentage relative to its total recorded species.]</p></div>
+    </section>
+
+    <!-- 06: HEXBIN -->
+    <section class="chapter chapter--cool" aria-labelledby="heading-sightings">
+      <div class="chapter-heading">
+        <div class="chapter-number">06</div>
+        <div class="chapter-title">
+          <span class="eyebrow">On the ground &nbsp; / &nbsp; Victoria 2025–2026</span>
+          <h2 id="heading-sightings">Where do familiar birds get spotted?</h2>
+          <p class="question">Compare Australian Magpie and Laughing Kookaburra observation records within Victoria.</p>
+        </div>
+        <div class="chapter-side">
+          <span class="eyebrow">Map / Hexagonal bins</span>
+          <p>Each cell’s colour represents the number of observation records. Zero means no records in the selected data, not bird absence.</p>
+        </div>
+      </div>
+      <figure class="chart-figure">
+        <div class="chart-shell" id="victoria_hexbin"><div class="chart-loading">Loading Victorian observation map…</div></div>
+        <figcaption class="chart-caption"><span>Same bin locations and ranges across species and year selections</span><span>Source: Atlas of Living Australia / Victorian occurrence data</span></figcaption>
+      </figure>
+      <div class="finding"><div class="finding-label">Reading the pattern</div><p>[Describe the highest-observation area for each species. Note that recording effort can influence apparent hotspots.]</p></div>
+    </section>
+
+    <!-- SOURCES / METHODOLOGY -->
+    <footer class="closing">
+      <div class="eyebrow">About the visualisation</div>
+      <h2>Sources, methods &amp; acknowledgements.</h2>
+      <div class="source-grid">
+        <div>
+          <h3>Species and conservation</h3>
+          <p>[Insert your state checklist source URLs and collection dates.] Explain how threatened status and state-level percentages were calculated.</p>
+        </div>
+        <div>
+          <h3>Ecology and observation data</h3>
+          <p>AVONET for ecological traits; <a href="https://www.ala.org.au/">Atlas of Living Australia</a> for georeferenced observations. [Insert exact dataset/download citations.]</p>
+        </div>
+        <div>
+          <h3>Important limitations</h3>
+          <p>[Document checklist filtering for native species, species-name matching, incomplete reporting, coordinate uncertainty and binning assumptions.]</p>
+        </div>
+      </div>
+      <div class="footer-line">
+        <span>Created by [your preferred author credit] · FIT3179 · October 2026</span>
+        <span>[Add AI/tool-use acknowledgement where required]</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Chart embedding is kept separate, as in the original index.html -->
+  <script src="js/vega_lite_vis.js"></script>
+</body>
+</html>
