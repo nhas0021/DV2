@@ -1,0 +1,94 @@
+Habitat,Diet,Lifestyle,Species_Count
+Coastal,Aquatic predator,Aerial,6
+Coastal,Aquatic predator,Aquatic,1
+Coastal,Aquatic predator,Generalist,1
+Coastal,Aquatic predator,Terrestrial,10
+Coastal,Omnivore,Aerial,2
+Coastal,Omnivore,Generalist,1
+Forest,Aquatic predator,Terrestrial,1
+Forest,Frugivore,Insessorial,19
+Forest,Frugivore,Terrestrial,1
+Forest,Granivore,Insessorial,4
+Forest,Granivore,Terrestrial,3
+Forest,Invertivore,Aerial,2
+Forest,Invertivore,Generalist,2
+Forest,Invertivore,Insessorial,68
+Forest,Invertivore,Terrestrial,19
+Forest,Nectarivore,Insessorial,8
+Forest,Omnivore,Generalist,3
+Forest,Omnivore,Insessorial,38
+Forest,Omnivore,Terrestrial,5
+Forest,Vertivore,Aerial,3
+Forest,Vertivore,Generalist,5
+Forest,Vertivore,Insessorial,5
+Grassland,Aquatic predator,Terrestrial,7
+Grassland,Granivore,Generalist,1
+Grassland,Granivore,Terrestrial,9
+Grassland,Invertivore,Aerial,3
+Grassland,Invertivore,Generalist,1
+Grassland,Invertivore,Insessorial,1
+Grassland,Invertivore,Terrestrial,7
+Grassland,Nectarivore,Insessorial,1
+Grassland,Omnivore,Generalist,3
+Grassland,Omnivore,Terrestrial,14
+Grassland,Other diets,Terrestrial,1
+Grassland,Vertivore,Aerial,5
+Marine,Aquatic predator,Aerial,34
+Marine,Aquatic predator,Aquatic,28
+Marine,Aquatic predator,Generalist,18
+Marine,Omnivore,Generalist,3
+Marine,Omnivore,Terrestrial,1
+Other habitats,Aquatic predator,Insessorial,1
+Other habitats,Aquatic predator,Terrestrial,2
+Other habitats,Granivore,Generalist,1
+Other habitats,Granivore,Insessorial,1
+Other habitats,Granivore,Terrestrial,2
+Other habitats,Invertivore,Aerial,3
+Other habitats,Invertivore,Generalist,1
+Other habitats,Invertivore,Insessorial,6
+Other habitats,Invertivore,Terrestrial,3
+Other habitats,Omnivore,Terrestrial,3
+Other habitats,Vertivore,Insessorial,1
+Shrubland,Granivore,Generalist,3
+Shrubland,Granivore,Insessorial,1
+Shrubland,Granivore,Terrestrial,6
+Shrubland,Invertivore,Aerial,1
+Shrubland,Invertivore,Generalist,9
+Shrubland,Invertivore,Insessorial,18
+Shrubland,Invertivore,Terrestrial,13
+Shrubland,Nectarivore,Insessorial,6
+Shrubland,Omnivore,Generalist,3
+Shrubland,Omnivore,Insessorial,4
+Shrubland,Omnivore,Terrestrial,7
+Shrubland,Other diets,Terrestrial,1
+Wetland,Aquatic predator,Aerial,3
+Wetland,Aquatic predator,Aquatic,12
+Wetland,Aquatic predator,Terrestrial,41
+Wetland,Granivore,Generalist,2
+Wetland,Granivore,Terrestrial,1
+Wetland,Invertivore,Aerial,2
+Wetland,Invertivore,Generalist,2
+Wetland,Invertivore,Insessorial,2
+Wetland,Omnivore,Aerial,1
+Wetland,Omnivore,Aquatic,1
+Wetland,Omnivore,Terrestrial,11
+Wetland,Other diets,Aquatic,6
+Wetland,Other diets,Generalist,2
+Wetland,Other diets,Terrestrial,2
+Wetland,Vertivore,Aerial,1
+Woodland,Aquatic predator,Terrestrial,1
+Woodland,Frugivore,Insessorial,2
+Woodland,Granivore,Generalist,2
+Woodland,Granivore,Insessorial,1
+Woodland,Granivore,Terrestrial,13
+Woodland,Invertivore,Aerial,9
+Woodland,Invertivore,Generalist,6
+Woodland,Invertivore,Insessorial,32
+Woodland,Invertivore,Terrestrial,4
+Woodland,Nectarivore,Insessorial,5
+Woodland,Omnivore,Aerial,1
+Woodland,Omnivore,Generalist,1
+Woodland,Omnivore,Insessorial,14
+Woodland,Omnivore,Terrestrial,2
+Woodland,Vertivore,Aerial,2
+Woodland,Vertivore,Generalist,3

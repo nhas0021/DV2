@@ -1,0 +1,2305 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Three-stage Australian native-bird Sankey. Each ribbon corresponds to a full habitat-diet-lifestyle triplet; equal width at both stages. Prepared from Australian_Bird_Data_Version_1 and AVONET1_BirdLife.",
+  "width": 1230,
+  "height": 656,
+  "padding": {
+    "top": 6,
+    "bottom": 4,
+    "left": 0,
+    "right": 0
+  },
+  "autosize": "none",
+  "background": "#f7f4ed",
+  "signals": [
+    {
+      "name": "focusHabitat",
+      "value": "All habitats",
+      "bind": {
+        "input": "select",
+        "name": "Focus habitat: ",
+        "options": [
+          "All habitats",
+          "Forest",
+          "Woodland",
+          "Wetland",
+          "Marine",
+          "Shrubland",
+          "Grassland",
+          "Other habitats",
+          "Coastal"
+        ]
+      }
+    },
+    {
+      "name": "hoverNode",
+      "value": null,
+      "on": [
+        {
+          "events": "@nodeMarks:mouseover",
+          "update": "{stage:datum.stage, name:datum.name}"
+        },
+        {
+          "events": "@nodeMarks:mouseout",
+          "update": "null"
+        },
+        {
+          "events": "@nodeLabels:mouseover",
+          "update": "{stage:datum.stage, name:datum.name}"
+        },
+        {
+          "events": "@nodeLabels:mouseout",
+          "update": "null"
+        }
+      ]
+    },
+    {
+      "name": "hoverTriplet",
+      "value": null,
+      "on": [
+        {
+          "events": "@ribbonPaths:mouseover",
+          "update": "datum.key"
+        },
+        {
+          "events": "@ribbonPaths:mouseout",
+          "update": "null"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "nodes",
+      "values": [
+        {
+          "stage": "habitat",
+          "name": "Forest",
+          "count": 186,
+          "x": 208,
+          "y": 10.0,
+          "w": 16,
+          "h": 157.818,
+          "color": "#55715d"
+        },
+        {
+          "stage": "habitat",
+          "name": "Woodland",
+          "count": 98,
+          "x": 208,
+          "y": 181.818,
+          "w": 16,
+          "h": 83.152,
+          "color": "#809a73"
+        },
+        {
+          "stage": "habitat",
+          "name": "Wetland",
+          "count": 89,
+          "x": 208,
+          "y": 278.97,
+          "w": 16,
+          "h": 75.515,
+          "color": "#6d9aab"
+        },
+        {
+          "stage": "habitat",
+          "name": "Marine",
+          "count": 84,
+          "x": 208,
+          "y": 368.485,
+          "w": 16,
+          "h": 71.273,
+          "color": "#466b8c"
+        },
+        {
+          "stage": "habitat",
+          "name": "Shrubland",
+          "count": 72,
+          "x": 208,
+          "y": 453.758,
+          "w": 16,
+          "h": 61.091,
+          "color": "#b09a73"
+        },
+        {
+          "stage": "habitat",
+          "name": "Grassland",
+          "count": 53,
+          "x": 208,
+          "y": 528.848,
+          "w": 16,
+          "h": 44.97,
+          "color": "#c4a86e"
+        },
+        {
+          "stage": "habitat",
+          "name": "Other habitats",
+          "count": 24,
+          "x": 208,
+          "y": 587.818,
+          "w": 16,
+          "h": 20.364,
+          "color": "#9d9fa0"
+        },
+        {
+          "stage": "habitat",
+          "name": "Coastal",
+          "count": 21,
+          "x": 208,
+          "y": 622.182,
+          "w": 16,
+          "h": 17.818,
+          "color": "#83b4a6"
+        },
+        {
+          "stage": "diet",
+          "name": "Invertivore",
+          "count": 214,
+          "x": 582,
+          "y": 10.0,
+          "w": 16,
+          "h": 181.576,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Aquatic predator",
+          "count": 166,
+          "x": 582,
+          "y": 205.576,
+          "w": 16,
+          "h": 140.848,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Omnivore",
+          "count": 118,
+          "x": 582,
+          "y": 360.424,
+          "w": 16,
+          "h": 100.121,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Granivore",
+          "count": 50,
+          "x": 582,
+          "y": 474.545,
+          "w": 16,
+          "h": 42.424,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Vertivore",
+          "count": 25,
+          "x": 582,
+          "y": 530.97,
+          "w": 16,
+          "h": 21.212,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Frugivore",
+          "count": 22,
+          "x": 582,
+          "y": 566.182,
+          "w": 16,
+          "h": 18.667,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Nectarivore",
+          "count": 20,
+          "x": 582,
+          "y": 598.848,
+          "w": 16,
+          "h": 16.97,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "diet",
+          "name": "Other diets",
+          "count": 12,
+          "x": 582,
+          "y": 629.818,
+          "w": 16,
+          "h": 10.182,
+          "color": "#5a665a"
+        },
+        {
+          "stage": "lifestyle",
+          "name": "Insessorial",
+          "count": 238,
+          "x": 954,
+          "y": 31.0,
+          "w": 16,
+          "h": 201.939,
+          "color": "#73827d"
+        },
+        {
+          "stage": "lifestyle",
+          "name": "Terrestrial",
+          "count": 190,
+          "x": 954,
+          "y": 246.939,
+          "w": 16,
+          "h": 161.212,
+          "color": "#73827d"
+        },
+        {
+          "stage": "lifestyle",
+          "name": "Aerial",
+          "count": 78,
+          "x": 954,
+          "y": 422.152,
+          "w": 16,
+          "h": 66.182,
+          "color": "#73827d"
+        },
+        {
+          "stage": "lifestyle",
+          "name": "Generalist",
+          "count": 73,
+          "x": 954,
+          "y": 502.333,
+          "w": 16,
+          "h": 61.939,
+          "color": "#73827d"
+        },
+        {
+          "stage": "lifestyle",
+          "name": "Aquatic",
+          "count": 48,
+          "x": 954,
+          "y": 578.273,
+          "w": 16,
+          "h": 40.727,
+          "color": "#73827d"
+        }
+      ]
+    },
+    {
+      "name": "ribbons",
+      "values": [
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 68,
+          "section": "habitat-to-diet",
+          "key": "Forest|Invertivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,10.00 C 403.00,10.00 403.00,10.00 582.00,10.00 L 582.00,67.70 C 403.00,67.70 403.00,67.70 224.00,67.70 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 68,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Invertivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,10.00 C 776.00,10.00 776.00,31.00 954.00,31.00 L 954.00,88.70 C 776.00,88.70 776.00,67.70 598.00,67.70 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 19,
+          "section": "habitat-to-diet",
+          "key": "Forest|Invertivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 224.00,67.70 C 403.00,67.70 403.00,67.70 582.00,67.70 L 582.00,83.82 C 403.00,83.82 403.00,83.82 224.00,83.82 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 19,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Invertivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 598.00,67.70 C 776.00,67.70 776.00,246.94 954.00,246.94 L 954.00,263.06 C 776.00,263.06 776.00,83.82 598.00,83.82 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Forest|Invertivore|Aerial",
+          "color": "#55715d",
+          "path": "M 224.00,83.82 C 403.00,83.82 403.00,83.82 582.00,83.82 L 582.00,85.52 C 403.00,85.52 403.00,85.52 224.00,85.52 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Invertivore|Aerial",
+          "color": "#55715d",
+          "path": "M 598.00,83.82 C 776.00,83.82 776.00,422.15 954.00,422.15 L 954.00,423.85 C 776.00,423.85 776.00,85.52 598.00,85.52 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Forest|Invertivore|Generalist",
+          "color": "#55715d",
+          "path": "M 224.00,85.52 C 403.00,85.52 403.00,85.52 582.00,85.52 L 582.00,87.21 C 403.00,87.21 403.00,87.21 224.00,87.21 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Invertivore|Generalist",
+          "color": "#55715d",
+          "path": "M 598.00,85.52 C 776.00,85.52 776.00,502.33 954.00,502.33 L 954.00,504.03 C 776.00,504.03 776.00,87.21 598.00,87.21 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Forest|Aquatic predator|Terrestrial",
+          "color": "#55715d",
+          "path": "M 224.00,87.21 C 403.00,87.21 403.00,205.58 582.00,205.58 L 582.00,206.42 C 403.00,206.42 403.00,88.06 224.00,88.06 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Aquatic predator|Terrestrial",
+          "color": "#55715d",
+          "path": "M 598.00,205.58 C 776.00,205.58 776.00,285.97 954.00,285.97 L 954.00,286.82 C 776.00,286.82 776.00,206.42 598.00,206.42 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 38,
+          "section": "habitat-to-diet",
+          "key": "Forest|Omnivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,88.06 C 403.00,88.06 403.00,360.42 582.00,360.42 L 582.00,392.67 C 403.00,392.67 403.00,120.30 224.00,120.30 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 38,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Omnivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,360.42 C 776.00,360.42 776.00,139.61 954.00,139.61 L 954.00,171.85 C 776.00,171.85 776.00,392.67 598.00,392.67 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 5,
+          "section": "habitat-to-diet",
+          "key": "Forest|Omnivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 224.00,120.30 C 403.00,120.30 403.00,392.67 582.00,392.67 L 582.00,396.91 C 403.00,396.91 403.00,124.55 224.00,124.55 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 5,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Omnivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 598.00,392.67 C 776.00,392.67 776.00,338.58 954.00,338.58 L 954.00,342.82 C 776.00,342.82 776.00,396.91 598.00,396.91 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Forest|Omnivore|Generalist",
+          "color": "#55715d",
+          "path": "M 224.00,124.55 C 403.00,124.55 403.00,396.91 582.00,396.91 L 582.00,399.45 C 403.00,399.45 403.00,127.09 224.00,127.09 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Omnivore|Generalist",
+          "color": "#55715d",
+          "path": "M 598.00,396.91 C 776.00,396.91 776.00,536.27 954.00,536.27 L 954.00,538.82 C 776.00,538.82 776.00,399.45 598.00,399.45 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 4,
+          "section": "habitat-to-diet",
+          "key": "Forest|Granivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,127.09 C 403.00,127.09 403.00,474.55 582.00,474.55 L 582.00,477.94 C 403.00,477.94 403.00,130.48 224.00,130.48 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 4,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Granivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,474.55 C 776.00,474.55 776.00,187.12 954.00,187.12 L 954.00,190.52 C 776.00,190.52 776.00,477.94 598.00,477.94 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Forest|Granivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 224.00,130.48 C 403.00,130.48 403.00,477.94 582.00,477.94 L 582.00,480.48 C 403.00,480.48 403.00,133.03 224.00,133.03 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Granivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 598.00,477.94 C 776.00,477.94 776.00,375.06 954.00,375.06 L 954.00,377.61 C 776.00,377.61 776.00,480.48 598.00,480.48 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Insessorial",
+          "count": 5,
+          "section": "habitat-to-diet",
+          "key": "Forest|Vertivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,133.03 C 403.00,133.03 403.00,530.97 582.00,530.97 L 582.00,535.21 C 403.00,535.21 403.00,137.27 224.00,137.27 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Insessorial",
+          "count": 5,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Vertivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,530.97 C 776.00,530.97 776.00,193.06 954.00,193.06 L 954.00,197.30 C 776.00,197.30 776.00,535.21 598.00,535.21 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Forest|Vertivore|Aerial",
+          "color": "#55715d",
+          "path": "M 224.00,137.27 C 403.00,137.27 403.00,535.21 582.00,535.21 L 582.00,537.76 C 403.00,537.76 403.00,139.82 224.00,139.82 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Vertivore|Aerial",
+          "color": "#55715d",
+          "path": "M 598.00,535.21 C 776.00,535.21 776.00,479.00 954.00,479.00 L 954.00,481.55 C 776.00,481.55 776.00,537.76 598.00,537.76 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Generalist",
+          "count": 5,
+          "section": "habitat-to-diet",
+          "key": "Forest|Vertivore|Generalist",
+          "color": "#55715d",
+          "path": "M 224.00,139.82 C 403.00,139.82 403.00,537.76 582.00,537.76 L 582.00,542.00 C 403.00,542.00 403.00,144.06 224.00,144.06 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Vertivore",
+          "lifestyle": "Generalist",
+          "count": 5,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Vertivore|Generalist",
+          "color": "#55715d",
+          "path": "M 598.00,537.76 C 776.00,537.76 776.00,555.79 954.00,555.79 L 954.00,560.03 C 776.00,560.03 776.00,542.00 598.00,542.00 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Frugivore",
+          "lifestyle": "Insessorial",
+          "count": 19,
+          "section": "habitat-to-diet",
+          "key": "Forest|Frugivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,144.06 C 403.00,144.06 403.00,566.18 582.00,566.18 L 582.00,582.30 C 403.00,582.30 403.00,160.18 224.00,160.18 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Frugivore",
+          "lifestyle": "Insessorial",
+          "count": 19,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Frugivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,566.18 C 776.00,566.18 776.00,198.15 954.00,198.15 L 954.00,214.27 C 776.00,214.27 776.00,582.30 598.00,582.30 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Frugivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Forest|Frugivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 224.00,160.18 C 403.00,160.18 403.00,582.30 582.00,582.30 L 582.00,583.15 C 403.00,583.15 403.00,161.03 224.00,161.03 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Frugivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Frugivore|Terrestrial",
+          "color": "#55715d",
+          "path": "M 598.00,582.30 C 776.00,582.30 776.00,403.91 954.00,403.91 L 954.00,404.76 C 776.00,404.76 776.00,583.15 598.00,583.15 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 8,
+          "section": "habitat-to-diet",
+          "key": "Forest|Nectarivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 224.00,161.03 C 403.00,161.03 403.00,598.85 582.00,598.85 L 582.00,605.64 C 403.00,605.64 403.00,167.82 224.00,167.82 Z"
+        },
+        {
+          "habitat": "Forest",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 8,
+          "section": "diet-to-lifestyle",
+          "key": "Forest|Nectarivore|Insessorial",
+          "color": "#55715d",
+          "path": "M 598.00,598.85 C 776.00,598.85 776.00,215.97 954.00,215.97 L 954.00,222.76 C 776.00,222.76 776.00,605.64 598.00,605.64 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 32,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Invertivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 224.00,181.82 C 403.00,181.82 403.00,87.21 582.00,87.21 L 582.00,114.36 C 403.00,114.36 403.00,208.97 224.00,208.97 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 32,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Invertivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 598.00,87.21 C 776.00,87.21 776.00,88.70 954.00,88.70 L 954.00,115.85 C 776.00,115.85 776.00,114.36 598.00,114.36 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 4,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Invertivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 224.00,208.97 C 403.00,208.97 403.00,114.36 582.00,114.36 L 582.00,117.76 C 403.00,117.76 403.00,212.36 224.00,212.36 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 4,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Invertivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 598.00,114.36 C 776.00,114.36 776.00,263.06 954.00,263.06 L 954.00,266.45 C 776.00,266.45 776.00,117.76 598.00,117.76 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 9,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Invertivore|Aerial",
+          "color": "#809a73",
+          "path": "M 224.00,212.36 C 403.00,212.36 403.00,117.76 582.00,117.76 L 582.00,125.39 C 403.00,125.39 403.00,220.00 224.00,220.00 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 9,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Invertivore|Aerial",
+          "color": "#809a73",
+          "path": "M 598.00,117.76 C 776.00,117.76 776.00,423.85 954.00,423.85 L 954.00,431.49 C 776.00,431.49 776.00,125.39 598.00,125.39 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Invertivore|Generalist",
+          "color": "#809a73",
+          "path": "M 224.00,220.00 C 403.00,220.00 403.00,125.39 582.00,125.39 L 582.00,130.48 C 403.00,130.48 403.00,225.09 224.00,225.09 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Invertivore|Generalist",
+          "color": "#809a73",
+          "path": "M 598.00,125.39 C 776.00,125.39 776.00,504.03 954.00,504.03 L 954.00,509.12 C 776.00,509.12 776.00,130.48 598.00,130.48 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Aquatic predator|Terrestrial",
+          "color": "#809a73",
+          "path": "M 224.00,225.09 C 403.00,225.09 403.00,206.42 582.00,206.42 L 582.00,207.27 C 403.00,207.27 403.00,225.94 224.00,225.94 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Aquatic predator|Terrestrial",
+          "color": "#809a73",
+          "path": "M 598.00,206.42 C 776.00,206.42 776.00,286.82 954.00,286.82 L 954.00,287.67 C 776.00,287.67 776.00,207.27 598.00,207.27 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 14,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Omnivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 224.00,225.94 C 403.00,225.94 403.00,399.45 582.00,399.45 L 582.00,411.33 C 403.00,411.33 403.00,237.82 224.00,237.82 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 14,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Omnivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 598.00,399.45 C 776.00,399.45 776.00,171.85 954.00,171.85 L 954.00,183.73 C 776.00,183.73 776.00,411.33 598.00,411.33 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Omnivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 224.00,237.82 C 403.00,237.82 403.00,411.33 582.00,411.33 L 582.00,413.03 C 403.00,413.03 403.00,239.51 224.00,239.51 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Omnivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 598.00,411.33 C 776.00,411.33 776.00,342.82 954.00,342.82 L 954.00,344.51 C 776.00,344.51 776.00,413.03 598.00,413.03 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Omnivore|Aerial",
+          "color": "#809a73",
+          "path": "M 224.00,239.51 C 403.00,239.51 403.00,413.03 582.00,413.03 L 582.00,413.88 C 403.00,413.88 403.00,240.36 224.00,240.36 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Omnivore|Aerial",
+          "color": "#809a73",
+          "path": "M 598.00,413.03 C 776.00,413.03 776.00,475.61 954.00,475.61 L 954.00,476.46 C 776.00,476.46 776.00,413.88 598.00,413.88 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Omnivore|Generalist",
+          "color": "#809a73",
+          "path": "M 224.00,240.36 C 403.00,240.36 403.00,413.88 582.00,413.88 L 582.00,414.73 C 403.00,414.73 403.00,241.21 224.00,241.21 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Omnivore|Generalist",
+          "color": "#809a73",
+          "path": "M 598.00,413.88 C 776.00,413.88 776.00,538.82 954.00,538.82 L 954.00,539.67 C 776.00,539.67 776.00,414.73 598.00,414.73 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Granivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 224.00,241.21 C 403.00,241.21 403.00,480.48 582.00,480.48 L 582.00,481.33 C 403.00,481.33 403.00,242.06 224.00,242.06 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Granivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 598.00,480.48 C 776.00,480.48 776.00,190.52 954.00,190.52 L 954.00,191.36 C 776.00,191.36 776.00,481.33 598.00,481.33 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 13,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Granivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 224.00,242.06 C 403.00,242.06 403.00,481.33 582.00,481.33 L 582.00,492.36 C 403.00,492.36 403.00,253.09 224.00,253.09 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 13,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Granivore|Terrestrial",
+          "color": "#809a73",
+          "path": "M 598.00,481.33 C 776.00,481.33 776.00,377.61 954.00,377.61 L 954.00,388.64 C 776.00,388.64 776.00,492.36 598.00,492.36 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Granivore|Generalist",
+          "color": "#809a73",
+          "path": "M 224.00,253.09 C 403.00,253.09 403.00,492.36 582.00,492.36 L 582.00,494.06 C 403.00,494.06 403.00,254.79 224.00,254.79 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Granivore|Generalist",
+          "color": "#809a73",
+          "path": "M 598.00,492.36 C 776.00,492.36 776.00,548.15 954.00,548.15 L 954.00,549.85 C 776.00,549.85 776.00,494.06 598.00,494.06 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Vertivore|Aerial",
+          "color": "#809a73",
+          "path": "M 224.00,254.79 C 403.00,254.79 403.00,542.00 582.00,542.00 L 582.00,543.70 C 403.00,543.70 403.00,256.48 224.00,256.48 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Vertivore|Aerial",
+          "color": "#809a73",
+          "path": "M 598.00,542.00 C 776.00,542.00 776.00,481.55 954.00,481.55 L 954.00,483.24 C 776.00,483.24 776.00,543.70 598.00,543.70 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Vertivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Vertivore|Generalist",
+          "color": "#809a73",
+          "path": "M 224.00,256.48 C 403.00,256.48 403.00,543.70 582.00,543.70 L 582.00,546.24 C 403.00,546.24 403.00,259.03 224.00,259.03 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Vertivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Vertivore|Generalist",
+          "color": "#809a73",
+          "path": "M 598.00,543.70 C 776.00,543.70 776.00,560.03 954.00,560.03 L 954.00,562.58 C 776.00,562.58 776.00,546.24 598.00,546.24 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Frugivore",
+          "lifestyle": "Insessorial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Frugivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 224.00,259.03 C 403.00,259.03 403.00,583.15 582.00,583.15 L 582.00,584.85 C 403.00,584.85 403.00,260.73 224.00,260.73 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Frugivore",
+          "lifestyle": "Insessorial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Frugivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 598.00,583.15 C 776.00,583.15 776.00,214.27 954.00,214.27 L 954.00,215.97 C 776.00,215.97 776.00,584.85 598.00,584.85 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 5,
+          "section": "habitat-to-diet",
+          "key": "Woodland|Nectarivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 224.00,260.73 C 403.00,260.73 403.00,605.64 582.00,605.64 L 582.00,609.88 C 403.00,609.88 403.00,264.97 224.00,264.97 Z"
+        },
+        {
+          "habitat": "Woodland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 5,
+          "section": "diet-to-lifestyle",
+          "key": "Woodland|Nectarivore|Insessorial",
+          "color": "#809a73",
+          "path": "M 598.00,605.64 C 776.00,605.64 776.00,222.76 954.00,222.76 L 954.00,227.00 C 776.00,227.00 776.00,609.88 598.00,609.88 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Invertivore|Insessorial",
+          "color": "#6d9aab",
+          "path": "M 224.00,278.97 C 403.00,278.97 403.00,130.48 582.00,130.48 L 582.00,132.18 C 403.00,132.18 403.00,280.67 224.00,280.67 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Invertivore|Insessorial",
+          "color": "#6d9aab",
+          "path": "M 598.00,130.48 C 776.00,130.48 776.00,115.85 954.00,115.85 L 954.00,117.55 C 776.00,117.55 776.00,132.18 598.00,132.18 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Invertivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 224.00,280.67 C 403.00,280.67 403.00,132.18 582.00,132.18 L 582.00,133.88 C 403.00,133.88 403.00,282.36 224.00,282.36 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Invertivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 598.00,132.18 C 776.00,132.18 776.00,431.49 954.00,431.49 L 954.00,433.18 C 776.00,433.18 776.00,133.88 598.00,133.88 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Invertivore|Generalist",
+          "color": "#6d9aab",
+          "path": "M 224.00,282.36 C 403.00,282.36 403.00,133.88 582.00,133.88 L 582.00,135.58 C 403.00,135.58 403.00,284.06 224.00,284.06 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Invertivore|Generalist",
+          "color": "#6d9aab",
+          "path": "M 598.00,133.88 C 776.00,133.88 776.00,509.12 954.00,509.12 L 954.00,510.82 C 776.00,510.82 776.00,135.58 598.00,135.58 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 41,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Aquatic predator|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 224.00,284.06 C 403.00,284.06 403.00,207.27 582.00,207.27 L 582.00,242.06 C 403.00,242.06 403.00,318.85 224.00,318.85 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 41,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Aquatic predator|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 598.00,207.27 C 776.00,207.27 776.00,287.67 954.00,287.67 L 954.00,322.45 C 776.00,322.45 776.00,242.06 598.00,242.06 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Aquatic predator|Aerial",
+          "color": "#6d9aab",
+          "path": "M 224.00,318.85 C 403.00,318.85 403.00,242.06 582.00,242.06 L 582.00,244.61 C 403.00,244.61 403.00,321.39 224.00,321.39 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Aquatic predator|Aerial",
+          "color": "#6d9aab",
+          "path": "M 598.00,242.06 C 776.00,242.06 776.00,439.12 954.00,439.12 L 954.00,441.67 C 776.00,441.67 776.00,244.61 598.00,244.61 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 12,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Aquatic predator|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 224.00,321.39 C 403.00,321.39 403.00,244.61 582.00,244.61 L 582.00,254.79 C 403.00,254.79 403.00,331.58 224.00,331.58 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 12,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Aquatic predator|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 598.00,244.61 C 776.00,244.61 776.00,578.27 954.00,578.27 L 954.00,588.45 C 776.00,588.45 776.00,254.79 598.00,254.79 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 11,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Omnivore|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 224.00,331.58 C 403.00,331.58 403.00,414.73 582.00,414.73 L 582.00,424.06 C 403.00,424.06 403.00,340.91 224.00,340.91 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 11,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Omnivore|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 598.00,414.73 C 776.00,414.73 776.00,344.51 954.00,344.51 L 954.00,353.85 C 776.00,353.85 776.00,424.06 598.00,424.06 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Omnivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 224.00,340.91 C 403.00,340.91 403.00,424.06 582.00,424.06 L 582.00,424.91 C 403.00,424.91 403.00,341.76 224.00,341.76 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Omnivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 598.00,424.06 C 776.00,424.06 776.00,476.46 954.00,476.46 L 954.00,477.30 C 776.00,477.30 776.00,424.91 598.00,424.91 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Aquatic",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Omnivore|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 224.00,341.76 C 403.00,341.76 403.00,424.91 582.00,424.91 L 582.00,425.76 C 403.00,425.76 403.00,342.61 224.00,342.61 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Omnivore",
+          "lifestyle": "Aquatic",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Omnivore|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 598.00,424.91 C 776.00,424.91 776.00,613.06 954.00,613.06 L 954.00,613.91 C 776.00,613.91 776.00,425.76 598.00,425.76 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Granivore|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 224.00,342.61 C 403.00,342.61 403.00,494.06 582.00,494.06 L 582.00,494.91 C 403.00,494.91 403.00,343.45 224.00,343.45 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Granivore|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 598.00,494.06 C 776.00,494.06 776.00,388.64 954.00,388.64 L 954.00,389.48 C 776.00,389.48 776.00,494.91 598.00,494.91 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Granivore|Generalist",
+          "color": "#6d9aab",
+          "path": "M 224.00,343.45 C 403.00,343.45 403.00,494.91 582.00,494.91 L 582.00,496.61 C 403.00,496.61 403.00,345.15 224.00,345.15 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Granivore|Generalist",
+          "color": "#6d9aab",
+          "path": "M 598.00,494.91 C 776.00,494.91 776.00,549.85 954.00,549.85 L 954.00,551.55 C 776.00,551.55 776.00,496.61 598.00,496.61 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Vertivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 224.00,345.15 C 403.00,345.15 403.00,546.24 582.00,546.24 L 582.00,547.09 C 403.00,547.09 403.00,346.00 224.00,346.00 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Vertivore|Aerial",
+          "color": "#6d9aab",
+          "path": "M 598.00,546.24 C 776.00,546.24 776.00,483.24 954.00,483.24 L 954.00,484.09 C 776.00,484.09 776.00,547.09 598.00,547.09 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Other diets|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 224.00,346.00 C 403.00,346.00 403.00,629.82 582.00,629.82 L 582.00,631.51 C 403.00,631.51 403.00,347.70 224.00,347.70 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Other diets|Terrestrial",
+          "color": "#6d9aab",
+          "path": "M 598.00,629.82 C 776.00,629.82 776.00,404.76 954.00,404.76 L 954.00,406.45 C 776.00,406.45 776.00,631.51 598.00,631.51 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Other diets|Generalist",
+          "color": "#6d9aab",
+          "path": "M 224.00,347.70 C 403.00,347.70 403.00,631.51 582.00,631.51 L 582.00,633.21 C 403.00,633.21 403.00,349.39 224.00,349.39 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Generalist",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Other diets|Generalist",
+          "color": "#6d9aab",
+          "path": "M 598.00,631.51 C 776.00,631.51 776.00,562.58 954.00,562.58 L 954.00,564.27 C 776.00,564.27 776.00,633.21 598.00,633.21 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Aquatic",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Wetland|Other diets|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 224.00,349.39 C 403.00,349.39 403.00,633.21 582.00,633.21 L 582.00,638.30 C 403.00,638.30 403.00,354.49 224.00,354.49 Z"
+        },
+        {
+          "habitat": "Wetland",
+          "diet": "Other diets",
+          "lifestyle": "Aquatic",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Wetland|Other diets|Aquatic",
+          "color": "#6d9aab",
+          "path": "M 598.00,633.21 C 776.00,633.21 776.00,613.91 954.00,613.91 L 954.00,619.00 C 776.00,619.00 776.00,638.30 598.00,638.30 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 34,
+          "section": "habitat-to-diet",
+          "key": "Marine|Aquatic predator|Aerial",
+          "color": "#466b8c",
+          "path": "M 224.00,368.49 C 403.00,368.49 403.00,254.79 582.00,254.79 L 582.00,283.64 C 403.00,283.64 403.00,397.33 224.00,397.33 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 34,
+          "section": "diet-to-lifestyle",
+          "key": "Marine|Aquatic predator|Aerial",
+          "color": "#466b8c",
+          "path": "M 598.00,254.79 C 776.00,254.79 776.00,441.67 954.00,441.67 L 954.00,470.52 C 776.00,470.52 776.00,283.64 598.00,283.64 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Generalist",
+          "count": 18,
+          "section": "habitat-to-diet",
+          "key": "Marine|Aquatic predator|Generalist",
+          "color": "#466b8c",
+          "path": "M 224.00,397.33 C 403.00,397.33 403.00,283.64 582.00,283.64 L 582.00,298.91 C 403.00,298.91 403.00,412.61 224.00,412.61 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Generalist",
+          "count": 18,
+          "section": "diet-to-lifestyle",
+          "key": "Marine|Aquatic predator|Generalist",
+          "color": "#466b8c",
+          "path": "M 598.00,283.64 C 776.00,283.64 776.00,520.15 954.00,520.15 L 954.00,535.42 C 776.00,535.42 776.00,298.91 598.00,298.91 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 28,
+          "section": "habitat-to-diet",
+          "key": "Marine|Aquatic predator|Aquatic",
+          "color": "#466b8c",
+          "path": "M 224.00,412.61 C 403.00,412.61 403.00,298.91 582.00,298.91 L 582.00,322.67 C 403.00,322.67 403.00,436.36 224.00,436.36 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 28,
+          "section": "diet-to-lifestyle",
+          "key": "Marine|Aquatic predator|Aquatic",
+          "color": "#466b8c",
+          "path": "M 598.00,298.91 C 776.00,298.91 776.00,588.45 954.00,588.45 L 954.00,612.21 C 776.00,612.21 776.00,322.67 598.00,322.67 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Marine|Omnivore|Terrestrial",
+          "color": "#466b8c",
+          "path": "M 224.00,436.36 C 403.00,436.36 403.00,425.76 582.00,425.76 L 582.00,426.61 C 403.00,426.61 403.00,437.21 224.00,437.21 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Marine|Omnivore|Terrestrial",
+          "color": "#466b8c",
+          "path": "M 598.00,425.76 C 776.00,425.76 776.00,353.85 954.00,353.85 L 954.00,354.70 C 776.00,354.70 776.00,426.61 598.00,426.61 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Marine|Omnivore|Generalist",
+          "color": "#466b8c",
+          "path": "M 224.00,437.21 C 403.00,437.21 403.00,426.61 582.00,426.61 L 582.00,429.15 C 403.00,429.15 403.00,439.76 224.00,439.76 Z"
+        },
+        {
+          "habitat": "Marine",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Marine|Omnivore|Generalist",
+          "color": "#466b8c",
+          "path": "M 598.00,426.61 C 776.00,426.61 776.00,539.67 954.00,539.67 L 954.00,542.21 C 776.00,542.21 776.00,429.15 598.00,429.15 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 18,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Invertivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 224.00,453.76 C 403.00,453.76 403.00,135.58 582.00,135.58 L 582.00,150.85 C 403.00,150.85 403.00,469.03 224.00,469.03 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 18,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Invertivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 598.00,135.58 C 776.00,135.58 776.00,117.55 954.00,117.55 L 954.00,132.82 C 776.00,132.82 776.00,150.85 598.00,150.85 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 13,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Invertivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 224.00,469.03 C 403.00,469.03 403.00,150.85 582.00,150.85 L 582.00,161.88 C 403.00,161.88 403.00,480.06 224.00,480.06 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 13,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Invertivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 598.00,150.85 C 776.00,150.85 776.00,266.45 954.00,266.45 L 954.00,277.48 C 776.00,277.48 776.00,161.88 598.00,161.88 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Invertivore|Aerial",
+          "color": "#b09a73",
+          "path": "M 224.00,480.06 C 403.00,480.06 403.00,161.88 582.00,161.88 L 582.00,162.73 C 403.00,162.73 403.00,480.91 224.00,480.91 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Invertivore|Aerial",
+          "color": "#b09a73",
+          "path": "M 598.00,161.88 C 776.00,161.88 776.00,433.18 954.00,433.18 L 954.00,434.03 C 776.00,434.03 776.00,162.73 598.00,162.73 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 9,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Invertivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 224.00,480.91 C 403.00,480.91 403.00,162.73 582.00,162.73 L 582.00,170.36 C 403.00,170.36 403.00,488.55 224.00,488.55 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 9,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Invertivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 598.00,162.73 C 776.00,162.73 776.00,510.82 954.00,510.82 L 954.00,518.45 C 776.00,518.45 776.00,170.36 598.00,170.36 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 4,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Omnivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 224.00,488.55 C 403.00,488.55 403.00,429.15 582.00,429.15 L 582.00,432.55 C 403.00,432.55 403.00,491.94 224.00,491.94 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Insessorial",
+          "count": 4,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Omnivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 598.00,429.15 C 776.00,429.15 776.00,183.73 954.00,183.73 L 954.00,187.12 C 776.00,187.12 776.00,432.55 598.00,432.55 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Omnivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 224.00,491.94 C 403.00,491.94 403.00,432.55 582.00,432.55 L 582.00,438.48 C 403.00,438.48 403.00,497.88 224.00,497.88 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Omnivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 598.00,432.55 C 776.00,432.55 776.00,354.70 954.00,354.70 L 954.00,360.64 C 776.00,360.64 776.00,438.48 598.00,438.48 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Omnivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 224.00,497.88 C 403.00,497.88 403.00,438.48 582.00,438.48 L 582.00,441.03 C 403.00,441.03 403.00,500.42 224.00,500.42 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Omnivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 598.00,438.48 C 776.00,438.48 776.00,542.21 954.00,542.21 L 954.00,544.76 C 776.00,544.76 776.00,441.03 598.00,441.03 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Granivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 224.00,500.42 C 403.00,500.42 403.00,496.61 582.00,496.61 L 582.00,497.45 C 403.00,497.45 403.00,501.27 224.00,501.27 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Granivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 598.00,496.61 C 776.00,496.61 776.00,191.36 954.00,191.36 L 954.00,192.21 C 776.00,192.21 776.00,497.45 598.00,497.45 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Granivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 224.00,501.27 C 403.00,501.27 403.00,497.45 582.00,497.45 L 582.00,502.55 C 403.00,502.55 403.00,506.36 224.00,506.36 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Granivore|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 598.00,497.45 C 776.00,497.45 776.00,389.48 954.00,389.48 L 954.00,394.58 C 776.00,394.58 776.00,502.55 598.00,502.55 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Granivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 224.00,506.36 C 403.00,506.36 403.00,502.55 582.00,502.55 L 582.00,505.09 C 403.00,505.09 403.00,508.91 224.00,508.91 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Granivore|Generalist",
+          "color": "#b09a73",
+          "path": "M 598.00,502.55 C 776.00,502.55 776.00,551.55 954.00,551.55 L 954.00,554.09 C 776.00,554.09 776.00,505.09 598.00,505.09 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Nectarivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 224.00,508.91 C 403.00,508.91 403.00,609.88 582.00,609.88 L 582.00,614.97 C 403.00,614.97 403.00,514.00 224.00,514.00 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Nectarivore|Insessorial",
+          "color": "#b09a73",
+          "path": "M 598.00,609.88 C 776.00,609.88 776.00,227.00 954.00,227.00 L 954.00,232.09 C 776.00,232.09 776.00,614.97 598.00,614.97 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Shrubland|Other diets|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 224.00,514.00 C 403.00,514.00 403.00,638.30 582.00,638.30 L 582.00,639.15 C 403.00,639.15 403.00,514.85 224.00,514.85 Z"
+        },
+        {
+          "habitat": "Shrubland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Shrubland|Other diets|Terrestrial",
+          "color": "#b09a73",
+          "path": "M 598.00,638.30 C 776.00,638.30 776.00,406.45 954.00,406.45 L 954.00,407.30 C 776.00,407.30 776.00,639.15 598.00,639.15 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Invertivore|Insessorial",
+          "color": "#c4a86e",
+          "path": "M 224.00,528.85 C 403.00,528.85 403.00,170.36 582.00,170.36 L 582.00,171.21 C 403.00,171.21 403.00,529.70 224.00,529.70 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Invertivore|Insessorial",
+          "color": "#c4a86e",
+          "path": "M 598.00,170.36 C 776.00,170.36 776.00,132.82 954.00,132.82 L 954.00,133.67 C 776.00,133.67 776.00,171.21 598.00,171.21 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Invertivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 224.00,529.70 C 403.00,529.70 403.00,171.21 582.00,171.21 L 582.00,177.15 C 403.00,177.15 403.00,535.64 224.00,535.64 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Invertivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 598.00,171.21 C 776.00,171.21 776.00,277.48 954.00,277.48 L 954.00,283.42 C 776.00,283.42 776.00,177.15 598.00,177.15 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Invertivore|Aerial",
+          "color": "#c4a86e",
+          "path": "M 224.00,535.64 C 403.00,535.64 403.00,177.15 582.00,177.15 L 582.00,179.70 C 403.00,179.70 403.00,538.18 224.00,538.18 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Invertivore|Aerial",
+          "color": "#c4a86e",
+          "path": "M 598.00,177.15 C 776.00,177.15 776.00,434.03 954.00,434.03 L 954.00,436.58 C 776.00,436.58 776.00,179.70 598.00,179.70 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Invertivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 224.00,538.18 C 403.00,538.18 403.00,179.70 582.00,179.70 L 582.00,180.55 C 403.00,180.55 403.00,539.03 224.00,539.03 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Invertivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 598.00,179.70 C 776.00,179.70 776.00,518.45 954.00,518.45 L 954.00,519.30 C 776.00,519.30 776.00,180.55 598.00,180.55 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Aquatic predator|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 224.00,539.03 C 403.00,539.03 403.00,322.67 582.00,322.67 L 582.00,328.61 C 403.00,328.61 403.00,544.97 224.00,544.97 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 7,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Aquatic predator|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 598.00,322.67 C 776.00,322.67 776.00,322.45 954.00,322.45 L 954.00,328.39 C 776.00,328.39 776.00,328.61 598.00,328.61 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 14,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Omnivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 224.00,544.97 C 403.00,544.97 403.00,441.03 582.00,441.03 L 582.00,452.91 C 403.00,452.91 403.00,556.85 224.00,556.85 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 14,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Omnivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 598.00,441.03 C 776.00,441.03 776.00,360.64 954.00,360.64 L 954.00,372.51 C 776.00,372.51 776.00,452.91 598.00,452.91 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Omnivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 224.00,556.85 C 403.00,556.85 403.00,452.91 582.00,452.91 L 582.00,455.45 C 403.00,455.45 403.00,559.39 224.00,559.39 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Omnivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 598.00,452.91 C 776.00,452.91 776.00,544.76 954.00,544.76 L 954.00,547.30 C 776.00,547.30 776.00,455.45 598.00,455.45 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 9,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Granivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 224.00,559.39 C 403.00,559.39 403.00,505.09 582.00,505.09 L 582.00,512.73 C 403.00,512.73 403.00,567.03 224.00,567.03 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 9,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Granivore|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 598.00,505.09 C 776.00,505.09 776.00,394.58 954.00,394.58 L 954.00,402.21 C 776.00,402.21 776.00,512.73 598.00,512.73 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Granivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 224.00,567.03 C 403.00,567.03 403.00,512.73 582.00,512.73 L 582.00,513.58 C 403.00,513.58 403.00,567.88 224.00,567.88 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Granivore|Generalist",
+          "color": "#c4a86e",
+          "path": "M 598.00,512.73 C 776.00,512.73 776.00,554.09 954.00,554.09 L 954.00,554.94 C 776.00,554.94 776.00,513.58 598.00,513.58 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 5,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Vertivore|Aerial",
+          "color": "#c4a86e",
+          "path": "M 224.00,567.88 C 403.00,567.88 403.00,547.09 582.00,547.09 L 582.00,551.33 C 403.00,551.33 403.00,572.12 224.00,572.12 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Vertivore",
+          "lifestyle": "Aerial",
+          "count": 5,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Vertivore|Aerial",
+          "color": "#c4a86e",
+          "path": "M 598.00,547.09 C 776.00,547.09 776.00,484.09 954.00,484.09 L 954.00,488.33 C 776.00,488.33 776.00,551.33 598.00,551.33 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Nectarivore|Insessorial",
+          "color": "#c4a86e",
+          "path": "M 224.00,572.12 C 403.00,572.12 403.00,614.97 582.00,614.97 L 582.00,615.82 C 403.00,615.82 403.00,572.97 224.00,572.97 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Nectarivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Nectarivore|Insessorial",
+          "color": "#c4a86e",
+          "path": "M 598.00,614.97 C 776.00,614.97 776.00,232.09 954.00,232.09 L 954.00,232.94 C 776.00,232.94 776.00,615.82 598.00,615.82 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Grassland|Other diets|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 224.00,572.97 C 403.00,572.97 403.00,639.15 582.00,639.15 L 582.00,640.00 C 403.00,640.00 403.00,573.82 224.00,573.82 Z"
+        },
+        {
+          "habitat": "Grassland",
+          "diet": "Other diets",
+          "lifestyle": "Terrestrial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Grassland|Other diets|Terrestrial",
+          "color": "#c4a86e",
+          "path": "M 598.00,639.15 C 776.00,639.15 776.00,407.30 954.00,407.30 L 954.00,408.15 C 776.00,408.15 776.00,640.00 598.00,640.00 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Invertivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,587.82 C 403.00,587.82 403.00,180.55 582.00,180.55 L 582.00,185.64 C 403.00,185.64 403.00,592.91 224.00,592.91 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Insessorial",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Invertivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,180.55 C 776.00,180.55 776.00,133.67 954.00,133.67 L 954.00,138.76 C 776.00,138.76 776.00,185.64 598.00,185.64 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Invertivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,592.91 C 403.00,592.91 403.00,185.64 582.00,185.64 L 582.00,188.18 C 403.00,188.18 403.00,595.45 224.00,595.45 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Invertivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,185.64 C 776.00,185.64 776.00,283.42 954.00,283.42 L 954.00,285.97 C 776.00,285.97 776.00,188.18 598.00,188.18 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Invertivore|Aerial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,595.45 C 403.00,595.45 403.00,188.18 582.00,188.18 L 582.00,190.73 C 403.00,190.73 403.00,598.00 224.00,598.00 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Aerial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Invertivore|Aerial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,188.18 C 776.00,188.18 776.00,436.58 954.00,436.58 L 954.00,439.12 C 776.00,439.12 776.00,190.73 598.00,190.73 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Invertivore|Generalist",
+          "color": "#9d9fa0",
+          "path": "M 224.00,598.00 C 403.00,598.00 403.00,190.73 582.00,190.73 L 582.00,191.58 C 403.00,191.58 403.00,598.85 224.00,598.85 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Invertivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Invertivore|Generalist",
+          "color": "#9d9fa0",
+          "path": "M 598.00,190.73 C 776.00,190.73 776.00,519.30 954.00,519.30 L 954.00,520.15 C 776.00,520.15 776.00,191.58 598.00,191.58 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Aquatic predator",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Aquatic predator|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,598.85 C 403.00,598.85 403.00,328.61 582.00,328.61 L 582.00,329.45 C 403.00,329.45 403.00,599.70 224.00,599.70 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Aquatic predator",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Aquatic predator|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,328.61 C 776.00,328.61 776.00,138.76 954.00,138.76 L 954.00,139.61 C 776.00,139.61 776.00,329.45 598.00,329.45 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Aquatic predator|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,599.70 C 403.00,599.70 403.00,329.45 582.00,329.45 L 582.00,331.15 C 403.00,331.15 403.00,601.39 224.00,601.39 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Aquatic predator|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,329.45 C 776.00,329.45 776.00,328.39 954.00,328.39 L 954.00,330.09 C 776.00,330.09 776.00,331.15 598.00,331.15 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Omnivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,601.39 C 403.00,601.39 403.00,455.45 582.00,455.45 L 582.00,458.00 C 403.00,458.00 403.00,603.94 224.00,603.94 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Omnivore",
+          "lifestyle": "Terrestrial",
+          "count": 3,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Omnivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,455.45 C 776.00,455.45 776.00,372.51 954.00,372.51 L 954.00,375.06 C 776.00,375.06 776.00,458.00 598.00,458.00 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Granivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,603.94 C 403.00,603.94 403.00,513.58 582.00,513.58 L 582.00,514.42 C 403.00,514.42 403.00,604.79 224.00,604.79 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Granivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,513.58 C 776.00,513.58 776.00,192.21 954.00,192.21 L 954.00,193.06 C 776.00,193.06 776.00,514.42 598.00,514.42 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Granivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,604.79 C 403.00,604.79 403.00,514.42 582.00,514.42 L 582.00,516.12 C 403.00,516.12 403.00,606.48 224.00,606.48 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Terrestrial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Granivore|Terrestrial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,514.42 C 776.00,514.42 776.00,402.21 954.00,402.21 L 954.00,403.91 C 776.00,403.91 776.00,516.12 598.00,516.12 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Granivore|Generalist",
+          "color": "#9d9fa0",
+          "path": "M 224.00,606.48 C 403.00,606.48 403.00,516.12 582.00,516.12 L 582.00,516.97 C 403.00,516.97 403.00,607.33 224.00,607.33 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Granivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Granivore|Generalist",
+          "color": "#9d9fa0",
+          "path": "M 598.00,516.12 C 776.00,516.12 776.00,554.94 954.00,554.94 L 954.00,555.79 C 776.00,555.79 776.00,516.97 598.00,516.97 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Vertivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Other habitats|Vertivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 224.00,607.33 C 403.00,607.33 403.00,551.33 582.00,551.33 L 582.00,552.18 C 403.00,552.18 403.00,608.18 224.00,608.18 Z"
+        },
+        {
+          "habitat": "Other habitats",
+          "diet": "Vertivore",
+          "lifestyle": "Insessorial",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Other habitats|Vertivore|Insessorial",
+          "color": "#9d9fa0",
+          "path": "M 598.00,551.33 C 776.00,551.33 776.00,197.30 954.00,197.30 L 954.00,198.15 C 776.00,198.15 776.00,552.18 598.00,552.18 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 10,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Aquatic predator|Terrestrial",
+          "color": "#83b4a6",
+          "path": "M 224.00,622.18 C 403.00,622.18 403.00,331.15 582.00,331.15 L 582.00,339.64 C 403.00,339.64 403.00,630.67 224.00,630.67 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Terrestrial",
+          "count": 10,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Aquatic predator|Terrestrial",
+          "color": "#83b4a6",
+          "path": "M 598.00,331.15 C 776.00,331.15 776.00,330.09 954.00,330.09 L 954.00,338.58 C 776.00,338.58 776.00,339.64 598.00,339.64 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 6,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Aquatic predator|Aerial",
+          "color": "#83b4a6",
+          "path": "M 224.00,630.67 C 403.00,630.67 403.00,339.64 582.00,339.64 L 582.00,344.73 C 403.00,344.73 403.00,635.76 224.00,635.76 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aerial",
+          "count": 6,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Aquatic predator|Aerial",
+          "color": "#83b4a6",
+          "path": "M 598.00,339.64 C 776.00,339.64 776.00,470.52 954.00,470.52 L 954.00,475.61 C 776.00,475.61 776.00,344.73 598.00,344.73 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Aquatic predator|Generalist",
+          "color": "#83b4a6",
+          "path": "M 224.00,635.76 C 403.00,635.76 403.00,344.73 582.00,344.73 L 582.00,345.58 C 403.00,345.58 403.00,636.61 224.00,636.61 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Aquatic predator|Generalist",
+          "color": "#83b4a6",
+          "path": "M 598.00,344.73 C 776.00,344.73 776.00,535.42 954.00,535.42 L 954.00,536.27 C 776.00,536.27 776.00,345.58 598.00,345.58 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Aquatic predator|Aquatic",
+          "color": "#83b4a6",
+          "path": "M 224.00,636.61 C 403.00,636.61 403.00,345.58 582.00,345.58 L 582.00,346.42 C 403.00,346.42 403.00,637.45 224.00,637.45 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Aquatic predator",
+          "lifestyle": "Aquatic",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Aquatic predator|Aquatic",
+          "color": "#83b4a6",
+          "path": "M 598.00,345.58 C 776.00,345.58 776.00,612.21 954.00,612.21 L 954.00,613.06 C 776.00,613.06 776.00,346.42 598.00,346.42 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Omnivore|Aerial",
+          "color": "#83b4a6",
+          "path": "M 224.00,637.45 C 403.00,637.45 403.00,458.00 582.00,458.00 L 582.00,459.70 C 403.00,459.70 403.00,639.15 224.00,639.15 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Omnivore",
+          "lifestyle": "Aerial",
+          "count": 2,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Omnivore|Aerial",
+          "color": "#83b4a6",
+          "path": "M 598.00,458.00 C 776.00,458.00 776.00,477.30 954.00,477.30 L 954.00,479.00 C 776.00,479.00 776.00,459.70 598.00,459.70 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "habitat-to-diet",
+          "key": "Coastal|Omnivore|Generalist",
+          "color": "#83b4a6",
+          "path": "M 224.00,639.15 C 403.00,639.15 403.00,459.70 582.00,459.70 L 582.00,460.55 C 403.00,460.55 403.00,640.00 224.00,640.00 Z"
+        },
+        {
+          "habitat": "Coastal",
+          "diet": "Omnivore",
+          "lifestyle": "Generalist",
+          "count": 1,
+          "section": "diet-to-lifestyle",
+          "key": "Coastal|Omnivore|Generalist",
+          "color": "#83b4a6",
+          "path": "M 598.00,459.70 C 776.00,459.70 776.00,547.30 954.00,547.30 L 954.00,548.15 C 776.00,548.15 776.00,460.55 598.00,460.55 Z"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "name": "ribbonPaths",
+      "from": {
+        "data": "ribbons"
+      },
+      "encode": {
+        "enter": {
+          "path": {
+            "field": "path"
+          },
+          "fill": {
+            "field": "color"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "'Habitat: ' + datum.habitat + '\\nDiet: ' + datum.diet + '\\nLifestyle: ' + datum.lifestyle + '\\nSpecies: ' + datum.count"
+          }
+        },
+        "update": {
+          "fillOpacity": {
+            "signal": "focusHabitat !== 'All habitats' && datum.habitat !== focusHabitat ? 0.035 : hoverTriplet !== null ? (datum.key === hoverTriplet ? 0.93 : 0.055) : hoverNode !== null ? (datum[hoverNode.stage] === hoverNode.name ? 0.78 : 0.052) : 0.40"
+          }
+        }
+      },
+      "zindex": 0
+    },
+    {
+      "type": "rect",
+      "name": "nodeMarks",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "width": {
+            "field": "w"
+          },
+          "height": {
+            "field": "h"
+          },
+          "cornerRadius": {
+            "value": 2
+          },
+          "fill": {
+            "field": "color"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "datum.name + ': ' + datum.count + ' species (' + format(100 * datum.count / 627, '.1f') + '% of included species)'"
+          }
+        },
+        "update": {
+          "fillOpacity": {
+            "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.28"
+          },
+          "stroke": {
+            "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? '#273729' : '#f7f4ed'"
+          },
+          "strokeWidth": {
+            "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? 2 : 0.5"
+          }
+        }
+      },
+      "zindex": 1
+    },
+    {
+      "type": "text",
+      "name": "nodeLabels",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.stage === 'habitat' ? datum.x - 10 : datum.x + datum.w + 10"
+          },
+          "y": {
+            "signal": "datum.y + datum.h / 2"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "align": {
+            "signal": "datum.stage === 'habitat' ? 'right' : 'left'"
+          },
+          "text": {
+            "field": "name"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": 550
+          },
+          "fill": {
+            "value": "#273128"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "datum.name + ': ' + datum.count + ' species'"
+          }
+        },
+        "update": {
+          "opacity": {
+            "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.40"
+          }
+        }
+      },
+      "zindex": 3
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "DM Sans"
+    }
+  },
+  "usermeta": {
+    "source": "Australian_Bird_Data_Version_1(1).xlsx / Australian Bird Data; AVONET Supplementary dataset 1.xlsx / AVONET1_BirdLife",
+    "scope": "Core, species-level, living, non-introduced, non-vagrant, non-supplementary taxa; no non-breeding population duplicates. Conservative exact scientific-name join.",
+    "selection_total": 722,
+    "joined": 634,
+    "missing_traits": 7,
+    "included": 627,
+    "rare_threshold": 15,
+    "other_habitats": [
+      "Desert",
+      "Human Modified",
+      "Riverine",
+      "Rock"
+    ],
+    "other_diets": [
+      "Herbivore aquatic",
+      "Herbivore terrestrial"
+    ]
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of bird species in the 16 most represented bird families in each Australian state and territory.",
+  "width": 738,
+  "height": {
+    "step": 33
+  },
+  "data": {
+    "url": "../data/bird_family_heatmap.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#f8f6f1",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "State_Abbrev",
+          "type": "ordinal",
+          "sort": [
+            "QLD",
+            "NSW",
+            "WA",
+            "VIC",
+            "SA",
+            "NT",
+            "ACT",
+            "TAS"
+          ],
+          "axis": {
+            "title": null,
+            "labelAngle": 0,
+            "labelFontSize": 14,
+            "labelPadding": 12,
+            "domain": false,
+            "ticks": false,
+            "orient": "top"
+          }
+        },
+        "y": {
+          "field": "Family_Label",
+          "type": "ordinal",
+          "sort": [
+            "Honeyeaters",
+            "Sandpipers & allies",
+            "Petrels & shearwaters",
+            "Parrots",
+            "Ducks & geese",
+            "Thornbills & allies",
+            "Gulls & terns",
+            "Hawks & eagles",
+            "Pigeons & doves",
+            "Plovers & lapwings",
+            "Herons & egrets",
+            "Woodswallows & allies",
+            "Fairy-wrens",
+            "Rails & crakes",
+            "Australasian robins",
+            "Albatrosses"
+          ],
+          "axis": {
+            "title": null,
+            "labelFontSize": 13,
+            "labelLimit": 220,
+            "labelPadding": 12,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              14
+            ],
+            "range": [
+              "#f0f1e9",
+              "#d7deca",
+              "#9cad8c",
+              "#708b66",
+              "#3f5945"
+            ]
+          },
+          "legend": {
+            "title": "Share of state bird species (%)",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 290,
+            "gradientThickness": 13,
+            "titleFontSize": 12,
+            "labelFontSize": 12,
+            "offset": 16,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State / territory"
+          },
+          {
+            "field": "Family_Label",
+            "type": "nominal",
+            "title": "Bird family"
+          },
+          {
+            "field": "Family",
+            "type": "nominal",
+            "title": "Scientific family"
+          },
+          {
+            "field": "Species_Count",
+            "type": "quantitative",
+            "title": "Species in family",
+            "format": ",d"
+          },
+          {
+            "field": "Total_Species",
+            "type": "quantitative",
+            "title": "Total state species",
+            "format": ",d"
+          },
+          {
+            "field": "Percentage",
+            "type": "quantitative",
+            "title": "Share of species",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Percentage >= 9"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "white"
+      },
+      "encoding": {
+        "x": {
+          "field": "State_Abbrev",
+          "type": "ordinal",
+          "sort": [
+            "QLD",
+            "NSW",
+            "WA",
+            "VIC",
+            "SA",
+            "NT",
+            "ACT",
+            "TAS"
+          ]
+        },
+        "y": {
+          "field": "Family_Label",
+          "type": "ordinal",
+          "sort": [
+            "Honeyeaters",
+            "Sandpipers & allies",
+            "Petrels & shearwaters",
+            "Parrots",
+            "Ducks & geese",
+            "Thornbills & allies",
+            "Gulls & terns",
+            "Hawks & eagles",
+            "Pigeons & doves",
+            "Plovers & lapwings",
+            "Herons & egrets",
+            "Woodswallows & allies",
+            "Fairy-wrens",
+            "Rails & crakes",
+            "Australasian robins",
+            "Albatrosses"
+          ]
+        },
+        "text": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#f8f6f1",
+    "font": "DM Sans",
+    "axis": {
+      "labelColor": "#30352b",
+      "titleColor": "#30352b",
+      "grid": false
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}

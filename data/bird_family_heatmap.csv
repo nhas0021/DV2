@@ -1,0 +1,129 @@
+State,State_Abbrev,Family,Family_Label,Species_Count,Total_Species,Percentage
+Queensland,QLD,Meliphagidae,Honeyeaters,61,642,9.5
+Queensland,QLD,Scolopacidae,Sandpipers & allies,30,642,4.67
+Queensland,QLD,Procellariidae,Petrels & shearwaters,29,642,4.52
+Queensland,QLD,Psittacidae,Parrots,34,642,5.3
+Queensland,QLD,Anatidae,Ducks & geese,23,642,3.58
+Queensland,QLD,Acanthizidae,Thornbills & allies,27,642,4.21
+Queensland,QLD,Laridae,Gulls & terns,24,642,3.74
+Queensland,QLD,Accipitridae,Hawks & eagles,19,642,2.96
+Queensland,QLD,Columbidae,Pigeons & doves,25,642,3.89
+Queensland,QLD,Charadriidae,Plovers & lapwings,15,642,2.34
+Queensland,QLD,Ardeidae,Herons & egrets,15,642,2.34
+Queensland,QLD,Artamidae,Woodswallows & allies,13,642,2.02
+Queensland,QLD,Maluridae,Fairy-wrens,15,642,2.34
+Queensland,QLD,Rallidae,Rails & crakes,12,642,1.87
+Queensland,QLD,Petroicidae,Australasian robins,17,642,2.65
+Queensland,QLD,Diomedeidae,Albatrosses,5,642,0.78
+New South Wales,NSW,Meliphagidae,Honeyeaters,43,562,7.65
+New South Wales,NSW,Scolopacidae,Sandpipers & allies,29,562,5.16
+New South Wales,NSW,Procellariidae,Petrels & shearwaters,36,562,6.41
+New South Wales,NSW,Psittacidae,Parrots,30,562,5.34
+New South Wales,NSW,Anatidae,Ducks & geese,22,562,3.91
+New South Wales,NSW,Acanthizidae,Thornbills & allies,26,562,4.63
+New South Wales,NSW,Laridae,Gulls & terns,22,562,3.91
+New South Wales,NSW,Accipitridae,Hawks & eagles,19,562,3.38
+New South Wales,NSW,Columbidae,Pigeons & doves,22,562,3.91
+New South Wales,NSW,Charadriidae,Plovers & lapwings,13,562,2.31
+New South Wales,NSW,Ardeidae,Herons & egrets,12,562,2.14
+New South Wales,NSW,Artamidae,Woodswallows & allies,12,562,2.14
+New South Wales,NSW,Maluridae,Fairy-wrens,12,562,2.14
+New South Wales,NSW,Rallidae,Rails & crakes,11,562,1.96
+New South Wales,NSW,Petroicidae,Australasian robins,10,562,1.78
+New South Wales,NSW,Diomedeidae,Albatrosses,12,562,2.14
+Western Australia,WA,Meliphagidae,Honeyeaters,43,550,7.82
+Western Australia,WA,Scolopacidae,Sandpipers & allies,34,550,6.18
+Western Australia,WA,Procellariidae,Petrels & shearwaters,30,550,5.45
+Western Australia,WA,Psittacidae,Parrots,28,550,5.09
+Western Australia,WA,Anatidae,Ducks & geese,23,550,4.18
+Western Australia,WA,Acanthizidae,Thornbills & allies,20,550,3.64
+Western Australia,WA,Laridae,Gulls & terns,23,550,4.18
+Western Australia,WA,Accipitridae,Hawks & eagles,19,550,3.45
+Western Australia,WA,Columbidae,Pigeons & doves,16,550,2.91
+Western Australia,WA,Charadriidae,Plovers & lapwings,15,550,2.73
+Western Australia,WA,Ardeidae,Herons & egrets,15,550,2.73
+Western Australia,WA,Artamidae,Woodswallows & allies,13,550,2.36
+Western Australia,WA,Maluridae,Fairy-wrens,16,550,2.91
+Western Australia,WA,Rallidae,Rails & crakes,11,550,2
+Western Australia,WA,Petroicidae,Australasian robins,10,550,1.82
+Western Australia,WA,Diomedeidae,Albatrosses,12,550,2.18
+Victoria,VIC,Meliphagidae,Honeyeaters,39,498,7.83
+Victoria,VIC,Scolopacidae,Sandpipers & allies,31,498,6.22
+Victoria,VIC,Procellariidae,Petrels & shearwaters,32,498,6.43
+Victoria,VIC,Psittacidae,Parrots,31,498,6.22
+Victoria,VIC,Anatidae,Ducks & geese,21,498,4.22
+Victoria,VIC,Acanthizidae,Thornbills & allies,22,498,4.42
+Victoria,VIC,Laridae,Gulls & terns,19,498,3.82
+Victoria,VIC,Accipitridae,Hawks & eagles,16,498,3.21
+Victoria,VIC,Columbidae,Pigeons & doves,15,498,3.01
+Victoria,VIC,Charadriidae,Plovers & lapwings,14,498,2.81
+Victoria,VIC,Ardeidae,Herons & egrets,12,498,2.41
+Victoria,VIC,Artamidae,Woodswallows & allies,10,498,2.01
+Victoria,VIC,Maluridae,Fairy-wrens,8,498,1.61
+Victoria,VIC,Rallidae,Rails & crakes,9,498,1.81
+Victoria,VIC,Petroicidae,Australasian robins,10,498,2.01
+Victoria,VIC,Diomedeidae,Albatrosses,14,498,2.81
+South Australia,SA,Meliphagidae,Honeyeaters,39,464,8.41
+South Australia,SA,Scolopacidae,Sandpipers & allies,25,464,5.39
+South Australia,SA,Procellariidae,Petrels & shearwaters,23,464,4.96
+South Australia,SA,Psittacidae,Parrots,27,464,5.82
+South Australia,SA,Anatidae,Ducks & geese,20,464,4.31
+South Australia,SA,Acanthizidae,Thornbills & allies,21,464,4.53
+South Australia,SA,Laridae,Gulls & terns,15,464,3.23
+South Australia,SA,Accipitridae,Hawks & eagles,16,464,3.45
+South Australia,SA,Columbidae,Pigeons & doves,13,464,2.8
+South Australia,SA,Charadriidae,Plovers & lapwings,15,464,3.23
+South Australia,SA,Ardeidae,Herons & egrets,11,464,2.37
+South Australia,SA,Artamidae,Woodswallows & allies,11,464,2.37
+South Australia,SA,Maluridae,Fairy-wrens,15,464,3.23
+South Australia,SA,Rallidae,Rails & crakes,9,464,1.94
+South Australia,SA,Petroicidae,Australasian robins,10,464,2.16
+South Australia,SA,Diomedeidae,Albatrosses,13,464,2.8
+Northern Territory,NT,Meliphagidae,Honeyeaters,31,427,7.26
+Northern Territory,NT,Scolopacidae,Sandpipers & allies,28,427,6.56
+Northern Territory,NT,Procellariidae,Petrels & shearwaters,6,427,1.41
+Northern Territory,NT,Psittacidae,Parrots,16,427,3.75
+Northern Territory,NT,Anatidae,Ducks & geese,20,427,4.68
+Northern Territory,NT,Acanthizidae,Thornbills & allies,13,427,3.04
+Northern Territory,NT,Laridae,Gulls & terns,19,427,4.45
+Northern Territory,NT,Accipitridae,Hawks & eagles,19,427,4.45
+Northern Territory,NT,Columbidae,Pigeons & doves,18,427,4.22
+Northern Territory,NT,Charadriidae,Plovers & lapwings,12,427,2.81
+Northern Territory,NT,Ardeidae,Herons & egrets,14,427,3.28
+Northern Territory,NT,Artamidae,Woodswallows & allies,11,427,2.58
+Northern Territory,NT,Maluridae,Fairy-wrens,12,427,2.81
+Northern Territory,NT,Rallidae,Rails & crakes,11,427,2.58
+Northern Territory,NT,Petroicidae,Australasian robins,6,427,1.41
+Northern Territory,NT,Diomedeidae,Albatrosses,0,427,0
+Australian Capital Territory,ACT,Meliphagidae,Honeyeaters,29,336,8.63
+Australian Capital Territory,ACT,Scolopacidae,Sandpipers & allies,11,336,3.27
+Australian Capital Territory,ACT,Procellariidae,Petrels & shearwaters,6,336,1.79
+Australian Capital Territory,ACT,Psittacidae,Parrots,21,336,6.25
+Australian Capital Territory,ACT,Anatidae,Ducks & geese,18,336,5.36
+Australian Capital Territory,ACT,Acanthizidae,Thornbills & allies,17,336,5.06
+Australian Capital Territory,ACT,Laridae,Gulls & terns,10,336,2.98
+Australian Capital Territory,ACT,Accipitridae,Hawks & eagles,15,336,4.46
+Australian Capital Territory,ACT,Columbidae,Pigeons & doves,12,336,3.57
+Australian Capital Territory,ACT,Charadriidae,Plovers & lapwings,10,336,2.98
+Australian Capital Territory,ACT,Ardeidae,Herons & egrets,11,336,3.27
+Australian Capital Territory,ACT,Artamidae,Woodswallows & allies,9,336,2.68
+Australian Capital Territory,ACT,Maluridae,Fairy-wrens,3,336,0.89
+Australian Capital Territory,ACT,Rallidae,Rails & crakes,9,336,2.68
+Australian Capital Territory,ACT,Petroicidae,Australasian robins,8,336,2.38
+Australian Capital Territory,ACT,Diomedeidae,Albatrosses,4,336,1.19
+Tasmania,TAS,Meliphagidae,Honeyeaters,12,307,3.91
+Tasmania,TAS,Scolopacidae,Sandpipers & allies,16,307,5.21
+Tasmania,TAS,Procellariidae,Petrels & shearwaters,39,307,12.7
+Tasmania,TAS,Psittacidae,Parrots,10,307,3.26
+Tasmania,TAS,Anatidae,Ducks & geese,17,307,5.54
+Tasmania,TAS,Acanthizidae,Thornbills & allies,7,307,2.28
+Tasmania,TAS,Laridae,Gulls & terns,13,307,4.23
+Tasmania,TAS,Accipitridae,Hawks & eagles,9,307,2.93
+Tasmania,TAS,Columbidae,Pigeons & doves,8,307,2.61
+Tasmania,TAS,Charadriidae,Plovers & lapwings,10,307,3.26
+Tasmania,TAS,Ardeidae,Herons & egrets,8,307,2.61
+Tasmania,TAS,Artamidae,Woodswallows & allies,6,307,1.95
+Tasmania,TAS,Maluridae,Fairy-wrens,2,307,0.65
+Tasmania,TAS,Rallidae,Rails & crakes,10,307,3.26
+Tasmania,TAS,Petroicidae,Australasian robins,5,307,1.63
+Tasmania,TAS,Diomedeidae,Albatrosses,16,307,5.21
