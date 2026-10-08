@@ -1,0 +1,212 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Observation locations of iconic native birds in Victoria during 2025 and 2026.",
+  "width": 850,
+  "height": 570,
+  "background": "#ffffff",
+  "padding": 15,
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans"
+  },
+  "params": [
+    {
+      "name": "selectedSpecies",
+      "value": "Australian Magpie",
+      "bind": {
+        "input": "select",
+        "name": "Bird species: ",
+        "options": [
+          "Australian Magpie",
+          "Laughing Kookaburra"
+        ]
+      }
+    },
+    {
+      "name": "selectedYear",
+      "value": "Both years",
+      "bind": {
+        "input": "select",
+        "name": "Year: ",
+        "options": [
+          "Both years",
+          "2025",
+          "2026"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "victoria.json",
+        "format": {
+          "type": "topojson",
+          "feature": "victoria"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e0e8de",
+        "stroke": "#8c9f8d",
+        "strokeWidth": 1.4
+      }
+    },
+    {
+      "data": {
+        "url": "../data/magpie_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Australian Magpie'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 10,
+        "color": "#466c50",
+        "opacity": 0.48,
+        "strokeWidth": 0,
+        "tooltip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "decimalLongitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "decimalLatitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "vernacularName",
+            "type": "nominal",
+            "title": "Bird"
+          },
+          {
+            "field": "eventDate",
+            "type": "nominal",
+            "title": "Observation date"
+          },
+          {
+            "field": "locality",
+            "type": "nominal",
+            "title": "Locality"
+          },
+          {
+            "field": "decimalLatitude",
+            "type": "quantitative",
+            "title": "Latitude"
+          },
+          {
+            "field": "decimalLongitude",
+            "type": "quantitative",
+            "title": "Longitude"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/kookaburra_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Laughing Kookaburra'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 38,
+        "color": "#466c50",
+        "opacity": 0.48,
+        "strokeWidth": 0,
+        "tooltip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "decimalLongitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "decimalLatitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "vernacularName",
+            "type": "nominal",
+            "title": "Bird"
+          },
+          {
+            "field": "eventDate",
+            "type": "nominal",
+            "title": "Observation date"
+          },
+          {
+            "field": "locality",
+            "type": "nominal",
+            "title": "Locality"
+          },
+          {
+            "field": "decimalLatitude",
+            "type": "quantitative",
+            "title": "Latitude"
+          },
+          {
+            "field": "decimalLongitude",
+            "type": "quantitative",
+            "title": "Longitude"
+          }
+        ]
+      }
+    }
+  ]
+}

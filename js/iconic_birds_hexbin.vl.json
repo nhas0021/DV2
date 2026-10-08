@@ -1,0 +1,445 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Victoria 2025–2026 georeferenced observation counts for Australian Magpie and Laughing Kookaburra, aggregated into approximately 16-km-radius hexagonal cells. Colour shows occurrence records, not number of individual birds.",
+  "width": 980,
+  "height": 635,
+  "background": "#ffffff",
+  "padding": {
+    "left": 10,
+    "right": 12,
+    "top": 15,
+    "bottom": 10
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans",
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
+    }
+  },
+  "params": [
+    {
+      "name": "selectedSpecies",
+      "value": "Australian Magpie",
+      "bind": {
+        "input": "select",
+        "name": "Bird species: ",
+        "options": [
+          "Australian Magpie",
+          "Laughing Kookaburra"
+        ]
+      }
+    },
+    {
+      "name": "selectedYear",
+      "value": "Both years",
+      "bind": {
+        "input": "select",
+        "name": "Year: ",
+        "options": [
+          "Both years",
+          "2025",
+          "2026"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [
+      145.5,
+      -36.8
+    ],
+    "scale": 4750,
+    "translate": [
+      490,
+      320
+    ]
+  },
+  "layer": [
+    
+    {
+      "data": {
+        "url": "../data/magpie_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Australian Magpie'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude) && isFinite(datum.decimalLatitude) && isFinite(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.stateProvince === 'Victoria' && datum.decimalLatitude >= -39.3 && datum.decimalLatitude <= -33.8 && datum.decimalLongitude >= 140.8 && datum.decimalLongitude <= 150.2"
+        },
+        {
+          "calculate": "(datum.decimalLongitude - 140) * 88.8",
+          "as": "Xkm"
+        },
+        {
+          "calculate": "(datum.decimalLatitude + 40) * 111.2",
+          "as": "Ykm"
+        },
+        {
+          "calculate": "(sqrt(3) / 3 * datum.Xkm - datum.Ykm / 3) / 16",
+          "as": "qF"
+        },
+        {
+          "calculate": "(2 * datum.Ykm / 3) / 16",
+          "as": "rF"
+        },
+        {
+          "calculate": "round(datum.qF)",
+          "as": "q0"
+        },
+        {
+          "calculate": "round(datum.rF)",
+          "as": "r0"
+        },
+        {
+          "calculate": "round(-datum.qF - datum.rF)",
+          "as": "s0"
+        },
+        {
+          "calculate": "abs(datum.q0 - datum.qF)",
+          "as": "eq"
+        },
+        {
+          "calculate": "abs(datum.r0 - datum.rF)",
+          "as": "er"
+        },
+        {
+          "calculate": "abs(datum.s0 + datum.qF + datum.rF)",
+          "as": "es"
+        },
+        {
+          "calculate": "datum.eq > datum.er && datum.eq > datum.es ? -datum.r0 - datum.s0 : datum.q0",
+          "as": "HexQ"
+        },
+        {
+          "calculate": "datum.er > datum.es && datum.er >= datum.eq ? -datum.q0 - datum.s0 : datum.r0",
+          "as": "HexR"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Observations"
+            }
+          ],
+          "groupby": [
+            "HexQ",
+            "HexR"
+          ]
+        },
+        {
+          "calculate": "140 + sqrt(3) * 16 * (datum.HexQ + datum.HexR/2) / 88.8",
+          "as": "HexLon"
+        },
+        {
+          "calculate": "-40 + 1.5 * 16 * datum.HexR / 111.2",
+          "as": "HexLat"
+        },
+        {
+          "calculate": "datum.Observations < 10 ? '1–9' : datum.Observations < 25 ? '10–24' : datum.Observations < 50 ? '25–49' : datum.Observations < 100 ? '50–99' : datum.Observations < 250 ? '100–249' : datum.Observations < 500 ? '250–499' : '500+'",
+          "as": "CountRange"
+        },
+        {
+          "calculate": "'Australian Magpie'",
+          "as": "Species"
+        },
+        {
+          "calculate": "{type:'Polygon',coordinates:[[[datum.HexLon,datum.HexLat+0.143884892],[datum.HexLon+0.156040613,datum.HexLat+0.071942446],[datum.HexLon+0.156040613,datum.HexLat-0.071942446],[datum.HexLon,datum.HexLat-0.143884892],[datum.HexLon-0.156040613,datum.HexLat-0.071942446],[datum.HexLon-0.156040613,datum.HexLat+0.071942446],[datum.HexLon,datum.HexLat+0.143884892]]] }",
+          "as": "HexGeometry"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.65,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "HexGeometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "CountRange",
+          "type": "ordinal",
+          "scale": {
+            "domain": [
+              "1–9",
+              "10–24",
+              "25–49",
+              "50–99",
+              "100–249",
+              "250–499",
+              "500+"
+            ],
+            "range": [
+              "#e4ede2",
+              "#ccdbc8",
+              "#acc2aa",
+              "#87a388",
+              "#658a70",
+              "#426b50",
+              "#254832"
+            ]
+          },
+          "legend": {
+            "title": "Observation records per hexagon",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 7,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Observations",
+            "type": "quantitative",
+            "format": ",d",
+            "title": "Observation records"
+          },
+          {
+            "field": "CountRange",
+            "type": "nominal",
+            "title": "Count range"
+          },
+          {
+            "field": "HexLat",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre latitude"
+          },
+          {
+            "field": "HexLon",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre longitude"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/kookaburra_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Laughing Kookaburra'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude) && isFinite(datum.decimalLatitude) && isFinite(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.stateProvince === 'Victoria' && datum.decimalLatitude >= -39.3 && datum.decimalLatitude <= -33.8 && datum.decimalLongitude >= 140.8 && datum.decimalLongitude <= 150.2"
+        },
+        {
+          "calculate": "(datum.decimalLongitude - 140) * 88.8",
+          "as": "Xkm"
+        },
+        {
+          "calculate": "(datum.decimalLatitude + 40) * 111.2",
+          "as": "Ykm"
+        },
+        {
+          "calculate": "(sqrt(3) / 3 * datum.Xkm - datum.Ykm / 3) / 16",
+          "as": "qF"
+        },
+        {
+          "calculate": "(2 * datum.Ykm / 3) / 16",
+          "as": "rF"
+        },
+        {
+          "calculate": "round(datum.qF)",
+          "as": "q0"
+        },
+        {
+          "calculate": "round(datum.rF)",
+          "as": "r0"
+        },
+        {
+          "calculate": "round(-datum.qF - datum.rF)",
+          "as": "s0"
+        },
+        {
+          "calculate": "abs(datum.q0 - datum.qF)",
+          "as": "eq"
+        },
+        {
+          "calculate": "abs(datum.r0 - datum.rF)",
+          "as": "er"
+        },
+        {
+          "calculate": "abs(datum.s0 + datum.qF + datum.rF)",
+          "as": "es"
+        },
+        {
+          "calculate": "datum.eq > datum.er && datum.eq > datum.es ? -datum.r0 - datum.s0 : datum.q0",
+          "as": "HexQ"
+        },
+        {
+          "calculate": "datum.er > datum.es && datum.er >= datum.eq ? -datum.q0 - datum.s0 : datum.r0",
+          "as": "HexR"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Observations"
+            }
+          ],
+          "groupby": [
+            "HexQ",
+            "HexR"
+          ]
+        },
+        {
+          "calculate": "140 + sqrt(3) * 16 * (datum.HexQ + datum.HexR/2) / 88.8",
+          "as": "HexLon"
+        },
+        {
+          "calculate": "-40 + 1.5 * 16 * datum.HexR / 111.2",
+          "as": "HexLat"
+        },
+        {
+          "calculate": "datum.Observations < 10 ? '1–9' : datum.Observations < 25 ? '10–24' : datum.Observations < 50 ? '25–49' : datum.Observations < 100 ? '50–99' : datum.Observations < 250 ? '100–249' : datum.Observations < 500 ? '250–499' : '500+'",
+          "as": "CountRange"
+        },
+        {
+          "calculate": "'Laughing Kookaburra'",
+          "as": "Species"
+        },
+        {
+          "calculate": "{type:'Polygon',coordinates:[[[datum.HexLon,datum.HexLat+0.143884892],[datum.HexLon+0.156040613,datum.HexLat+0.071942446],[datum.HexLon+0.156040613,datum.HexLat-0.071942446],[datum.HexLon,datum.HexLat-0.143884892],[datum.HexLon-0.156040613,datum.HexLat-0.071942446],[datum.HexLon-0.156040613,datum.HexLat+0.071942446],[datum.HexLon,datum.HexLat+0.143884892]]] }",
+          "as": "HexGeometry"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.65,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "HexGeometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "CountRange",
+          "type": "ordinal",
+          "scale": {
+            "domain": [
+              "1–9",
+              "10–24",
+              "25–49",
+              "50–99",
+              "100–249",
+              "250–499",
+              "500+"
+            ],
+            "range": [
+              "#e4ede2",
+              "#ccdbc8",
+              "#acc2aa",
+              "#87a388",
+              "#658a70",
+              "#426b50",
+              "#254832"
+            ]
+          },
+          "legend": {
+            "title": "Observation records per hexagon",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 7,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Observations",
+            "type": "quantitative",
+            "format": ",d",
+            "title": "Observation records"
+          },
+          {
+            "field": "CountRange",
+            "type": "nominal",
+            "title": "Count range"
+          },
+          {
+            "field": "HexLat",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre latitude"
+          },
+          {
+            "field": "HexLon",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre longitude"
+          }
+        ]
+      }
+    }
+  ]
+}

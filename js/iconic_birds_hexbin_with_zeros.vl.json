@@ -1,0 +1,2211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Victoria 2025–2026 georeferenced observation counts for Australian Magpie and Laughing Kookaburra, aggregated into approximately 16-km-radius hexagonal cells. Colour shows occurrence records, not number of individual birds. Complete zero-bin grid is inlined within this VL specification; a grid cell counts as zero when no observations are recorded for the current species/year.",
+  "width": 980,
+  "height": 635,
+  "background": "#ffffff",
+  "padding": {
+    "left": 10,
+    "right": 12,
+    "top": 15,
+    "bottom": 10
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans",
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
+    }
+  },
+  "params": [
+    {
+      "name": "selectedSpecies",
+      "value": "Australian Magpie",
+      "bind": {
+        "input": "select",
+        "name": "Bird species: ",
+        "options": [
+          "Australian Magpie",
+          "Laughing Kookaburra"
+        ]
+      }
+    },
+    {
+      "name": "selectedYear",
+      "value": "Both years",
+      "bind": {
+        "input": "select",
+        "name": "Year: ",
+        "options": [
+          "Both years",
+          "2025",
+          "2026"
+        ]
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [
+      145.5,
+      -36.8
+    ],
+    "scale": 4750,
+    "translate": [
+      490,
+      320
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "victoria.json",
+        "format": {
+          "type": "topojson",
+          "feature": "victoria"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eef2ed",
+        "stroke": "#65816b",
+        "strokeWidth": 1.7
+      }
+    },
+    {
+      "description": "Full fixed hex grid overlapping Victoria. Empty bins have 0 sightings; observed bins are coloured by subsequent CSV-driven layers.",
+      "data": {
+        "values": [
+          {
+            "HexQ": -11,
+            "HexR": 28
+          },
+          {
+            "HexQ": -10,
+            "HexR": 26
+          },
+          {
+            "HexQ": -10,
+            "HexR": 27
+          },
+          {
+            "HexQ": -10,
+            "HexR": 28
+          },
+          {
+            "HexQ": -9,
+            "HexR": 24
+          },
+          {
+            "HexQ": -9,
+            "HexR": 25
+          },
+          {
+            "HexQ": -9,
+            "HexR": 26
+          },
+          {
+            "HexQ": -9,
+            "HexR": 27
+          },
+          {
+            "HexQ": -8,
+            "HexR": 22
+          },
+          {
+            "HexQ": -8,
+            "HexR": 23
+          },
+          {
+            "HexQ": -8,
+            "HexR": 24
+          },
+          {
+            "HexQ": -8,
+            "HexR": 25
+          },
+          {
+            "HexQ": -8,
+            "HexR": 26
+          },
+          {
+            "HexQ": -8,
+            "HexR": 27
+          },
+          {
+            "HexQ": -7,
+            "HexR": 20
+          },
+          {
+            "HexQ": -7,
+            "HexR": 21
+          },
+          {
+            "HexQ": -7,
+            "HexR": 22
+          },
+          {
+            "HexQ": -7,
+            "HexR": 23
+          },
+          {
+            "HexQ": -7,
+            "HexR": 24
+          },
+          {
+            "HexQ": -7,
+            "HexR": 25
+          },
+          {
+            "HexQ": -7,
+            "HexR": 26
+          },
+          {
+            "HexQ": -7,
+            "HexR": 27
+          },
+          {
+            "HexQ": -6,
+            "HexR": 18
+          },
+          {
+            "HexQ": -6,
+            "HexR": 19
+          },
+          {
+            "HexQ": -6,
+            "HexR": 20
+          },
+          {
+            "HexQ": -6,
+            "HexR": 21
+          },
+          {
+            "HexQ": -6,
+            "HexR": 22
+          },
+          {
+            "HexQ": -6,
+            "HexR": 23
+          },
+          {
+            "HexQ": -6,
+            "HexR": 24
+          },
+          {
+            "HexQ": -6,
+            "HexR": 25
+          },
+          {
+            "HexQ": -6,
+            "HexR": 26
+          },
+          {
+            "HexQ": -6,
+            "HexR": 27
+          },
+          {
+            "HexQ": -5,
+            "HexR": 16
+          },
+          {
+            "HexQ": -5,
+            "HexR": 17
+          },
+          {
+            "HexQ": -5,
+            "HexR": 18
+          },
+          {
+            "HexQ": -5,
+            "HexR": 19
+          },
+          {
+            "HexQ": -5,
+            "HexR": 20
+          },
+          {
+            "HexQ": -5,
+            "HexR": 21
+          },
+          {
+            "HexQ": -5,
+            "HexR": 22
+          },
+          {
+            "HexQ": -5,
+            "HexR": 23
+          },
+          {
+            "HexQ": -5,
+            "HexR": 24
+          },
+          {
+            "HexQ": -5,
+            "HexR": 25
+          },
+          {
+            "HexQ": -5,
+            "HexR": 26
+          },
+          {
+            "HexQ": -4,
+            "HexR": 14
+          },
+          {
+            "HexQ": -4,
+            "HexR": 15
+          },
+          {
+            "HexQ": -4,
+            "HexR": 16
+          },
+          {
+            "HexQ": -4,
+            "HexR": 17
+          },
+          {
+            "HexQ": -4,
+            "HexR": 18
+          },
+          {
+            "HexQ": -4,
+            "HexR": 19
+          },
+          {
+            "HexQ": -4,
+            "HexR": 20
+          },
+          {
+            "HexQ": -4,
+            "HexR": 21
+          },
+          {
+            "HexQ": -4,
+            "HexR": 22
+          },
+          {
+            "HexQ": -4,
+            "HexR": 23
+          },
+          {
+            "HexQ": -4,
+            "HexR": 24
+          },
+          {
+            "HexQ": -4,
+            "HexR": 25
+          },
+          {
+            "HexQ": -3,
+            "HexR": 12
+          },
+          {
+            "HexQ": -3,
+            "HexR": 13
+          },
+          {
+            "HexQ": -3,
+            "HexR": 14
+          },
+          {
+            "HexQ": -3,
+            "HexR": 15
+          },
+          {
+            "HexQ": -3,
+            "HexR": 16
+          },
+          {
+            "HexQ": -3,
+            "HexR": 17
+          },
+          {
+            "HexQ": -3,
+            "HexR": 18
+          },
+          {
+            "HexQ": -3,
+            "HexR": 19
+          },
+          {
+            "HexQ": -3,
+            "HexR": 20
+          },
+          {
+            "HexQ": -3,
+            "HexR": 21
+          },
+          {
+            "HexQ": -3,
+            "HexR": 22
+          },
+          {
+            "HexQ": -3,
+            "HexR": 23
+          },
+          {
+            "HexQ": -3,
+            "HexR": 24
+          },
+          {
+            "HexQ": -3,
+            "HexR": 25
+          },
+          {
+            "HexQ": -2,
+            "HexR": 10
+          },
+          {
+            "HexQ": -2,
+            "HexR": 11
+          },
+          {
+            "HexQ": -2,
+            "HexR": 12
+          },
+          {
+            "HexQ": -2,
+            "HexR": 13
+          },
+          {
+            "HexQ": -2,
+            "HexR": 14
+          },
+          {
+            "HexQ": -2,
+            "HexR": 15
+          },
+          {
+            "HexQ": -2,
+            "HexR": 16
+          },
+          {
+            "HexQ": -2,
+            "HexR": 17
+          },
+          {
+            "HexQ": -2,
+            "HexR": 18
+          },
+          {
+            "HexQ": -2,
+            "HexR": 19
+          },
+          {
+            "HexQ": -2,
+            "HexR": 20
+          },
+          {
+            "HexQ": -2,
+            "HexR": 21
+          },
+          {
+            "HexQ": -2,
+            "HexR": 22
+          },
+          {
+            "HexQ": -2,
+            "HexR": 23
+          },
+          {
+            "HexQ": -2,
+            "HexR": 24
+          },
+          {
+            "HexQ": -1,
+            "HexR": 9
+          },
+          {
+            "HexQ": -1,
+            "HexR": 10
+          },
+          {
+            "HexQ": -1,
+            "HexR": 11
+          },
+          {
+            "HexQ": -1,
+            "HexR": 12
+          },
+          {
+            "HexQ": -1,
+            "HexR": 13
+          },
+          {
+            "HexQ": -1,
+            "HexR": 14
+          },
+          {
+            "HexQ": -1,
+            "HexR": 15
+          },
+          {
+            "HexQ": -1,
+            "HexR": 16
+          },
+          {
+            "HexQ": -1,
+            "HexR": 17
+          },
+          {
+            "HexQ": -1,
+            "HexR": 18
+          },
+          {
+            "HexQ": -1,
+            "HexR": 19
+          },
+          {
+            "HexQ": -1,
+            "HexR": 20
+          },
+          {
+            "HexQ": -1,
+            "HexR": 21
+          },
+          {
+            "HexQ": -1,
+            "HexR": 22
+          },
+          {
+            "HexQ": -1,
+            "HexR": 23
+          },
+          {
+            "HexQ": -1,
+            "HexR": 24
+          },
+          {
+            "HexQ": 0,
+            "HexR": 8
+          },
+          {
+            "HexQ": 0,
+            "HexR": 9
+          },
+          {
+            "HexQ": 0,
+            "HexR": 10
+          },
+          {
+            "HexQ": 0,
+            "HexR": 11
+          },
+          {
+            "HexQ": 0,
+            "HexR": 12
+          },
+          {
+            "HexQ": 0,
+            "HexR": 13
+          },
+          {
+            "HexQ": 0,
+            "HexR": 14
+          },
+          {
+            "HexQ": 0,
+            "HexR": 15
+          },
+          {
+            "HexQ": 0,
+            "HexR": 16
+          },
+          {
+            "HexQ": 0,
+            "HexR": 17
+          },
+          {
+            "HexQ": 0,
+            "HexR": 18
+          },
+          {
+            "HexQ": 0,
+            "HexR": 19
+          },
+          {
+            "HexQ": 0,
+            "HexR": 20
+          },
+          {
+            "HexQ": 0,
+            "HexR": 21
+          },
+          {
+            "HexQ": 0,
+            "HexR": 22
+          },
+          {
+            "HexQ": 1,
+            "HexR": 7
+          },
+          {
+            "HexQ": 1,
+            "HexR": 8
+          },
+          {
+            "HexQ": 1,
+            "HexR": 9
+          },
+          {
+            "HexQ": 1,
+            "HexR": 10
+          },
+          {
+            "HexQ": 1,
+            "HexR": 11
+          },
+          {
+            "HexQ": 1,
+            "HexR": 12
+          },
+          {
+            "HexQ": 1,
+            "HexR": 13
+          },
+          {
+            "HexQ": 1,
+            "HexR": 14
+          },
+          {
+            "HexQ": 1,
+            "HexR": 15
+          },
+          {
+            "HexQ": 1,
+            "HexR": 16
+          },
+          {
+            "HexQ": 1,
+            "HexR": 17
+          },
+          {
+            "HexQ": 1,
+            "HexR": 18
+          },
+          {
+            "HexQ": 1,
+            "HexR": 19
+          },
+          {
+            "HexQ": 1,
+            "HexR": 20
+          },
+          {
+            "HexQ": 1,
+            "HexR": 21
+          },
+          {
+            "HexQ": 1,
+            "HexR": 22
+          },
+          {
+            "HexQ": 2,
+            "HexR": 7
+          },
+          {
+            "HexQ": 2,
+            "HexR": 8
+          },
+          {
+            "HexQ": 2,
+            "HexR": 9
+          },
+          {
+            "HexQ": 2,
+            "HexR": 10
+          },
+          {
+            "HexQ": 2,
+            "HexR": 11
+          },
+          {
+            "HexQ": 2,
+            "HexR": 12
+          },
+          {
+            "HexQ": 2,
+            "HexR": 13
+          },
+          {
+            "HexQ": 2,
+            "HexR": 14
+          },
+          {
+            "HexQ": 2,
+            "HexR": 15
+          },
+          {
+            "HexQ": 2,
+            "HexR": 16
+          },
+          {
+            "HexQ": 2,
+            "HexR": 17
+          },
+          {
+            "HexQ": 2,
+            "HexR": 18
+          },
+          {
+            "HexQ": 2,
+            "HexR": 19
+          },
+          {
+            "HexQ": 2,
+            "HexR": 20
+          },
+          {
+            "HexQ": 2,
+            "HexR": 21
+          },
+          {
+            "HexQ": 3,
+            "HexR": 8
+          },
+          {
+            "HexQ": 3,
+            "HexR": 9
+          },
+          {
+            "HexQ": 3,
+            "HexR": 10
+          },
+          {
+            "HexQ": 3,
+            "HexR": 11
+          },
+          {
+            "HexQ": 3,
+            "HexR": 12
+          },
+          {
+            "HexQ": 3,
+            "HexR": 13
+          },
+          {
+            "HexQ": 3,
+            "HexR": 14
+          },
+          {
+            "HexQ": 3,
+            "HexR": 15
+          },
+          {
+            "HexQ": 3,
+            "HexR": 16
+          },
+          {
+            "HexQ": 3,
+            "HexR": 17
+          },
+          {
+            "HexQ": 3,
+            "HexR": 18
+          },
+          {
+            "HexQ": 3,
+            "HexR": 19
+          },
+          {
+            "HexQ": 3,
+            "HexR": 20
+          },
+          {
+            "HexQ": 4,
+            "HexR": 7
+          },
+          {
+            "HexQ": 4,
+            "HexR": 8
+          },
+          {
+            "HexQ": 4,
+            "HexR": 9
+          },
+          {
+            "HexQ": 4,
+            "HexR": 10
+          },
+          {
+            "HexQ": 4,
+            "HexR": 11
+          },
+          {
+            "HexQ": 4,
+            "HexR": 12
+          },
+          {
+            "HexQ": 4,
+            "HexR": 13
+          },
+          {
+            "HexQ": 4,
+            "HexR": 14
+          },
+          {
+            "HexQ": 4,
+            "HexR": 15
+          },
+          {
+            "HexQ": 4,
+            "HexR": 16
+          },
+          {
+            "HexQ": 4,
+            "HexR": 17
+          },
+          {
+            "HexQ": 4,
+            "HexR": 18
+          },
+          {
+            "HexQ": 4,
+            "HexR": 19
+          },
+          {
+            "HexQ": 4,
+            "HexR": 20
+          },
+          {
+            "HexQ": 5,
+            "HexR": 7
+          },
+          {
+            "HexQ": 5,
+            "HexR": 8
+          },
+          {
+            "HexQ": 5,
+            "HexR": 9
+          },
+          {
+            "HexQ": 5,
+            "HexR": 10
+          },
+          {
+            "HexQ": 5,
+            "HexR": 11
+          },
+          {
+            "HexQ": 5,
+            "HexR": 12
+          },
+          {
+            "HexQ": 5,
+            "HexR": 13
+          },
+          {
+            "HexQ": 5,
+            "HexR": 14
+          },
+          {
+            "HexQ": 5,
+            "HexR": 15
+          },
+          {
+            "HexQ": 5,
+            "HexR": 16
+          },
+          {
+            "HexQ": 5,
+            "HexR": 17
+          },
+          {
+            "HexQ": 5,
+            "HexR": 18
+          },
+          {
+            "HexQ": 5,
+            "HexR": 19
+          },
+          {
+            "HexQ": 6,
+            "HexR": 6
+          },
+          {
+            "HexQ": 6,
+            "HexR": 7
+          },
+          {
+            "HexQ": 6,
+            "HexR": 8
+          },
+          {
+            "HexQ": 6,
+            "HexR": 9
+          },
+          {
+            "HexQ": 6,
+            "HexR": 10
+          },
+          {
+            "HexQ": 6,
+            "HexR": 11
+          },
+          {
+            "HexQ": 6,
+            "HexR": 12
+          },
+          {
+            "HexQ": 6,
+            "HexR": 13
+          },
+          {
+            "HexQ": 6,
+            "HexR": 14
+          },
+          {
+            "HexQ": 6,
+            "HexR": 15
+          },
+          {
+            "HexQ": 6,
+            "HexR": 16
+          },
+          {
+            "HexQ": 6,
+            "HexR": 17
+          },
+          {
+            "HexQ": 6,
+            "HexR": 18
+          },
+          {
+            "HexQ": 6,
+            "HexR": 19
+          },
+          {
+            "HexQ": 7,
+            "HexR": 6
+          },
+          {
+            "HexQ": 7,
+            "HexR": 7
+          },
+          {
+            "HexQ": 7,
+            "HexR": 8
+          },
+          {
+            "HexQ": 7,
+            "HexR": 9
+          },
+          {
+            "HexQ": 7,
+            "HexR": 10
+          },
+          {
+            "HexQ": 7,
+            "HexR": 11
+          },
+          {
+            "HexQ": 7,
+            "HexR": 12
+          },
+          {
+            "HexQ": 7,
+            "HexR": 13
+          },
+          {
+            "HexQ": 7,
+            "HexR": 14
+          },
+          {
+            "HexQ": 7,
+            "HexR": 15
+          },
+          {
+            "HexQ": 7,
+            "HexR": 16
+          },
+          {
+            "HexQ": 7,
+            "HexR": 17
+          },
+          {
+            "HexQ": 7,
+            "HexR": 18
+          },
+          {
+            "HexQ": 7,
+            "HexR": 19
+          },
+          {
+            "HexQ": 8,
+            "HexR": 6
+          },
+          {
+            "HexQ": 8,
+            "HexR": 7
+          },
+          {
+            "HexQ": 8,
+            "HexR": 8
+          },
+          {
+            "HexQ": 8,
+            "HexR": 9
+          },
+          {
+            "HexQ": 8,
+            "HexR": 10
+          },
+          {
+            "HexQ": 8,
+            "HexR": 11
+          },
+          {
+            "HexQ": 8,
+            "HexR": 12
+          },
+          {
+            "HexQ": 8,
+            "HexR": 13
+          },
+          {
+            "HexQ": 8,
+            "HexR": 14
+          },
+          {
+            "HexQ": 8,
+            "HexR": 15
+          },
+          {
+            "HexQ": 8,
+            "HexR": 16
+          },
+          {
+            "HexQ": 8,
+            "HexR": 17
+          },
+          {
+            "HexQ": 8,
+            "HexR": 18
+          },
+          {
+            "HexQ": 8,
+            "HexR": 19
+          },
+          {
+            "HexQ": 9,
+            "HexR": 5
+          },
+          {
+            "HexQ": 9,
+            "HexR": 6
+          },
+          {
+            "HexQ": 9,
+            "HexR": 7
+          },
+          {
+            "HexQ": 9,
+            "HexR": 8
+          },
+          {
+            "HexQ": 9,
+            "HexR": 9
+          },
+          {
+            "HexQ": 9,
+            "HexR": 10
+          },
+          {
+            "HexQ": 9,
+            "HexR": 11
+          },
+          {
+            "HexQ": 9,
+            "HexR": 12
+          },
+          {
+            "HexQ": 9,
+            "HexR": 13
+          },
+          {
+            "HexQ": 9,
+            "HexR": 14
+          },
+          {
+            "HexQ": 9,
+            "HexR": 15
+          },
+          {
+            "HexQ": 9,
+            "HexR": 16
+          },
+          {
+            "HexQ": 9,
+            "HexR": 17
+          },
+          {
+            "HexQ": 9,
+            "HexR": 18
+          },
+          {
+            "HexQ": 9,
+            "HexR": 19
+          },
+          {
+            "HexQ": 10,
+            "HexR": 6
+          },
+          {
+            "HexQ": 10,
+            "HexR": 7
+          },
+          {
+            "HexQ": 10,
+            "HexR": 8
+          },
+          {
+            "HexQ": 10,
+            "HexR": 9
+          },
+          {
+            "HexQ": 10,
+            "HexR": 10
+          },
+          {
+            "HexQ": 10,
+            "HexR": 11
+          },
+          {
+            "HexQ": 10,
+            "HexR": 12
+          },
+          {
+            "HexQ": 10,
+            "HexR": 13
+          },
+          {
+            "HexQ": 10,
+            "HexR": 14
+          },
+          {
+            "HexQ": 10,
+            "HexR": 15
+          },
+          {
+            "HexQ": 10,
+            "HexR": 16
+          },
+          {
+            "HexQ": 10,
+            "HexR": 17
+          },
+          {
+            "HexQ": 10,
+            "HexR": 18
+          },
+          {
+            "HexQ": 10,
+            "HexR": 19
+          },
+          {
+            "HexQ": 11,
+            "HexR": 8
+          },
+          {
+            "HexQ": 11,
+            "HexR": 9
+          },
+          {
+            "HexQ": 11,
+            "HexR": 10
+          },
+          {
+            "HexQ": 11,
+            "HexR": 11
+          },
+          {
+            "HexQ": 11,
+            "HexR": 12
+          },
+          {
+            "HexQ": 11,
+            "HexR": 13
+          },
+          {
+            "HexQ": 11,
+            "HexR": 14
+          },
+          {
+            "HexQ": 11,
+            "HexR": 15
+          },
+          {
+            "HexQ": 11,
+            "HexR": 16
+          },
+          {
+            "HexQ": 11,
+            "HexR": 17
+          },
+          {
+            "HexQ": 11,
+            "HexR": 18
+          },
+          {
+            "HexQ": 11,
+            "HexR": 19
+          },
+          {
+            "HexQ": 12,
+            "HexR": 7
+          },
+          {
+            "HexQ": 12,
+            "HexR": 8
+          },
+          {
+            "HexQ": 12,
+            "HexR": 9
+          },
+          {
+            "HexQ": 12,
+            "HexR": 10
+          },
+          {
+            "HexQ": 12,
+            "HexR": 11
+          },
+          {
+            "HexQ": 12,
+            "HexR": 12
+          },
+          {
+            "HexQ": 12,
+            "HexR": 13
+          },
+          {
+            "HexQ": 12,
+            "HexR": 14
+          },
+          {
+            "HexQ": 12,
+            "HexR": 15
+          },
+          {
+            "HexQ": 12,
+            "HexR": 16
+          },
+          {
+            "HexQ": 12,
+            "HexR": 17
+          },
+          {
+            "HexQ": 12,
+            "HexR": 18
+          },
+          {
+            "HexQ": 12,
+            "HexR": 19
+          },
+          {
+            "HexQ": 13,
+            "HexR": 7
+          },
+          {
+            "HexQ": 13,
+            "HexR": 8
+          },
+          {
+            "HexQ": 13,
+            "HexR": 9
+          },
+          {
+            "HexQ": 13,
+            "HexR": 10
+          },
+          {
+            "HexQ": 13,
+            "HexR": 11
+          },
+          {
+            "HexQ": 13,
+            "HexR": 12
+          },
+          {
+            "HexQ": 13,
+            "HexR": 13
+          },
+          {
+            "HexQ": 13,
+            "HexR": 14
+          },
+          {
+            "HexQ": 13,
+            "HexR": 15
+          },
+          {
+            "HexQ": 13,
+            "HexR": 16
+          },
+          {
+            "HexQ": 13,
+            "HexR": 17
+          },
+          {
+            "HexQ": 13,
+            "HexR": 18
+          },
+          {
+            "HexQ": 14,
+            "HexR": 7
+          },
+          {
+            "HexQ": 14,
+            "HexR": 8
+          },
+          {
+            "HexQ": 14,
+            "HexR": 9
+          },
+          {
+            "HexQ": 14,
+            "HexR": 10
+          },
+          {
+            "HexQ": 14,
+            "HexR": 11
+          },
+          {
+            "HexQ": 14,
+            "HexR": 12
+          },
+          {
+            "HexQ": 14,
+            "HexR": 13
+          },
+          {
+            "HexQ": 14,
+            "HexR": 14
+          },
+          {
+            "HexQ": 14,
+            "HexR": 15
+          },
+          {
+            "HexQ": 14,
+            "HexR": 16
+          },
+          {
+            "HexQ": 14,
+            "HexR": 17
+          },
+          {
+            "HexQ": 14,
+            "HexR": 18
+          },
+          {
+            "HexQ": 14,
+            "HexR": 19
+          },
+          {
+            "HexQ": 15,
+            "HexR": 6
+          },
+          {
+            "HexQ": 15,
+            "HexR": 7
+          },
+          {
+            "HexQ": 15,
+            "HexR": 8
+          },
+          {
+            "HexQ": 15,
+            "HexR": 9
+          },
+          {
+            "HexQ": 15,
+            "HexR": 10
+          },
+          {
+            "HexQ": 15,
+            "HexR": 11
+          },
+          {
+            "HexQ": 15,
+            "HexR": 12
+          },
+          {
+            "HexQ": 15,
+            "HexR": 13
+          },
+          {
+            "HexQ": 15,
+            "HexR": 14
+          },
+          {
+            "HexQ": 15,
+            "HexR": 15
+          },
+          {
+            "HexQ": 15,
+            "HexR": 16
+          },
+          {
+            "HexQ": 15,
+            "HexR": 17
+          },
+          {
+            "HexQ": 15,
+            "HexR": 18
+          },
+          {
+            "HexQ": 15,
+            "HexR": 19
+          },
+          {
+            "HexQ": 16,
+            "HexR": 5
+          },
+          {
+            "HexQ": 16,
+            "HexR": 6
+          },
+          {
+            "HexQ": 16,
+            "HexR": 7
+          },
+          {
+            "HexQ": 16,
+            "HexR": 8
+          },
+          {
+            "HexQ": 16,
+            "HexR": 9
+          },
+          {
+            "HexQ": 16,
+            "HexR": 10
+          },
+          {
+            "HexQ": 16,
+            "HexR": 11
+          },
+          {
+            "HexQ": 16,
+            "HexR": 12
+          },
+          {
+            "HexQ": 16,
+            "HexR": 13
+          },
+          {
+            "HexQ": 16,
+            "HexR": 14
+          },
+          {
+            "HexQ": 16,
+            "HexR": 15
+          },
+          {
+            "HexQ": 16,
+            "HexR": 16
+          },
+          {
+            "HexQ": 16,
+            "HexR": 17
+          },
+          {
+            "HexQ": 16,
+            "HexR": 18
+          },
+          {
+            "HexQ": 16,
+            "HexR": 19
+          },
+          {
+            "HexQ": 17,
+            "HexR": 5
+          },
+          {
+            "HexQ": 17,
+            "HexR": 6
+          },
+          {
+            "HexQ": 17,
+            "HexR": 7
+          },
+          {
+            "HexQ": 17,
+            "HexR": 8
+          },
+          {
+            "HexQ": 17,
+            "HexR": 9
+          },
+          {
+            "HexQ": 17,
+            "HexR": 10
+          },
+          {
+            "HexQ": 17,
+            "HexR": 11
+          },
+          {
+            "HexQ": 17,
+            "HexR": 12
+          },
+          {
+            "HexQ": 17,
+            "HexR": 13
+          },
+          {
+            "HexQ": 17,
+            "HexR": 14
+          },
+          {
+            "HexQ": 17,
+            "HexR": 15
+          },
+          {
+            "HexQ": 17,
+            "HexR": 16
+          },
+          {
+            "HexQ": 17,
+            "HexR": 17
+          },
+          {
+            "HexQ": 17,
+            "HexR": 18
+          },
+          {
+            "HexQ": 18,
+            "HexR": 4
+          },
+          {
+            "HexQ": 18,
+            "HexR": 5
+          },
+          {
+            "HexQ": 18,
+            "HexR": 6
+          },
+          {
+            "HexQ": 18,
+            "HexR": 7
+          },
+          {
+            "HexQ": 18,
+            "HexR": 8
+          },
+          {
+            "HexQ": 18,
+            "HexR": 9
+          },
+          {
+            "HexQ": 18,
+            "HexR": 10
+          },
+          {
+            "HexQ": 18,
+            "HexR": 11
+          },
+          {
+            "HexQ": 18,
+            "HexR": 12
+          },
+          {
+            "HexQ": 18,
+            "HexR": 13
+          },
+          {
+            "HexQ": 18,
+            "HexR": 14
+          },
+          {
+            "HexQ": 18,
+            "HexR": 15
+          },
+          {
+            "HexQ": 18,
+            "HexR": 16
+          },
+          {
+            "HexQ": 19,
+            "HexR": 4
+          },
+          {
+            "HexQ": 19,
+            "HexR": 6
+          },
+          {
+            "HexQ": 19,
+            "HexR": 7
+          },
+          {
+            "HexQ": 19,
+            "HexR": 8
+          },
+          {
+            "HexQ": 19,
+            "HexR": 9
+          },
+          {
+            "HexQ": 19,
+            "HexR": 10
+          },
+          {
+            "HexQ": 19,
+            "HexR": 11
+          },
+          {
+            "HexQ": 19,
+            "HexR": 12
+          },
+          {
+            "HexQ": 19,
+            "HexR": 13
+          },
+          {
+            "HexQ": 19,
+            "HexR": 14
+          },
+          {
+            "HexQ": 19,
+            "HexR": 15
+          },
+          {
+            "HexQ": 20,
+            "HexR": 8
+          },
+          {
+            "HexQ": 20,
+            "HexR": 9
+          },
+          {
+            "HexQ": 20,
+            "HexR": 10
+          },
+          {
+            "HexQ": 20,
+            "HexR": 11
+          },
+          {
+            "HexQ": 20,
+            "HexR": 12
+          },
+          {
+            "HexQ": 20,
+            "HexR": 13
+          },
+          {
+            "HexQ": 20,
+            "HexR": 14
+          },
+          {
+            "HexQ": 21,
+            "HexR": 10
+          },
+          {
+            "HexQ": 21,
+            "HexR": 11
+          },
+          {
+            "HexQ": 21,
+            "HexR": 12
+          },
+          {
+            "HexQ": 21,
+            "HexR": 13
+          },
+          {
+            "HexQ": 21,
+            "HexR": 14
+          },
+          {
+            "HexQ": 22,
+            "HexR": 10
+          },
+          {
+            "HexQ": 22,
+            "HexR": 11
+          },
+          {
+            "HexQ": 22,
+            "HexR": 12
+          },
+          {
+            "HexQ": 22,
+            "HexR": 13
+          },
+          {
+            "HexQ": 23,
+            "HexR": 10
+          },
+          {
+            "HexQ": 23,
+            "HexR": 11
+          },
+          {
+            "HexQ": 23,
+            "HexR": 12
+          },
+          {
+            "HexQ": 23,
+            "HexR": 13
+          },
+          {
+            "HexQ": 24,
+            "HexR": 10
+          },
+          {
+            "HexQ": 24,
+            "HexR": 11
+          },
+          {
+            "HexQ": 24,
+            "HexR": 12
+          },
+          {
+            "HexQ": 24,
+            "HexR": 13
+          },
+          {
+            "HexQ": 25,
+            "HexR": 10
+          },
+          {
+            "HexQ": 25,
+            "HexR": 11
+          },
+          {
+            "HexQ": 25,
+            "HexR": 12
+          },
+          {
+            "HexQ": 26,
+            "HexR": 10
+          },
+          {
+            "HexQ": 26,
+            "HexR": 11
+          },
+          {
+            "HexQ": 26,
+            "HexR": 12
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "140 + sqrt(3) * 16 * (datum.HexQ + datum.HexR/2) / 88.8",
+          "as": "HexLon"
+        },
+        {
+          "calculate": "-40 + 1.5 * 16 * datum.HexR / 111.2",
+          "as": "HexLat"
+        },
+        {
+          "calculate": "{type:'Polygon',coordinates:[[[datum.HexLon,datum.HexLat+0.143884892],[datum.HexLon+0.156040613,datum.HexLat+0.071942446],[datum.HexLon+0.156040613,datum.HexLat-0.071942446],[datum.HexLon,datum.HexLat-0.143884892],[datum.HexLon-0.156040613,datum.HexLat-0.071942446],[datum.HexLon-0.156040613,datum.HexLat+0.071942446],[datum.HexLon,datum.HexLat+0.143884892]]] }",
+          "as": "HexGeometry"
+        },
+        {
+          "calculate": "0",
+          "as": "Observations"
+        },
+        {
+          "calculate": "'0'",
+          "as": "CountRange"
+        },
+        {
+          "calculate": "selectedSpecies",
+          "as": "Species"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.65,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "HexGeometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "CountRange",
+          "type": "ordinal",
+          "scale": {
+            "domain": [
+              "0",
+              "1–9",
+              "10–24",
+              "25–49",
+              "50–99",
+              "100–249",
+              "250–499",
+              "500+"
+            ],
+            "range": [
+              "#ecf1eb",
+              "#e4ede2",
+              "#ccdbc8",
+              "#acc2aa",
+              "#87a388",
+              "#658a70",
+              "#426b50",
+              "#254832"
+            ]
+          },
+          "legend": {
+            "title": "Observation records per hexagon",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 8,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Observations",
+            "type": "quantitative",
+            "title": "Observation records"
+          },
+          {
+            "field": "CountRange",
+            "type": "nominal",
+            "title": "Count range"
+          },
+          {
+            "field": "HexLat",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre latitude"
+          },
+          {
+            "field": "HexLon",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre longitude"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/magpie_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Australian Magpie'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude) && isFinite(datum.decimalLatitude) && isFinite(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.stateProvince === 'Victoria' && datum.decimalLatitude >= -39.3 && datum.decimalLatitude <= -33.8 && datum.decimalLongitude >= 140.8 && datum.decimalLongitude <= 150.2"
+        },
+        {
+          "calculate": "(datum.decimalLongitude - 140) * 88.8",
+          "as": "Xkm"
+        },
+        {
+          "calculate": "(datum.decimalLatitude + 40) * 111.2",
+          "as": "Ykm"
+        },
+        {
+          "calculate": "(sqrt(3) / 3 * datum.Xkm - datum.Ykm / 3) / 16",
+          "as": "qF"
+        },
+        {
+          "calculate": "(2 * datum.Ykm / 3) / 16",
+          "as": "rF"
+        },
+        {
+          "calculate": "round(datum.qF)",
+          "as": "q0"
+        },
+        {
+          "calculate": "round(datum.rF)",
+          "as": "r0"
+        },
+        {
+          "calculate": "round(-datum.qF - datum.rF)",
+          "as": "s0"
+        },
+        {
+          "calculate": "abs(datum.q0 - datum.qF)",
+          "as": "eq"
+        },
+        {
+          "calculate": "abs(datum.r0 - datum.rF)",
+          "as": "er"
+        },
+        {
+          "calculate": "abs(datum.s0 + datum.qF + datum.rF)",
+          "as": "es"
+        },
+        {
+          "calculate": "datum.eq > datum.er && datum.eq > datum.es ? -datum.r0 - datum.s0 : datum.q0",
+          "as": "HexQ"
+        },
+        {
+          "calculate": "datum.er > datum.es && datum.er >= datum.eq ? -datum.q0 - datum.s0 : datum.r0",
+          "as": "HexR"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Observations"
+            }
+          ],
+          "groupby": [
+            "HexQ",
+            "HexR"
+          ]
+        },
+        {
+          "calculate": "140 + sqrt(3) * 16 * (datum.HexQ + datum.HexR/2) / 88.8",
+          "as": "HexLon"
+        },
+        {
+          "calculate": "-40 + 1.5 * 16 * datum.HexR / 111.2",
+          "as": "HexLat"
+        },
+        {
+          "calculate": "datum.Observations < 10 ? '1–9' : datum.Observations < 25 ? '10–24' : datum.Observations < 50 ? '25–49' : datum.Observations < 100 ? '50–99' : datum.Observations < 250 ? '100–249' : datum.Observations < 500 ? '250–499' : '500+'",
+          "as": "CountRange"
+        },
+        {
+          "calculate": "'Australian Magpie'",
+          "as": "Species"
+        },
+        {
+          "calculate": "{type:'Polygon',coordinates:[[[datum.HexLon,datum.HexLat+0.143884892],[datum.HexLon+0.156040613,datum.HexLat+0.071942446],[datum.HexLon+0.156040613,datum.HexLat-0.071942446],[datum.HexLon,datum.HexLat-0.143884892],[datum.HexLon-0.156040613,datum.HexLat-0.071942446],[datum.HexLon-0.156040613,datum.HexLat+0.071942446],[datum.HexLon,datum.HexLat+0.143884892]]] }",
+          "as": "HexGeometry"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.65,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "HexGeometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "CountRange",
+          "type": "ordinal",
+          "scale": {
+            "domain": [
+              "0",
+              "1–9",
+              "10–24",
+              "25–49",
+              "50–99",
+              "100–249",
+              "250–499",
+              "500+"
+            ],
+            "range": [
+              "#ecf1eb",
+              "#e4ede2",
+              "#ccdbc8",
+              "#acc2aa",
+              "#87a388",
+              "#658a70",
+              "#426b50",
+              "#254832"
+            ]
+          },
+          "legend": {
+            "title": "Observation records per hexagon",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 8,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Observations",
+            "type": "quantitative",
+            "format": ",d",
+            "title": "Observation records"
+          },
+          {
+            "field": "CountRange",
+            "type": "nominal",
+            "title": "Count range"
+          },
+          {
+            "field": "HexLat",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre latitude"
+          },
+          {
+            "field": "HexLon",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre longitude"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/kookaburra_2025_2026.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "decimalLatitude": "number",
+            "decimalLongitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "selectedSpecies === 'Laughing Kookaburra'"
+        },
+        {
+          "filter": "datum.year === 2025 || datum.year === 2026"
+        },
+        {
+          "filter": "selectedYear === 'Both years' || datum.year === toNumber(selectedYear)"
+        },
+        {
+          "filter": "datum.occurrenceStatus === 'PRESENT'"
+        },
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude) && isFinite(datum.decimalLatitude) && isFinite(datum.decimalLongitude)"
+        },
+        {
+          "filter": "datum.stateProvince === 'Victoria' && datum.decimalLatitude >= -39.3 && datum.decimalLatitude <= -33.8 && datum.decimalLongitude >= 140.8 && datum.decimalLongitude <= 150.2"
+        },
+        {
+          "calculate": "(datum.decimalLongitude - 140) * 88.8",
+          "as": "Xkm"
+        },
+        {
+          "calculate": "(datum.decimalLatitude + 40) * 111.2",
+          "as": "Ykm"
+        },
+        {
+          "calculate": "(sqrt(3) / 3 * datum.Xkm - datum.Ykm / 3) / 16",
+          "as": "qF"
+        },
+        {
+          "calculate": "(2 * datum.Ykm / 3) / 16",
+          "as": "rF"
+        },
+        {
+          "calculate": "round(datum.qF)",
+          "as": "q0"
+        },
+        {
+          "calculate": "round(datum.rF)",
+          "as": "r0"
+        },
+        {
+          "calculate": "round(-datum.qF - datum.rF)",
+          "as": "s0"
+        },
+        {
+          "calculate": "abs(datum.q0 - datum.qF)",
+          "as": "eq"
+        },
+        {
+          "calculate": "abs(datum.r0 - datum.rF)",
+          "as": "er"
+        },
+        {
+          "calculate": "abs(datum.s0 + datum.qF + datum.rF)",
+          "as": "es"
+        },
+        {
+          "calculate": "datum.eq > datum.er && datum.eq > datum.es ? -datum.r0 - datum.s0 : datum.q0",
+          "as": "HexQ"
+        },
+        {
+          "calculate": "datum.er > datum.es && datum.er >= datum.eq ? -datum.q0 - datum.s0 : datum.r0",
+          "as": "HexR"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "Observations"
+            }
+          ],
+          "groupby": [
+            "HexQ",
+            "HexR"
+          ]
+        },
+        {
+          "calculate": "140 + sqrt(3) * 16 * (datum.HexQ + datum.HexR/2) / 88.8",
+          "as": "HexLon"
+        },
+        {
+          "calculate": "-40 + 1.5 * 16 * datum.HexR / 111.2",
+          "as": "HexLat"
+        },
+        {
+          "calculate": "datum.Observations < 10 ? '1–9' : datum.Observations < 25 ? '10–24' : datum.Observations < 50 ? '25–49' : datum.Observations < 100 ? '50–99' : datum.Observations < 250 ? '100–249' : datum.Observations < 500 ? '250–499' : '500+'",
+          "as": "CountRange"
+        },
+        {
+          "calculate": "'Laughing Kookaburra'",
+          "as": "Species"
+        },
+        {
+          "calculate": "{type:'Polygon',coordinates:[[[datum.HexLon,datum.HexLat+0.143884892],[datum.HexLon+0.156040613,datum.HexLat+0.071942446],[datum.HexLon+0.156040613,datum.HexLat-0.071942446],[datum.HexLon,datum.HexLat-0.143884892],[datum.HexLon-0.156040613,datum.HexLat-0.071942446],[datum.HexLon-0.156040613,datum.HexLat+0.071942446],[datum.HexLon,datum.HexLat+0.143884892]]] }",
+          "as": "HexGeometry"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.65,
+        "fillOpacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "HexGeometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "CountRange",
+          "type": "ordinal",
+          "scale": {
+            "domain": [
+              "0",
+              "1–9",
+              "10–24",
+              "25–49",
+              "50–99",
+              "100–249",
+              "250–499",
+              "500+"
+            ],
+            "range": [
+              "#ecf1eb",
+              "#e4ede2",
+              "#ccdbc8",
+              "#acc2aa",
+              "#87a388",
+              "#658a70",
+              "#426b50",
+              "#254832"
+            ]
+          },
+          "legend": {
+            "title": "Observation records per hexagon",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 8,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 8
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Observations",
+            "type": "quantitative",
+            "format": ",d",
+            "title": "Observation records"
+          },
+          {
+            "field": "CountRange",
+            "type": "nominal",
+            "title": "Count range"
+          },
+          {
+            "field": "HexLat",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre latitude"
+          },
+          {
+            "field": "HexLon",
+            "type": "quantitative",
+            "format": ".3f",
+            "title": "Approx. cell centre longitude"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Re-outline Victoria on top of hex cells to clarify geographic extent.",
+      "data": {
+        "url": "js/victoria.json",
+        "format": {
+          "type": "topojson",
+          "feature": "victoria"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fillOpacity": 0,
+        "stroke": "#607d65",
+        "strokeWidth": 1.35
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "color": "shared"
+    }
+  }
+}
