@@ -966,3 +966,44 @@ h1, h2, h3, p { margin-top: 0; }
     color: var(--muted);
     margin: 0 0 32px;
 }
+
+
+/* ----------------------------------
+   SANKEY - TWO COLUMN INSIGHTS
+---------------------------------- */
+
+.chapter--wide .chapter-insight.sankey-insights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    padding: 10px 28px;
+    align-items: start;
+}
+
+.sankey-insight {
+    min-width: 0;
+}
+
+/* Vertical divider between insights */
+
+.sankey-insight + .sankey-insight {
+    border-left: 1px solid var(--line);
+    padding-left: 28px;
+}
+
+/* Headings */
+
+.chapter--wide .sankey-insight .finding-label {
+    margin: 0 0 14px;
+}
+
+/* Paragraphs */
+
+.chapter--wide .sankey-insight p {
+    grid-column: auto;
+    max-width: 48ch;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink);
+}
