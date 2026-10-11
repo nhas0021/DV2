@@ -101,7 +101,8 @@
             "titleFontSize": 12,
             "labelFontSize": 12,
             "offset": 16,
-            "titlePadding": 8
+            "titlePadding": 8,
+            "titleLimit": 400
           }
         },
         "tooltip": [

@@ -859,7 +859,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .chapter-analysis .analysis-sources {
     font-size: 10.5px;
-    margin-top: 35px;
+    margin-top: 29px;
     margin-bottom: 0;
 }
 
@@ -869,14 +869,54 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .analysis-tasmania {
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
-/* Mobile layout */
 
-@media (max-width: 760px) {
-    .insight-stack {
-        grid-column: 1 / -1;
-    }
+/* Species richness - analysis paragraphs */
+
+.chapter-analysis p:not(.analysis-sources) {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ----------------------------------
+   HEATMAP - TWO COLUMN INSIGHTS
+---------------------------------- */
+
+.chapter--wide .chapter-insight.family-insights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    padding: 15px 28px;
+    align-items: start;
+}
+
+.family-insight {
+    min-width: 0;
+}
+
+/* Separate the two insights */
+
+.family-insight + .family-insight {
+    border-left: 1px solid var(--line);
+    padding-left: 28px;
+}
+
+/* Headings */
+
+.chapter--wide .family-insight .finding-label {
+    margin: 0 0 14px;
+}
+
+/* Keep lines short and readable */
+
+.chapter--wide .family-insight p {
+    grid-column: auto;
+    max-width: 50ch;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink);
 }
 
