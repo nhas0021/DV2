@@ -1,244 +1,831 @@
-/* -------------------------
-   GLOBAL
-------------------------- */
+:root {
 
-* {
-    box-sizing: border-box;
+  --outside: #e5e9e1;
+
+  --paper: #faf8f2;
+
+  --paper-bright: #ffffff;
+
+  --ink: #25342c;
+
+  --muted: #59665c;
+
+  --sage: #dce5d8;
+
+  --sage-pale: #edf1e9;
+
+  --olive: #54765c;
+
+  --olive-dark: #304e3a;
+
+  --line: #c6d1c3;
+
+  --sand: #efeadb;
+
+  --display: "Fraunces", Georgia, serif;
+
+  --body: "DM Sans", Arial, sans-serif;
+
+  /* One grid system for every section: same padding, columns and gaps. */
+
+  --page-gutter: clamp(24px, 5.25vw, 64px);
+
+  --column-gap: clamp(18px, 2.2vw, 28px);
+
 }
 
-html {
-    scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-    margin: 0;
 
-    background: #f7f4ed;
-    color: #242722;
+  margin: 0;
 
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
+  background: var(--outside);
+
+  color: var(--ink);
+
+  font: 15px/1.6 var(--body);
+
+  zoom: 75%;
+
 }
 
+h1, h2, h3, p { margin-top: 0; }
 
-/* -------------------------
-   HERO
-------------------------- */
+.dashboard {
 
-.hero {
-    min-height: 92vh;
+  width: min(100%, 1220px);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  margin: 0 auto;
 
-    max-width: 1150px;
+  overflow: hidden;
 
-    margin: 0 auto;
-    padding: 80px 60px;
+  background: var(--paper);
+
+  box-shadow: 0 9px 42px rgba(27, 51, 34, .07);
+
 }
+
+/* This is the shared three-column grid. Every block uses it. */
+
+.content-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  column-gap: var(--column-gap);
+
+  padding-inline: var(--page-gutter);
+
+}
+
+.span-two { grid-column: span 2; min-width: 0; }
+
+.span-three { grid-column: 1 / -1; min-width: 0; }
 
 .eyebrow {
-    margin: 0 0 18px;
 
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+  color: var(--olive-dark);
 
-    text-transform: uppercase;
+  font-size: 10px;
 
-    color: #68745d;
+  font-weight: 700;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+
 }
 
-.hero h1 {
-    max-width: 850px;
+/* Cover: title 2 columns; introduction exactly column 3. */
 
-    margin: 0;
+.cover {
 
-    font-family: "Fraunces", serif;
+  background: var(--sage);
 
-    font-size: clamp(60px, 8vw, 110px);
-    font-weight: 600;
+  border-bottom: 1px solid #c0cfbc;
 
-    line-height: 0.95;
-    letter-spacing: -0.04em;
 }
 
-.hero h1 span {
-    color: #68745d;
+.cover-layout {
+
+  row-gap: 25px;
+
+  padding-top: 22px;
+
+  padding-bottom: 38px;
+
 }
 
-.subtitle {
-    max-width: 620px;
+.cover-topline {
 
-    margin-top: 32px;
-    margin-bottom: 0;
+  grid-column: 1 / -1;
 
-    font-size: 20px;
-    line-height: 1.6;
+  display: flex;
 
-    color: #555b53;
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid rgba(48, 78, 58, .24);
+
 }
 
-.hero-line {
-    width: 70px;
-    height: 2px;
+.cover-topline .edition {
 
-    margin-top: 42px;
+  color: var(--muted);
 
-    background: #68745d;
+  font-size: 11px;
+
+  font-weight: 600;
+
 }
 
-.scroll-hint {
-    margin-top: 22px;
+.cover-title { min-width: 0; }
 
-    font-size: 13px;
-    letter-spacing: 0.05em;
+.cover-title h1 {
 
-    color: #7d8279;
+  margin: 0 0 12px;
+
+  font-family: var(--display);
+
+  font-size: clamp(43px, 6.8vw, 82px);
+
+  font-weight: 600;
+
+  letter-spacing: -.054em;
+
+  line-height: 1.06;
+
 }
 
+.cover .strapline {
 
-/* -------------------------
-   STORY SECTIONS
-------------------------- */
+  max-width: 570px;
 
-.section {
-    max-width: 1150px;
+  margin-bottom: 0;
 
-    margin: 0 auto;
+  color: #425647;
 
-    /* Much tighter vertically */
-    padding: 26px 60px 32px;
+  font-size: clamp(14px, 1.5vw, 18px);
+
+  line-height: 1.55;
+
 }
 
-.section-copy {
-    max-width: 850px;
+.cover-aside {
 
-    margin: 0;
+  align-self: end;
+
+  min-width: 0;
+
+  border-left: 2px solid var(--olive);
+
+  padding-left: 19px;
+
+  font-size: 12.5px;
+
+  line-height: 1.65;
+
 }
 
-.section-number {
-    margin: 0 0 5px;
+.cover-aside p { margin: 3px 0 0; }
 
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+/* Metric dividers start on precisely the same grid lines as side notes. */
 
-    color: #68745d;
+.summary-strip {
+
+  background: var(--paper-bright);
+
+  border-bottom: 1px solid var(--line);
+
 }
 
-.section h2 {
-    max-width: 680px;
+.summary-grid { padding-top: 18px; padding-bottom: 18px; }
 
-    margin: 0 0 13px;
+.summary-item {
 
-    font-family: "Fraunces", serif;
+  display: flex;
 
-    /* Reduced heading size */
-    font-size: clamp(32px, 3.3vw, 42px);
-    font-weight: 600;
+  align-items: center;
 
-    line-height: 1.03;
-    letter-spacing: -0.025em;
+  gap: 14px;
+
+  min-width: 0;
+
 }
 
-.section-intro {
-    max-width: 650px;
+.summary-item:not(:first-child) {
 
-    margin: 0;
+  border-left: 1px solid var(--line);
 
-    font-size: 15px;
-    line-height: 1.6;
+  padding-left: 19px;
 
-    color: #555b53;
 }
 
+.summary-number {
 
-/* -------------------------
-   VISUALISATIONS
-------------------------- */
+  flex: 0 0 auto;
 
-.visualisation {
-    width: 100%;
+  font-family: var(--display);
 
-    /* Much smaller gap between paragraph and chart */
-    margin-top: 10px;
+  font-size: clamp(26px, 3.6vw, 43px);
 
-    display: flex;
+  color: var(--olive-dark);
 
-    justify-content: center;
-    align-items: center;
+  line-height: 1.08;
+
+  white-space: nowrap;
+
 }
 
-.visualisation .vega-embed {
-    max-width: 100%;
+.summary-text {
+
+  max-width: 156px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
 }
 
+/* Intro: 2 columns of copy, 1 aligned explanatory column. */
 
-/* -------------------------
-   FOOTER
-------------------------- */
+.story-intro {
 
-footer {
-    max-width: 1150px;
+  row-gap: 18px;
 
-    margin: 0 auto;
+  padding-top: 31px;
 
-    padding: 38px 60px;
+  padding-bottom: 33px;
 
-    border-top: 1px solid #d8d7cf;
+  border-bottom: 1px solid var(--line);
 
-    font-size: 13px;
-
-    color: #777b74;
 }
 
-footer p {
-    margin: 0;
+.story-intro .lead {
+
+  margin: 9px 0 0;
+
+  max-width: 760px;
+
+  font-family: var(--display);
+
+  font-size: clamp(18px, 2.2vw, 26px);
+
+  line-height: 1.48;
+
 }
 
+.intro-note {
 
-/* -------------------------
-   SMALLER SCREENS
-------------------------- */
+  align-self: center;
 
-@media (max-width: 700px) {
+  min-width: 0;
 
-    .hero,
-    .section,
-    footer {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
+  border-left: 1px solid var(--line);
 
-    .hero h1 {
-        font-size: 55px;
-    }
+  padding-left: 19px;
 
-    .subtitle {
-        font-size: 17px;
-    }
+  color: var(--muted);
 
-    .section {
-        padding-top: 25px;
-        padding-bottom: 35px;
-    }
+  font-size: 12px;
 
-    .section h2 {
-        font-size: 34px;
-    }
+}
 
-    .section-intro {
-        font-size: 15px;
-    }
+.intro-note p { margin: 5px 0 0; }
 
-    .visualisation {
-        margin-top: 14px;
+/* Each chapter stays on the same three tracks. */
 
-        justify-content: flex-start;
+.chapter { border-bottom: 1px solid var(--line); }
 
-        overflow-x: auto;
-    }
+.chapter--cool { background: var(--sage-pale); }
+
+.chapter--warm { background: var(--sand); }
+
+.chapter--paper { background: var(--paper); }
+
+.chapter-grid {
+
+  row-gap: 24px;
+
+  padding-top: 40px;
+
+  padding-bottom: 43px;
+
+  align-items: start;
+
+}
+
+.chapter-heading {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  min-width: 0;
+
+}
+
+.chapter-number {
+
+  flex: 0 0 76px;
+
+  padding-right: 12px;
+
+  border-right: 1px solid var(--line);
+
+  color: var(--olive);
+
+  font: 36px/1.1 var(--display);
+
+}
+
+.chapter-title { min-width: 0; }
+
+.chapter-title h2 {
+
+  margin: 6px 0 8px;
+
+  font-family: var(--display);
+
+  font-size: clamp(25px, 3vw, 37px);
+
+  font-weight: 600;
+
+  letter-spacing: -.03em;
+
+  line-height: 1.18;
+
+}
+
+.chapter-title .question {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12.5px;
+
+}
+
+.chapter-side {
+
+  padding: 5px 0 0 19px;
+
+  border-left: 1px solid var(--line);
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+  min-width: 0;
+
+}
+
+.chapter-side p { margin: 6px 0 0; }
+
+/* Default chapters: chart occupies columns 1 + 2; finding occupies column 3. */
+
+.chart-figure { margin: 0; min-width: 0; }
+
+.chart-shell {
+
+  min-height: 210px;
+
+  padding: 18px 17px 17px;
+
+  background: rgba(255, 255, 255, .83);
+
+  border: 1px solid rgba(158, 174, 154, .26);
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+}
+
+.chapter--cool .chart-shell { background: #fff; }
+
+.chapter--warm .chart-shell { background: #fffdf9; }
+
+.chart-shell .vega-embed { display: block; max-width: 100%; }
+
+.chart-shell .vega-embed > div { max-width: 100%; }
+
+.chart-shell .vega-embed svg,
+
+.chart-shell .vega-embed canvas {
+
+  display: block;
+
+  max-width: 100% !important;
+
+  height: auto !important;
+
+}
+
+.chart-shell .vega-bindings {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px 22px;
+
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding-top: 11px;
+
+  border-top: 1px solid #e2e7df;
+
+  color: var(--ink);
+
+  font: 12px var(--body);
+
+}
+
+.chart-shell .vega-bindings .vega-bind { margin: 0; }
+
+.chart-shell .vega-bindings select,
+
+.chart-shell .vega-bindings input {
+
+  max-width: min(100%, 230px);
+
+  padding: 6px 8px;
+
+  border: 1px solid #aabbaa;
+
+  border-radius: 0;
+
+  background: var(--paper-bright);
+
+  color: var(--ink);
+
+  font: inherit;
+
+}
+
+.chart-loading {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 180px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  letter-spacing: .04em;
+
+}
+
+.chart-error {
+
+  padding: 22px;
+
+  background: #fbefeb;
+
+  color: #7d352d;
+
+  font-size: 12px;
+
+  overflow-wrap: anywhere;
+
+}
+
+.chart-caption {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 5px 18px;
+
+  margin-top: 9px;
+
+  color: var(--muted);
+
+  font-size: 10.5px;
+
+  line-height: 1.5;
+
+}
+
+.chapter-insight {
+
+  min-width: 0;
+
+  padding: 15px 0 15px 19px;
+
+  border-left: 3px solid var(--olive);
+
+  background: rgba(220, 229, 216, .28);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+}
+
+.chapter-insight .finding-label {
+
+  margin-bottom: 10px;
+
+  color: var(--olive-dark);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: .11em;
+
+  text-transform: uppercase;
+
+}
+
+.chapter-insight p { margin: 0; }
+
+/* Every chapter heading starts on the LEFT, with context on the RIGHT.
+
+   Only the visualisation and findings swap sides in alternating chapters. */
+
+.chapter--reverse .chapter-heading {
+
+  grid-column: 1 / span 2;
+
+  grid-row: 1;
+
+}
+
+.chapter--reverse .chapter-side {
+
+  grid-column: 3;
+
+  grid-row: 1;
+
+}
+
+.chapter--reverse .chart-figure {
+
+  grid-column: 2 / span 2;
+
+  grid-row: 2;
+
+}
+
+.chapter--reverse .chapter-insight {
+
+  grid-column: 1;
+
+  grid-row: 2;
+
+}
+
+/* Wide chapters still adhere to the 3-column system: chart spans all 3. */
+
+.chapter--wide .chart-figure { grid-column: 1 / -1; }
+
+.chapter--wide .chapter-insight {
+
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  column-gap: var(--column-gap);
+
+  align-items: start;
+
+  padding: 15px 18px;
+
+}
+
+.chapter--wide .chapter-insight .finding-label { margin: 3px 0 0; }
+
+.chapter--wide .chapter-insight p { grid-column: span 2; }
+
+/* Interlude: large thought on first 2 columns; note on column 3. */
+
+.interlude { background: var(--olive-dark); color: #f4f7ef; }
+
+.interlude-grid { align-items: center; row-gap: 14px; padding-top: 24px; padding-bottom: 24px; }
+
+.interlude .eyebrow { color: #cfe1cc; }
+
+.interlude blockquote {
+
+  margin: 0;
+
+  font-family: var(--display);
+
+  font-size: clamp(20px, 2.8vw, 30px);
+
+  line-height: 1.35;
+
+}
+
+.interlude p {
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding-left: 19px;
+
+  border-left: 1px solid rgba(207, 225, 204, .55);
+
+  color: #d9e6d7;
+
+  font-size: 12px;
+
+}
+
+/* Closing credits use exactly the same three aligned columns. */
+
+.closing { background: #e1e7dc; }
+
+.closing-grid {
+
+  row-gap: 12px;
+
+  padding-top: 35px;
+
+  padding-bottom: 38px;
+
+}
+
+.closing h2 {
+
+  margin: 5px 0 6px;
+
+  font-family: var(--display);
+
+  font-size: clamp(25px, 3vw, 34px);
+
+  font-weight: 600;
+
+}
+
+.source-item { min-width: 0; }
+
+.source-item + .source-item {
+
+  padding-left: 19px;
+
+  border-left: 1px solid #b5c5b2;
+
+}
+
+.source-item h3 {
+
+  margin: 0 0 6px;
+
+  color: var(--ink);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+.source-item p { margin: 0; color: var(--muted); font-size: 11.5px; line-height: 1.65; }
+
+.source-item a { color: var(--olive-dark); overflow-wrap: anywhere; }
+
+.footer-line {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 15px;
+
+  padding-top: 12px;
+
+  border-top: 1px solid #b5c5b2;
+
+  color: #536354;
+
+  font-size: 10px;
+
+}
+
+/* Stacked on mobile. Desktop/tablet preserve the same three tracks. */
+
+@media (max-width: 760px) {
+
+  :root { --page-gutter: 25px; --column-gap: 16px; }
+
+  .content-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .span-two, .span-three,
+
+  .cover-topline, .cover-title, .cover-aside,
+
+  .story-intro > *, .chapter-heading, .chapter-side,
+
+  .chart-figure, .chapter-insight,
+
+  .chapter--wide .chart-figure, .chapter--wide .chapter-insight,
+
+  .interlude-grid > *, .closing-grid > * {
+
+    grid-column: 1 / -1;
+
+  }
+
+  /* On phones, use the normal reading order for reversed chapters. */
+
+  .chapter--reverse .chapter-heading,
+
+  .chapter--reverse .chapter-side,
+
+  .chapter--reverse .chart-figure,
+
+  .chapter--reverse .chapter-insight {
+
+    grid-column: 1 / -1;
+
+    grid-row: auto;
+
+  }
+
+  .cover-layout { row-gap: 20px; padding-bottom: 28px; }
+
+  .cover h1 { font-size: clamp(43px, 9.5vw, 64px); }
+
+  .cover-aside { align-self: start; }
+
+  .summary-grid { row-gap: 12px; }
+
+  .summary-item:not(:first-child) { border-left: none; padding: 10px 0 0; border-top: 1px solid var(--line); }
+
+  .summary-text { max-width: none; }
+
+  .story-intro { row-gap: 17px; }
+
+  .intro-note { align-self: start; }
+
+  .chapter-grid { row-gap: 18px; padding-top: 30px; padding-bottom: 32px; }
+
+  .chapter-heading { gap: 12px; }
+
+  .chapter-number { flex-basis: 52px; font-size: 27px; }
+
+  .chapter-title h2 { font-size: 26px; }
+
+  .chapter-insight { padding: 13px 17px; }
+
+  .chapter--wide .chapter-insight { grid-template-columns: 1fr; row-gap: 8px; }
+
+  .chapter--wide .chapter-insight p { grid-column: 1; }
+
+  .interlude-grid { row-gap: 16px; }
+
+  .source-item + .source-item { padding: 15px 0 0; border-left: none; border-top: 1px solid #b5c5b2; }
+
+}
+
+@media (max-width: 420px) {
+
+  :root { --page-gutter: 18px; }
+
+  .cover-topline { align-items: flex-start; }
+
+  .summary-number { font-size: 34px; }
+
+  .chart-shell { padding: 9px 6px; }
+
 }
