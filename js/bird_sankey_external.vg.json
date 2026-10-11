@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Three-stage Australian native-bird Sankey. Each ribbon corresponds to a full habitat-diet-lifestyle triplet; equal width at both stages. Prepared from Australian_Bird_Data_Version_1 and AVONET1_BirdLife.",
-  "width": 1230,
+  "width": 1050,
   "height": 656,
   "padding": {
     "top": 46,
@@ -88,238 +88,260 @@
   ],
   "marks": [
     {
-      "type": "path",
-      "name": "ribbonPaths",
-      "from": {
-        "data": "ribbons"
-      },
-      "encode": {
-        "enter": {
-          "path": {
-            "field": "path"
-          },
-          "fill": {
-            "field": "color"
-          },
-          "cursor": {
-            "value": "pointer"
-          },
-          "tooltip": {
-            "signal": "'Habitat: ' + datum.habitat + '\\nDiet: ' + datum.diet + '\\nLifestyle: ' + datum.lifestyle + '\\nSpecies: ' + datum.count"
-          }
-        },
-        "update": {
-          "fillOpacity": {
-            "signal": "focusHabitat !== 'All habitats' && datum.habitat !== focusHabitat ? 0.035 : hoverTriplet !== null ? (datum.key === hoverTriplet ? 0.93 : 0.055) : hoverNode !== null ? (datum[hoverNode.stage] === hoverNode.name ? 0.78 : 0.052) : 0.40"
-          }
-        }
-      },
-      "zindex": 0
-    },
-    {
-      "type": "rect",
-      "name": "nodeMarks",
-      "from": {
-        "data": "nodes"
-      },
+      "type": "group",
+      "name": "centeredSankey",
       "encode": {
         "enter": {
           "x": {
-            "field": "x"
+            "value": -55
           },
           "y": {
-            "field": "y"
+            "value": 0
           },
           "width": {
-            "field": "w"
+            "value": 1230
           },
           "height": {
-            "field": "h"
-          },
-          "cornerRadius": {
-            "value": 2
-          },
-          "fill": {
-            "field": "color"
-          },
-          "cursor": {
-            "value": "pointer"
-          },
-          "tooltip": {
-            "signal": "datum.name + ': ' + datum.count + ' species (' + format(100 * datum.count / 627, '.1f') + '% of included species)'"
+            "value": 656
           }
+        }
+      },
+      "marks": [
+        {
+          "type": "path",
+          "name": "ribbonPaths",
+          "from": {
+            "data": "ribbons"
+          },
+          "encode": {
+            "enter": {
+              "path": {
+                "field": "path"
+              },
+              "fill": {
+                "field": "color"
+              },
+              "cursor": {
+                "value": "pointer"
+              },
+              "tooltip": {
+                "signal": "'Habitat: ' + datum.habitat + '\\nDiet: ' + datum.diet + '\\nLifestyle: ' + datum.lifestyle + '\\nSpecies: ' + datum.count"
+              }
+            },
+            "update": {
+              "fillOpacity": {
+                "signal": "focusHabitat !== 'All habitats' && datum.habitat !== focusHabitat ? 0.035 : hoverTriplet !== null ? (datum.key === hoverTriplet ? 0.93 : 0.055) : hoverNode !== null ? (datum[hoverNode.stage] === hoverNode.name ? 0.78 : 0.052) : 0.40"
+              }
+            }
+          },
+          "zindex": 0
         },
-        "update": {
-          "fillOpacity": {
-            "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.28"
+        {
+          "type": "rect",
+          "name": "nodeMarks",
+          "from": {
+            "data": "nodes"
           },
-          "stroke": {
-            "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? '#273729' : '#f7f4ed'"
+          "encode": {
+            "enter": {
+              "x": {
+                "field": "x"
+              },
+              "y": {
+                "field": "y"
+              },
+              "width": {
+                "field": "w"
+              },
+              "height": {
+                "field": "h"
+              },
+              "cornerRadius": {
+                "value": 2
+              },
+              "fill": {
+                "field": "color"
+              },
+              "cursor": {
+                "value": "pointer"
+              },
+              "tooltip": {
+                "signal": "datum.name + ': ' + datum.count + ' species (' + format(100 * datum.count / 627, '.1f') + '% of included species)'"
+              }
+            },
+            "update": {
+              "fillOpacity": {
+                "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.28"
+              },
+              "stroke": {
+                "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? '#273729' : '#f7f4ed'"
+              },
+              "strokeWidth": {
+                "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? 2 : 0.5"
+              }
+            }
           },
-          "strokeWidth": {
-            "signal": "hoverNode !== null && datum.stage === hoverNode.stage && datum.name === hoverNode.name ? 2 : 0.5"
-          }
-        }
-      },
-      "zindex": 1
-    },
-    {
-      "type": "text",
-      "name": "nodeLabels",
-      "from": {
-        "data": "nodes"
-      },
-      "encode": {
-        "enter": {
-          "x": {
-            "signal": "datum.stage === 'habitat' ? datum.x - 10 : datum.x + datum.w + 10"
-          },
-          "y": {
-            "signal": "datum.y + datum.h / 2"
-          },
-          "baseline": {
-            "value": "middle"
-          },
-          "align": {
-            "signal": "datum.stage === 'habitat' ? 'right' : 'left'"
-          },
-          "text": {
-            "field": "name"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 14
-          },
-          "fontWeight": {
-            "value": 550
-          },
-          "fill": {
-            "value": "#273128"
-          },
-          "cursor": {
-            "value": "pointer"
-          },
-          "tooltip": {
-            "signal": "datum.name + ': ' + datum.count + ' species'"
-          }
+          "zindex": 1
         },
-        "update": {
-          "opacity": {
-            "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.40"
-          }
+        {
+          "type": "text",
+          "name": "nodeLabels",
+          "from": {
+            "data": "nodes"
+          },
+          "encode": {
+            "enter": {
+              "x": {
+                "signal": "datum.stage === 'habitat' ? datum.x - 10 : datum.x + datum.w + 10"
+              },
+              "y": {
+                "signal": "datum.y + datum.h / 2"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "align": {
+                "signal": "datum.stage === 'habitat' ? 'right' : 'left'"
+              },
+              "text": {
+                "field": "name"
+              },
+              "font": {
+                "value": "DM Sans"
+              },
+              "fontSize": {
+                "value": 14
+              },
+              "fontWeight": {
+                "value": 550
+              },
+              "fill": {
+                "value": "#273128"
+              },
+              "cursor": {
+                "value": "pointer"
+              },
+              "tooltip": {
+                "signal": "datum.name + ': ' + datum.count + ' species'"
+              }
+            },
+            "update": {
+              "opacity": {
+                "signal": "focusHabitat === 'All habitats' || datum.stage !== 'habitat' || datum.name === focusHabitat ? 1 : 0.40"
+              }
+            }
+          },
+          "zindex": 3
+        },
+        {
+          "type": "text",
+          "name": "stageHeadingHabitat",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 216
+              },
+              "y": {
+                "value": -20
+              },
+              "text": {
+                "value": "HABITAT"
+              },
+              "align": {
+                "value": "center"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "DM Sans"
+              },
+              "fontSize": {
+                "value": 16
+              },
+              "fontWeight": {
+                "value": 700
+              },
+              "fill": {
+                "value": "#52654f"
+              }
+            }
+          },
+          "zindex": 4
+        },
+        {
+          "type": "text",
+          "name": "stageHeadingDiet",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 590
+              },
+              "y": {
+                "value": -20
+              },
+              "text": {
+                "value": "DIET"
+              },
+              "align": {
+                "value": "center"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "DM Sans"
+              },
+              "fontSize": {
+                "value": 16
+              },
+              "fontWeight": {
+                "value": 700
+              },
+              "fill": {
+                "value": "#52654f"
+              }
+            }
+          },
+          "zindex": 4
+        },
+        {
+          "type": "text",
+          "name": "stageHeadingLifestyle",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 962
+              },
+              "y": {
+                "value": -20
+              },
+              "text": {
+                "value": "LIFESTYLE"
+              },
+              "align": {
+                "value": "center"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "DM Sans"
+              },
+              "fontSize": {
+                "value": 16
+              },
+              "fontWeight": {
+                "value": 700
+              },
+              "fill": {
+                "value": "#52654f"
+              }
+            }
+          },
+          "zindex": 4
         }
-      },
-      "zindex": 3
-    },
-    {
-      "type": "text",
-      "name": "stageHeadingHabitat",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 216
-          },
-          "y": {
-            "value": -20
-          },
-          "text": {
-            "value": "HABITAT"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 16
-          },
-          "fontWeight": {
-            "value": 700
-          },
-          "fill": {
-            "value": "#52654f"
-          }
-        }
-      },
-      "zindex": 4
-    },
-    {
-      "type": "text",
-      "name": "stageHeadingDiet",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 590
-          },
-          "y": {
-            "value": -20
-          },
-          "text": {
-            "value": "DIET"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 16
-          },
-          "fontWeight": {
-            "value": 700
-          },
-          "fill": {
-            "value": "#52654f"
-          }
-        }
-      },
-      "zindex": 4
-    },
-    {
-      "type": "text",
-      "name": "stageHeadingLifestyle",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 962
-          },
-          "y": {
-            "value": -20
-          },
-          "text": {
-            "value": "LIFESTYLE"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 16
-          },
-          "fontWeight": {
-            "value": 700
-          },
-          "fill": {
-            "value": "#52654f"
-          }
-        }
-      },
-      "zindex": 4
+      ]
     }
   ],
   "config": {

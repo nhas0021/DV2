@@ -1,9 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Share of bird species in the 16 most represented bird families in each Australian state and territory.",
-  "width": 738,
+  "width": 878,
   "height": {
     "step": 33
+  },
+  "padding": {
+    "top": 15,
+    "bottom": 15,
+    "left": 15,
+    "right": 15
   },
   "data": {
     "url": "../data/bird_family_heatmap.csv"

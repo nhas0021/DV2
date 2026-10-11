@@ -1,13 +1,14 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 980,
-  "height": 595,
+  "width": 650,
+  "height": 465,
   "background": "#ffffff",
   "padding": {
     "top": 16,
-    "right": 20,
-    "bottom": 10,
-    "left": 8
+    "right": 12,
+    "bottom": 16,
+    "left": 0
   },
   "config": {
     "view": {
@@ -57,14 +58,8 @@
   ],
   "projection": {
     "type": "conicEqualArea",
-    "rotate": [
-      -134,
-      0
-    ],
-    "parallels": [
-      -18,
-      -36
-    ]
+    "rotate": [-134, 0],
+    "parallels": [-18, -36]
   },
   "layer": [
     {
@@ -80,7 +75,12 @@
         "fill": "#d5e0d6",
         "stroke": "#ffffff",
         "strokeWidth": 2.4
-      }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+        }
+      ]
     },
     {
       "data": {
@@ -180,14 +180,8 @@
               "type": "quantitative",
               "scale": {
                 "type": "linear",
-                "domain": [
-                  0,
-                  75
-                ],
-                "range": [
-                  0,
-                  4500
-                ],
+                "domain": [0, 75],
+                "range": [0, 4500],
                 "zero": true
               },
               "legend": null
@@ -213,7 +207,6 @@
           }
         },
         {
-
           "mark": {
             "type": "text",
             "font": "DM Sans",

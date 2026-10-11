@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Victoria 2025–2026 georeferenced observation counts for Australian Magpie and Laughing Kookaburra, aggregated into approximately 16-km-radius hexagonal cells. Colour shows occurrence records, not number of individual birds. Complete zero-bin grid is inlined within this VL specification; a grid cell counts as zero when no observations are recorded for the current species/year.",
-  "width": 980,
-  "height": 635,
+  "width": 650,
+  "height": 550,
   "background": "#ffffff",
   "padding": {
-    "left": 10,
+    "left": 0,
     "right": 12,
-    "top": 15,
+    "top": 2,
     "bottom": 10
   },
   "config": {
@@ -53,10 +53,10 @@
       145.5,
       -36.8
     ],
-    "scale": 4750,
+    "scale": 3700,
     "translate": [
-      490,
-      320
+      350,
+      300
     ]
   },
   "layer": [
