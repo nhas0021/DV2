@@ -192,7 +192,7 @@ h1, h2, h3, p { margin-top: 0; }
 
   padding-left: 19px;
 
-  font-size: 12.5px;
+  font-size: 14px;
 
   line-height: 1.65;
 
@@ -254,7 +254,7 @@ h1, h2, h3, p { margin-top: 0; }
 
   color: var(--muted);
 
-  font-size: 11px;
+  font-size: 12px;
 
   line-height: 1.5;
 
@@ -829,3 +829,54 @@ h1, h2, h3, p { margin-top: 0; }
   .chart-shell { padding: 9px 6px; }
 
 }
+
+
+/* Right-hand column beside the lollipop chart */
+
+.insight-stack {
+    grid-column: 3;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.chapter-analysis {
+    border-top: 1px solid var(--line);
+    padding-top: 30px;
+}
+
+.chapter-analysis .eyebrow {
+    margin-bottom: 10px;
+}
+
+.chapter-analysis p {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0 0 16px;
+}
+
+.chapter-analysis .analysis-sources {
+    font-size: 10.5px;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+.chapter-analysis a {
+    color: var(--olive-dark);
+    text-decoration: underline;
+}
+
+.analysis-tasmania {
+    padding-top: 20px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 760px) {
+    .insight-stack {
+        grid-column: 1 / -1;
+    }
+}
+
