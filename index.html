@@ -403,7 +403,7 @@
                   Wetland and marine habitats show stronger connections
                   to aquatic predators. These contrasting pathways
                   highlight how different environments are associated
-                  with distinct feeding strategies among native birds.
+                  with distinct feeding strategies.
               </p>
           </div>
 
@@ -414,7 +414,93 @@
 
     </section>
 
-    <!-- 05 / TWO-COLUMN CHART + ONE-COLUMN FINDING -->
+    <!-- 05 / NESTING HABITS / FULL-WIDTH POLAR CHART -->
+
+    <section class="chapter chapter--paper chapter--wide" aria-labelledby="heading-nesting">
+
+      <div class="content-grid chapter-grid">
+
+        <header class="chapter-heading span-two">
+          <div class="chapter-number">05</div>
+          <div class="chapter-title">
+            <span class="eyebrow">A closer look &nbsp; / &nbsp; Nesting habits</span>
+            <h2 id="heading-nesting">Where do birds make their nests?</h2>
+            <p class="question">The connections between habitat and lifestyle lead to another question...</p>
+          </div>
+        </header>
+
+        <aside class="chapter-side">
+          <span class="eyebrow">Reading the polar chart</span>
+          <p>Choose a bird group to compare its nesting types. Each segment represents the percentage of species associated with that nesting type; categories can overlap.</p>
+        </aside>
+
+        <figure class="chart-figure span-three">
+          <div class="chart-shell" id="nesting_habits"><div class="chart-loading">Loading nesting habits chart…</div></div>
+          <figcaption class="chart-caption"><span>Use the bird-group selector to compare nesting strategies.</span><span>Source: Australian Bird Data / AVONET traits</span></figcaption>
+        </figure>
+
+        <aside class="chapter-insight polar-insights">
+          <div class="polar-insight">
+            <div class="finding-label">A home in the hollows</div>
+            <p>Tree hollows are particularly important for parrots in this dataset: 37 of the 42 species with nesting information are associated with hollow nesting.</p>
+          </div>
+          <div class="polar-insight">
+            <div class="finding-label">Different ways to nest</div>
+            <p>Honeyeaters show a very different pattern, with most recorded as using supported nests. Changing the bird group reveals how nesting strategies differ even when species share broader habitats.</p>
+          </div>
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- 06 / BODY SIZE / TWO BASIC CHARTS SIDE BY SIDE -->
+
+    <section class="chapter chapter--cool chapter--dual" aria-labelledby="heading-body-size">
+
+      <div class="content-grid chapter-grid">
+
+        <header class="chapter-heading span-two">
+          <div class="chapter-number">06</div>
+          <div class="chapter-title">
+            <span class="eyebrow">Beyond behaviour &nbsp; / &nbsp; Physical diversity</span>
+            <h2 id="heading-body-size">Small birds, big differences.</h2>
+            <p class="question">Nesting habits are only one kind of variation. How do Australian birds compare in body length and weight?</p>
+          </div>
+        </header>
+
+        <aside class="chapter-side">
+          <span class="eyebrow">Two ways of measuring size</span>
+          <p>The histogram groups individual species by average body length. The bar chart instead compares median species body mass across families with at least five measured species.</p>
+        </aside>
+
+        <div class="dual-charts span-three">
+          <figure class="chart-figure dual-chart">
+            <div class="chart-shell" id="bird_length_histogram"><div class="chart-loading">Loading body-length histogram…</div></div>
+            <figcaption class="chart-caption">Each bar counts species within a 10 cm body-length interval.</figcaption>
+          </figure>
+          <figure class="chart-figure dual-chart">
+            <div class="chart-shell" id="bird_family_mass"><div class="chart-loading">Loading bird-family body-mass chart…</div></div>
+            <figcaption class="chart-caption">Family medians are calculated from available species measurements, not individual bird weights.</figcaption>
+          </figure>
+        </div>
+
+        <div class="dual-findings span-three">
+          <aside class="chapter-insight">
+            <div class="finding-label">Mostly small in stature</div>
+            <p>The most common body-length interval is 10–20 cm. Larger species appear increasingly infrequently, creating a long tail towards the tallest birds.</p>
+          </aside>
+          <aside class="chapter-insight">
+            <div class="finding-label">The heavier families</div>
+            <p>Penguins and albatrosses have the highest median body masses among families with enough measurements for this comparison. Missing measurements may affect which families appear.</p>
+          </aside>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 07 / TWO-COLUMN CHART + ONE-COLUMN FINDING -->
 
     <section class="chapter chapter--paper" aria-labelledby="heading-migration">
 
@@ -422,7 +508,7 @@
 
         <header class="chapter-heading span-two">
 
-          <div class="chapter-number">05</div>
+          <div class="chapter-number">07</div>
 
           <div class="chapter-title">
 
@@ -464,7 +550,41 @@
 
     </section>
 
-    <!-- 06 / TWO-COLUMN CHART + ONE-COLUMN FINDING -->
+    <!-- 08 / THREATENED SPECIES / WAFFLE CHART -->
+
+    <section class="chapter chapter--warm chapter--wide" aria-labelledby="heading-waffle">
+
+      <div class="content-grid chapter-grid">
+
+        <header class="chapter-heading span-two">
+          <div class="chapter-number">08</div>
+          <div class="chapter-title">
+            <span class="eyebrow">From movement to risk &nbsp; / &nbsp; Conservation</span>
+            <h2 id="heading-waffle">What share of native birds are threatened?</h2>
+            <p class="question">Migration connects birds across borders, but conservation status raises a different question: how many species are formally listed as threatened?</p>
+          </div>
+        </header>
+
+        <aside class="chapter-side">
+          <span class="eyebrow">Reading the waffle</span>
+          <p>Each square represents about 1% of the species included in this chart. Threatened refers to EPBC-listed species, not the number of individual birds.</p>
+        </aside>
+
+        <figure class="chart-figure span-three">
+          <div class="chart-shell" id="threatened_waffle"><div class="chart-loading">Loading threatened-species waffle chart…</div></div>
+          <figcaption class="chart-caption"><span>A national overview before comparing threatened shares by state.</span><span>Source: Bird checklist / EPBC status</span></figcaption>
+        </figure>
+
+        <aside class="chapter-insight">
+          <div class="finding-label">From a national share to a state-by-state picture</div>
+          <p>A single national percentage cannot show where threatened species are concentrated. The next map compares threatened shares within each state and territory rather than treating Australia as one total.</p>
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- 09 / TWO-COLUMN CHART + ONE-COLUMN FINDING -->
 
     <section class="chapter chapter--reverse chapter--cool" aria-labelledby="heading-threatened">
 
@@ -472,7 +592,7 @@
 
         <header class="chapter-heading span-two">
 
-          <div class="chapter-number">06</div>
+          <div class="chapter-number">09</div>
 
           <div class="chapter-title">
 
@@ -508,6 +628,46 @@
 
           <p>[Explain why the state with the most recorded bird species is not necessarily the state with the highest threatened percentage.]</p>
 
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- 10 / THREATENED FAMILIES / BUTTERFLY CHART -->
+
+    <section class="chapter chapter--paper chapter--wide" aria-labelledby="heading-butterfly">
+
+      <div class="content-grid chapter-grid">
+
+        <header class="chapter-heading span-two">
+          <div class="chapter-number">10</div>
+          <div class="chapter-title">
+            <span class="eyebrow">Looking within the numbers &nbsp; / &nbsp; Bird families</span>
+            <h2 id="heading-butterfly">Which bird families face the greatest threat?</h2>
+            <p class="question">The map reveals differences between states. Looking within bird families shows how unevenly conservation risk is distributed across species groups.</p>
+          </div>
+        </header>
+
+        <aside class="chapter-side">
+          <span class="eyebrow">Reading the butterfly</span>
+          <p>Opposing bars compare the numbers of threatened and other species within each family. Percentages refer to EPBC-listed species, not individual birds.</p>
+        </aside>
+
+        <figure class="chart-figure span-three">
+          <div class="chart-shell" id="threatened_families"><div class="chart-loading">Loading threatened bird families chart…</div></div>
+          <figcaption class="chart-caption"><span>Families shown have at least 10 recorded species and are ordered by threatened share.</span><span>Source: State bird checklists / EPBC status</span></figcaption>
+        </figure>
+
+        <aside class="chapter-insight butterfly-insights">
+          <div class="butterfly-insight">
+            <div class="finding-label">Concentrated risk</div>
+            <p>Albatrosses stand out: 15 of the 16 species in this dataset are listed as threatened. Their share is much higher than that of most other families shown.</p>
+          </div>
+          <div class="butterfly-insight">
+            <div class="finding-label">Beyond geography</div>
+            <p>A state may have many threatened species without any one family dominating its birdlife. Reading the state map alongside this family comparison reveals two distinct views of conservation risk.</p>
+          </div>
         </aside>
 
       </div>
@@ -566,7 +726,7 @@
 
   </main>
 
-  <!-- All original chart IDs remain unchanged; keep your existing JS file. -->
+  <!-- Original chart IDs are unchanged; new chart IDs are embedded in the updated JS file. -->
 
   <script src="js/vega_lite_vis.js"></script>
 

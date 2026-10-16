@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Three-stage Australian native-bird Sankey. Each ribbon corresponds to a full habitat-diet-lifestyle triplet; equal width at both stages. Prepared from Australian_Bird_Data_Version_1 and AVONET1_BirdLife.",
-  "width": 1230,
+  "width": 1800,
   "height": 656,
   "padding": {
     "top": 6,

@@ -1003,7 +1003,102 @@ h1, h2, h3, p { margin-top: 0; }
     grid-column: auto;
     max-width: 48ch;
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.75;
     color: var(--ink);
+}
+
+/* ----------------------------------
+   NEW CHAPTERS / NESTING AND CONSERVATION
+   Existing layout and chart styling remain unchanged.
+---------------------------------- */
+
+/* Keep the wide polar and butterfly insight areas in two readable columns. */
+.chapter--wide .chapter-insight.polar-insights,
+.chapter--wide .chapter-insight.butterfly-insights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+    padding: 16px 28px;
+    align-items: start;
+}
+
+.polar-insight,
+.butterfly-insight {
+    min-width: 0;
+}
+
+.polar-insight + .polar-insight,
+.butterfly-insight + .butterfly-insight {
+    border-left: 1px solid var(--line);
+    padding-left: 28px;
+}
+
+.chapter--wide .polar-insight .finding-label,
+.chapter--wide .butterfly-insight .finding-label {
+    margin: 0 0 12px;
+}
+
+.chapter--wide .polar-insight p,
+.chapter--wide .butterfly-insight p {
+    grid-column: auto;
+    max-width: 55ch;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+/* Body-size section: two charts and two findings on a shared two-column row. */
+.dual-charts,
+.dual-findings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--column-gap);
+    min-width: 0;
+}
+
+.dual-chart {
+    min-width: 0;
+}
+
+.dual-chart .chart-shell {
+    height: 100%;
+    min-height: 445px;
+    overflow-x: auto;
+}
+
+.dual-chart .chart-caption {
+    min-height: 36px;
+    align-items: flex-start;
+}
+
+.dual-findings .chapter-insight {
+    min-width: 0;
+    padding: 15px 19px;
+}
+
+@media (max-width: 900px) {
+    .dual-charts,
+    .dual-findings {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .dual-chart .chart-shell { min-height: 0; }
+}
+
+@media (max-width: 760px) {
+    .chapter--wide .chapter-insight.polar-insights,
+    .chapter--wide .chapter-insight.butterfly-insights {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        padding: 15px 18px;
+    }
+
+    .polar-insight + .polar-insight,
+    .butterfly-insight + .butterfly-insight {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding: 15px 0 0;
+    }
 }

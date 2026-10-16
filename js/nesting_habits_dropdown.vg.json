@@ -1,20 +1,32 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Interactive nesting-habits radial area chart. Uses square-root radial scale so wedge area is proportional to percentage, making small non-zero shares visible; zero shares remain empty.",
-  "width": 900,
-  "height": 670,
+  "description": "Interactive nesting-habits radial area chart with centred layout and structured tooltips.",
+  "width": 1047,
+  "height": 656,
   "background": "#ffffff",
+
   "padding": {
     "left": 5,
     "right": 5,
     "top": 8,
     "bottom": 10
   },
+
   "autosize": {
     "type": "pad",
     "contains": "padding"
   },
+
   "signals": [
+    {
+      "name": "centerX",
+      "update": "width / 2"
+    },
+    {
+      "name": "centerY",
+      "update": "height / 2"
+    },
     {
       "name": "selectedGroup",
       "value": "Parrots",
@@ -32,6 +44,7 @@
       }
     }
   ],
+
   "data": [
     {
       "name": "nesting",
@@ -55,6 +68,7 @@
         }
       ]
     },
+
     {
       "name": "groupInfo",
       "source": "nesting",
@@ -69,124 +83,108 @@
         }
       ]
     },
+
     {
       "name": "labels",
       "values": [
         {
           "category": "Ground",
           "label": "On the ground",
-          "x": 573.5,
-          "y": 128.09,
+          "dx": 123.5,
+          "dy": -213.91,
           "align": "center"
         },
         {
           "category": "Supported",
           "label": "Supported",
-          "x": 697.0,
-          "y": 342.0,
+          "dx": 247,
+          "dy": 0,
           "align": "left"
         },
         {
           "category": "Hanging",
           "label": "Hanging",
-          "x": 573.5,
-          "y": 555.91,
+          "dx": 123.5,
+          "dy": 213.91,
           "align": "center"
         },
         {
           "category": "Burrow",
           "label": "In burrows",
-          "x": 326.5,
-          "y": 555.91,
+          "dx": -123.5,
+          "dy": 213.91,
           "align": "center"
         },
         {
           "category": "Hollow",
           "label": "In hollows",
-          "x": 203.0,
-          "y": 342.0,
+          "dx": -247,
+          "dy": 0,
           "align": "right"
         },
         {
           "category": "Floating",
           "label": "Floating",
-          "x": 326.5,
-          "y": 128.09,
+          "dx": -123.5,
+          "dy": -213.91,
           "align": "center"
         }
       ]
     },
+
     {
       "name": "spokes",
       "values": [
         {
-          "x": 450,
-          "y": 342,
-          "x2": 450.0,
-          "y2": 158.0
+          "dx": 0,
+          "dy": -184
         },
         {
-          "x": 450,
-          "y": 342,
-          "x2": 609.349,
-          "y2": 250.0
+          "dx": 159.349,
+          "dy": -92
         },
         {
-          "x": 450,
-          "y": 342,
-          "x2": 609.349,
-          "y2": 434.0
+          "dx": 159.349,
+          "dy": 92
         },
         {
-          "x": 450,
-          "y": 342,
-          "x2": 450.0,
-          "y2": 526.0
+          "dx": 0,
+          "dy": 184
         },
         {
-          "x": 450,
-          "y": 342,
-          "x2": 290.651,
-          "y2": 434.0
+          "dx": -159.349,
+          "dy": 92
         },
         {
-          "x": 450,
-          "y": 342,
-          "x2": 290.651,
-          "y2": 250.0
+          "dx": -159.349,
+          "dy": -92
         }
       ]
     },
+
     {
       "name": "rings",
       "values": [
         {
-          "x": 450,
-          "y": 342,
-          "radius": 92.0,
+          "radius": 92,
           "label": "25%"
         },
         {
-          "x": 450,
-          "y": 342,
           "radius": 130.108,
           "label": "50%"
         },
         {
-          "x": 450,
-          "y": 342,
           "radius": 159.349,
           "label": "75%"
         },
         {
-          "x": 450,
-          "y": 342,
-          "radius": 184.0,
+          "radius": 184,
           "label": "100%"
         }
       ]
     }
   ],
+
   "marks": [
     {
       "type": "arc",
@@ -196,10 +194,10 @@
       "encode": {
         "enter": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
-            "value": 342
+            "signal": "centerY"
           },
           "startAngle": {
             "field": "start_angle"
@@ -222,12 +220,16 @@
           "strokeWidth": {
             "value": 1.5
           },
+          "cursor": {
+            "value": "pointer"
+          },
           "tooltip": {
-            "field": "tooltip_text"
+            "signal": "{'Bird group': datum.group, 'Nesting location': datum.category_label, 'Species recorded': datum.species_count + ' of ' + datum.known_species, 'Percentage': format(datum.percentage, '.1f') + '%'}"
           }
         }
       }
     },
+
     {
       "type": "arc",
       "from": {
@@ -236,10 +238,10 @@
       "encode": {
         "enter": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
-            "value": 342
+            "signal": "centerY"
           },
           "startAngle": {
             "field": "start_angle"
@@ -265,10 +267,14 @@
           "strokeWidth": {
             "value": 1.5
           },
+          "cursor": {
+            "value": "pointer"
+          },
           "tooltip": {
-            "field": "tooltip_text"
+            "signal": "{'Bird group': datum.group, 'Nesting location': datum.category_label, 'Species recorded': datum.species_count + ' of ' + datum.known_species, 'Percentage': format(datum.percentage, '.1f') + '%'}"
           }
         },
+
         "hover": {
           "fillOpacity": {
             "value": 1
@@ -282,18 +288,20 @@
         }
       }
     },
+
     {
       "type": "arc",
+      "interactive": false,
       "from": {
         "data": "rings"
       },
       "encode": {
         "enter": {
           "x": {
-            "field": "x"
+            "signal": "centerX"
           },
           "y": {
-            "field": "y"
+            "signal": "centerY"
           },
           "startAngle": {
             "value": 0
@@ -316,24 +324,26 @@
         }
       }
     },
+
     {
       "type": "rule",
+      "interactive": false,
       "from": {
         "data": "spokes"
       },
       "encode": {
         "enter": {
           "x": {
-            "field": "x"
+            "signal": "centerX"
           },
           "y": {
-            "field": "y"
+            "signal": "centerY"
           },
           "x2": {
-            "field": "x2"
+            "signal": "centerX + datum.dx"
           },
           "y2": {
-            "field": "y2"
+            "signal": "centerY + datum.dy"
           },
           "stroke": {
             "value": "#ffffff"
@@ -344,15 +354,17 @@
         }
       }
     },
+
     {
       "type": "symbol",
+      "interactive": false,
       "encode": {
         "enter": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
-            "value": 342
+            "signal": "centerY"
           },
           "shape": {
             "value": "circle"
@@ -372,12 +384,14 @@
         }
       }
     },
+
     {
       "type": "text",
+      "interactive": false,
       "encode": {
         "update": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
             "value": 41
@@ -406,21 +420,23 @@
         }
       }
     },
+
     {
       "type": "text",
+      "interactive": false,
       "from": {
         "data": "groupInfo"
       },
       "encode": {
-        "enter": {
+        "update": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
             "value": 73
           },
           "text": {
-            "signal": "datum.known_species + \" species with recorded nesting locations\""
+            "signal": "datum.known_species + ' species with recorded nesting locations'"
           },
           "align": {
             "value": "center"
@@ -440,18 +456,20 @@
         }
       }
     },
+
     {
       "type": "text",
+      "interactive": false,
       "from": {
         "data": "labels"
       },
       "encode": {
         "enter": {
           "x": {
-            "field": "x"
+            "signal": "centerX + datum.dx"
           },
           "y": {
-            "field": "y"
+            "signal": "centerY + datum.dy"
           },
           "text": {
             "field": "label"
@@ -474,21 +492,26 @@
         }
       }
     },
+
     {
       "type": "text",
+      "interactive": false,
       "encode": {
         "enter": {
           "x": {
-            "value": 450
+            "signal": "centerX"
           },
           "y": {
-            "value": 654
+            "value": 636
           },
           "text": {
             "value": "Hover for exact percentages. A species may use more than one location."
           },
           "align": {
             "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
           },
           "font": {
             "value": "DM Sans"
@@ -503,12 +526,14 @@
       }
     }
   ],
+
   "config": {
     "text": {
       "font": "DM Sans"
     }
   },
+
   "usermeta": {
-    "radius_scale": "sqrt(percent / 100) * 184; wedge area is proportional to percent; radial length is intentionally nonlinear."
+    "radius_scale": "sqrt(percent / 100) * 184; wedge area is proportional to percentage."
   }
 }
