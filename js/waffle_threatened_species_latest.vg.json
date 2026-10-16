@@ -1,0 +1,266 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Simple waffle chart showing the share of distinct Australian bird species classed as threatened based on the uploaded state and territory CSVs.",
+  "width": 610,
+  "height": 390,
+  "padding": {
+    "left": 20,
+    "right": 20,
+    "top": 16,
+    "bottom": 10
+  },
+  "background": "#ffffff",
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  },
+  "data": [
+    {
+      "name": "waffle",
+      "url": "../data/waffle_threatened_species_latest.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "index": "number",
+          "column": "number",
+          "row": "number",
+          "threatened_species": "number",
+          "total_species": "number",
+          "other_species": "number",
+          "threatened_percentage": "number",
+          "threatened_squares": "number",
+          "other_squares": "number"
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Threatened",
+        "Other native birds"
+      ],
+      "range": [
+        "#6a8b71",
+        "#dfe8dc"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "waffle"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "18 + (datum.column - 1) * 31"
+          },
+          "y": {
+            "signal": "35 + (10 - datum.row) * 31"
+          },
+          "width": {
+            "value": 26
+          },
+          "height": {
+            "value": 26
+          },
+          "cornerRadius": {
+            "value": 4
+          },
+          "fill": {
+            "scale": "color",
+            "field": "category"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "tooltip": {
+            "signal": "datum.category + ' | ' + datum.threatened_species + ' of ' + datum.total_species + ' distinct species nationally (' + datum.threatened_percentage + '%)'"
+          }
+        },
+        "hover": {
+          "stroke": {
+            "value": "#425645"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 72
+          },
+          "text": {
+            "value": "Threatened"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#273128"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 86
+          },
+          "width": {
+            "value": 18
+          },
+          "height": {
+            "value": 18
+          },
+          "cornerRadius": {
+            "value": 3
+          },
+          "fill": {
+            "value": "#6a8b71"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 376
+          },
+          "y": {
+            "value": 100
+          },
+          "text": {
+            "value": "Species listed as Vulnerable, Endangered or Critically Endangered"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#5b685d"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 145
+          },
+          "text": {
+            "value": "Other native birds"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#273128"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 159
+          },
+          "width": {
+            "value": 18
+          },
+          "height": {
+            "value": 18
+          },
+          "cornerRadius": {
+            "value": 3
+          },
+          "fill": {
+            "value": "#dfe8dc"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 376
+          },
+          "y": {
+            "value": 173
+          },
+          "text": {
+            "value": "All other distinct species in the national count"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#5b685d"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "DM Sans"
+    }
+  }
+}
