@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Histogram of Australian bird average body lengths in adjacent 10 cm bins. Each rectangle runs from zero to the species count; data is kept in an external CSV.",
+  "title": {
+    "text": "Are most Australian birds small or large?",
+    "anchor": "start",
+    "font": "DM Sans",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "color": "#263c2b",
+    "offset": 17
+  },
+  "width": 505,
+  "height": 340,
+  "data": {
+    "url": "../data/bird_length_histogram.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "length_from_cm": "number",
+        "length_to_cm": "number",
+        "species_count": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "format(datum.length_from_cm, '.0f') + '–' + format(datum.length_to_cm, '.0f') + ' cm'",
+      "as": "length_range"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "color": "#799c80",
+    "stroke": "#ffffff",
+    "strokeWidth": 1,
+    "opacity": 0.95
+  },
+  "encoding": {
+    "x": {
+      "field": "length_from_cm",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          180
+        ],
+        "nice": false
+      },
+      "axis": {
+        "title": "Average body length (cm)",
+        "values": [
+          0,
+          20,
+          40,
+          60,
+          80,
+          100,
+          120,
+          140,
+          160,
+          180
+        ],
+        "grid": false
+      }
+    },
+    "x2": {
+      "field": "length_to_cm"
+    },
+    "y": {
+      "field": "species_count",
+      "type": "quantitative",
+      "axis": {
+        "title": "Number of bird species",
+        "tickMinStep": 1
+      },
+      "scale": {
+        "domain": [
+          0,
+          280
+        ],
+        "nice": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "length_range",
+        "type": "nominal",
+        "title": "Body length"
+      },
+      {
+        "field": "species_count",
+        "type": "quantitative",
+        "title": "Number of species",
+        "format": ",.0f"
+      }
+    ],
+    "y2": {
+      "datum": 0
+    }
+  },
+  "background": "#ffffff",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans",
+    "axis": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelColor": "#4c594e",
+      "titleColor": "#2b392e",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "titleFontWeight": 500,
+      "titlePadding": 12,
+      "labelPadding": 7,
+      "tickColor": "#b8c6b7",
+      "domainColor": "#b8c6b7",
+      "gridColor": "#e9efe9",
+      "gridOpacity": 1
+    },
+    "text": {
+      "font": "DM Sans"
+    }
+  },
+  "padding": {
+    "left": 6,
+    "right": 18,
+    "top": 16,
+    "bottom": 9
+  }
+}

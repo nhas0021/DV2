@@ -1,0 +1,152 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Twelve Australian bird families with highest median body mass among families with measurements for at least five species. Source: Australian Bird Data workbook.",
+  "title": {
+    "text": "Which bird families are the heaviest?",
+    "anchor": "start",
+    "font": "DM Sans",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "color": "#263c2b",
+    "offset": 17
+  },
+  "width": 425,
+  "height": 392,
+  "data": {
+    "url": "../data/bird_family_body_mass.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "median_mass_g": "number",
+        "species_count": "number"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#527b63",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "y": {
+          "field": "family",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "title": null,
+            "labelLimit": 240,
+            "labelFontSize": 11.5,
+            "ticks": false,
+            "domain": false,
+            "labelPadding": 8
+          }
+        },
+        "x": {
+          "field": "median_mass_g",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              5300
+            ],
+            "nice": false
+          },
+          "axis": {
+            "title": "Median body mass (g)",
+            "values": [
+              0,
+              1000,
+              2000,
+              3000,
+              4000,
+              5000
+            ],
+            "labelExpr": "format(datum.value, ',.0f')",
+            "grid": true
+          }
+        },
+        "tooltip": [
+          {
+            "field": "family",
+            "type": "nominal",
+            "title": "Family"
+          },
+          {
+            "field": "median_mass_g",
+            "type": "quantitative",
+            "title": "Median body mass (g)",
+            "format": ",.1f"
+          },
+          {
+            "field": "species_count",
+            "type": "quantitative",
+            "title": "Species measured",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#425746"
+      },
+      "encoding": {
+        "y": {
+          "field": "family",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "median_mass_g",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "median_mass_g",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "background": "#ffffff",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "DM Sans",
+    "axis": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans",
+      "labelColor": "#4c594e",
+      "titleColor": "#2b392e",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "titleFontWeight": 500,
+      "titlePadding": 12,
+      "labelPadding": 7,
+      "tickColor": "#b8c6b7",
+      "domainColor": "#b8c6b7",
+      "gridColor": "#e9efe9",
+      "gridOpacity": 1
+    },
+    "bar": {
+      "cornerRadiusEnd": 3
+    },
+    "text": {
+      "font": "DM Sans"
+    }
+  },
+  "padding": {
+    "left": 6,
+    "right": 18,
+    "top": 16,
+    "bottom": 9
+  }
+}
