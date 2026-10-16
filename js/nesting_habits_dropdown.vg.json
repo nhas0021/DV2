@@ -1,0 +1,542 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Interactive nesting-habits radial area chart. Uses square-root radial scale so wedge area is proportional to percentage, making small non-zero shares visible; zero shares remain empty.",
+  "width": 900,
+  "height": 670,
+  "background": "#ffffff",
+  "padding": {
+    "left": 5,
+    "right": 5,
+    "top": 8,
+    "bottom": 10
+  },
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  },
+  "signals": [
+    {
+      "name": "selectedGroup",
+      "value": "Parrots",
+      "bind": {
+        "input": "select",
+        "name": "Bird group: ",
+        "options": [
+          "Parrots",
+          "Honeyeaters",
+          "Petrels & shearwaters",
+          "Ducks & geese",
+          "Gulls & terns",
+          "Hawks & eagles"
+        ]
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "nesting",
+      "url": "../data/nesting_habits_dropdown.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "position": "number",
+          "species_count": "number",
+          "known_species": "number",
+          "group_species": "number",
+          "percentage": "number",
+          "start_angle": "number",
+          "end_angle": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.group === selectedGroup"
+        }
+      ]
+    },
+    {
+      "name": "groupInfo",
+      "source": "nesting",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "group",
+            "known_species",
+            "group_species"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "labels",
+      "values": [
+        {
+          "category": "Ground",
+          "label": "On the ground",
+          "x": 573.5,
+          "y": 128.09,
+          "align": "center"
+        },
+        {
+          "category": "Supported",
+          "label": "Supported",
+          "x": 697.0,
+          "y": 342.0,
+          "align": "left"
+        },
+        {
+          "category": "Hanging",
+          "label": "Hanging",
+          "x": 573.5,
+          "y": 555.91,
+          "align": "center"
+        },
+        {
+          "category": "Burrow",
+          "label": "In burrows",
+          "x": 326.5,
+          "y": 555.91,
+          "align": "center"
+        },
+        {
+          "category": "Hollow",
+          "label": "In hollows",
+          "x": 203.0,
+          "y": 342.0,
+          "align": "right"
+        },
+        {
+          "category": "Floating",
+          "label": "Floating",
+          "x": 326.5,
+          "y": 128.09,
+          "align": "center"
+        }
+      ]
+    },
+    {
+      "name": "spokes",
+      "values": [
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 450.0,
+          "y2": 158.0
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 609.349,
+          "y2": 250.0
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 609.349,
+          "y2": 434.0
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 450.0,
+          "y2": 526.0
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 290.651,
+          "y2": 434.0
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "x2": 290.651,
+          "y2": 250.0
+        }
+      ]
+    },
+    {
+      "name": "rings",
+      "values": [
+        {
+          "x": 450,
+          "y": 342,
+          "radius": 92.0,
+          "label": "25%"
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "radius": 130.108,
+          "label": "50%"
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "radius": 159.349,
+          "label": "75%"
+        },
+        {
+          "x": 450,
+          "y": 342,
+          "radius": 184.0,
+          "label": "100%"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "arc",
+      "from": {
+        "data": "nesting"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 342
+          },
+          "startAngle": {
+            "field": "start_angle"
+          },
+          "endAngle": {
+            "field": "end_angle"
+          },
+          "innerRadius": {
+            "value": 0
+          },
+          "outerRadius": {
+            "value": 184
+          },
+          "fill": {
+            "value": "#f2f5f0"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "tooltip": {
+            "field": "tooltip_text"
+          }
+        }
+      }
+    },
+    {
+      "type": "arc",
+      "from": {
+        "data": "nesting"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 342
+          },
+          "startAngle": {
+            "field": "start_angle"
+          },
+          "endAngle": {
+            "field": "end_angle"
+          },
+          "innerRadius": {
+            "value": 0
+          },
+          "outerRadius": {
+            "signal": "184 * sqrt(max(0, datum.percentage) / 100)"
+          },
+          "fill": {
+            "field": "group_color"
+          },
+          "fillOpacity": {
+            "value": 0.92
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 1.5
+          },
+          "tooltip": {
+            "field": "tooltip_text"
+          }
+        },
+        "hover": {
+          "fillOpacity": {
+            "value": 1
+          },
+          "stroke": {
+            "value": "#324b3d"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "arc",
+      "from": {
+        "data": "rings"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "startAngle": {
+            "value": 0
+          },
+          "endAngle": {
+            "signal": "2 * PI"
+          },
+          "innerRadius": {
+            "signal": "datum.radius - 0.7"
+          },
+          "outerRadius": {
+            "field": "radius"
+          },
+          "fill": {
+            "value": "#d1d9d0"
+          },
+          "fillOpacity": {
+            "value": 0.8
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "spokes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "x2": {
+            "field": "x2"
+          },
+          "y2": {
+            "field": "y2"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 2.4
+          }
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 342
+          },
+          "shape": {
+            "value": "circle"
+          },
+          "size": {
+            "value": 550
+          },
+          "fill": {
+            "value": "#f8faf7"
+          },
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "update": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 41
+          },
+          "text": {
+            "signal": "selectedGroup"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 25
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#273128"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "groupInfo"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 73
+          },
+          "text": {
+            "signal": "datum.known_species + \" species with recorded nesting locations\""
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fill": {
+            "value": "#5b685d"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "labels"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "text": {
+            "field": "label"
+          },
+          "align": {
+            "field": "align"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 17
+          },
+          "fill": {
+            "value": "#4d5e50"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 627
+          },
+          "text": {
+            "value": "Wedge area reflects each share, so small non-zero values remain visible."
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fill": {
+            "value": "#4d5e50"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 450
+          },
+          "y": {
+            "value": 654
+          },
+          "text": {
+            "value": "Hover for exact percentages. A species may use more than one location."
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fill": {
+            "value": "#7a8579"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "DM Sans"
+    }
+  },
+  "usermeta": {
+    "radius_scale": "sqrt(percent / 100) * 184; wedge area is proportional to percent; radial length is intentionally nonlinear."
+  }
+}

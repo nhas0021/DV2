@@ -1,0 +1,37 @@
+group,category,category_label,position,species_count,known_species,group_species,percentage,group_color,start_angle,end_angle,tooltip_text
+Parrots,Ground,On the ground,1,3,42,42,7.14,#5D8C71,0.035,1.01219755,Parrots | On the ground: 3 of 42 species (7.1%). Categories may overlap.
+Parrots,Supported,Supported,2,0,42,42,0.0,#5D8C71,1.08219755,2.0593951,Parrots | Supported: 0 of 42 species (0.0%). Categories may overlap.
+Parrots,Hanging,Hanging,3,0,42,42,0.0,#5D8C71,2.1293951,3.10659265,Parrots | Hanging: 0 of 42 species (0.0%). Categories may overlap.
+Parrots,Burrow,In burrows,4,6,42,42,14.29,#5D8C71,3.17659265,4.1537902,Parrots | In burrows: 6 of 42 species (14.3%). Categories may overlap.
+Parrots,Hollow,In hollows,5,37,42,42,88.1,#5D8C71,4.2237902,5.20098776,Parrots | In hollows: 37 of 42 species (88.1%). Categories may overlap.
+Parrots,Floating,Floating,6,0,42,42,0.0,#5D8C71,5.27098776,6.24818531,Parrots | Floating: 0 of 42 species (0.0%). Categories may overlap.
+Honeyeaters,Ground,On the ground,1,5,73,73,6.85,#C28E67,0.035,1.01219755,Honeyeaters | On the ground: 5 of 73 species (6.8%). Categories may overlap.
+Honeyeaters,Supported,Supported,2,71,73,73,97.26,#C28E67,1.08219755,2.0593951,Honeyeaters | Supported: 71 of 73 species (97.3%). Categories may overlap.
+Honeyeaters,Hanging,Hanging,3,10,73,73,13.7,#C28E67,2.1293951,3.10659265,Honeyeaters | Hanging: 10 of 73 species (13.7%). Categories may overlap.
+Honeyeaters,Burrow,In burrows,4,0,73,73,0.0,#C28E67,3.17659265,4.1537902,Honeyeaters | In burrows: 0 of 73 species (0.0%). Categories may overlap.
+Honeyeaters,Hollow,In hollows,5,0,73,73,0.0,#C28E67,4.2237902,5.20098776,Honeyeaters | In hollows: 0 of 73 species (0.0%). Categories may overlap.
+Honeyeaters,Floating,Floating,6,0,73,73,0.0,#C28E67,5.27098776,6.24818531,Honeyeaters | Floating: 0 of 73 species (0.0%). Categories may overlap.
+Petrels & shearwaters,Ground,On the ground,1,39,39,41,100.0,#709BA1,0.035,1.01219755,Petrels & shearwaters | On the ground: 39 of 39 species (100.0%). Categories may overlap.
+Petrels & shearwaters,Supported,Supported,2,0,39,41,0.0,#709BA1,1.08219755,2.0593951,Petrels & shearwaters | Supported: 0 of 39 species (0.0%). Categories may overlap.
+Petrels & shearwaters,Hanging,Hanging,3,0,39,41,0.0,#709BA1,2.1293951,3.10659265,Petrels & shearwaters | Hanging: 0 of 39 species (0.0%). Categories may overlap.
+Petrels & shearwaters,Burrow,In burrows,4,36,39,41,92.31,#709BA1,3.17659265,4.1537902,Petrels & shearwaters | In burrows: 36 of 39 species (92.3%). Categories may overlap.
+Petrels & shearwaters,Hollow,In hollows,5,0,39,41,0.0,#709BA1,4.2237902,5.20098776,Petrels & shearwaters | In hollows: 0 of 39 species (0.0%). Categories may overlap.
+Petrels & shearwaters,Floating,Floating,6,0,39,41,0.0,#709BA1,5.27098776,6.24818531,Petrels & shearwaters | Floating: 0 of 39 species (0.0%). Categories may overlap.
+Ducks & geese,Ground,On the ground,1,12,18,20,66.67,#9A9F6E,0.035,1.01219755,Ducks & geese | On the ground: 12 of 18 species (66.7%). Categories may overlap.
+Ducks & geese,Supported,Supported,2,4,18,20,22.22,#9A9F6E,1.08219755,2.0593951,Ducks & geese | Supported: 4 of 18 species (22.2%). Categories may overlap.
+Ducks & geese,Hanging,Hanging,3,0,18,20,0.0,#9A9F6E,2.1293951,3.10659265,Ducks & geese | Hanging: 0 of 18 species (0.0%). Categories may overlap.
+Ducks & geese,Burrow,In burrows,4,0,18,20,0.0,#9A9F6E,3.17659265,4.1537902,Ducks & geese | In burrows: 0 of 18 species (0.0%). Categories may overlap.
+Ducks & geese,Hollow,In hollows,5,10,18,20,55.56,#9A9F6E,4.2237902,5.20098776,Ducks & geese | In hollows: 10 of 18 species (55.6%). Categories may overlap.
+Ducks & geese,Floating,Floating,6,1,18,20,5.56,#9A9F6E,5.27098776,6.24818531,Ducks & geese | Floating: 1 of 18 species (5.6%). Categories may overlap.
+Gulls & terns,Ground,On the ground,1,18,24,24,75.0,#8B7AA5,0.035,1.01219755,Gulls & terns | On the ground: 18 of 24 species (75.0%). Categories may overlap.
+Gulls & terns,Supported,Supported,2,5,24,24,20.83,#8B7AA5,1.08219755,2.0593951,Gulls & terns | Supported: 5 of 24 species (20.8%). Categories may overlap.
+Gulls & terns,Hanging,Hanging,3,0,24,24,0.0,#8B7AA5,2.1293951,3.10659265,Gulls & terns | Hanging: 0 of 24 species (0.0%). Categories may overlap.
+Gulls & terns,Burrow,In burrows,4,0,24,24,0.0,#8B7AA5,3.17659265,4.1537902,Gulls & terns | In burrows: 0 of 24 species (0.0%). Categories may overlap.
+Gulls & terns,Hollow,In hollows,5,0,24,24,0.0,#8B7AA5,4.2237902,5.20098776,Gulls & terns | In hollows: 0 of 24 species (0.0%). Categories may overlap.
+Gulls & terns,Floating,Floating,6,2,24,24,8.33,#8B7AA5,5.27098776,6.24818531,Gulls & terns | Floating: 2 of 24 species (8.3%). Categories may overlap.
+Hawks & eagles,Ground,On the ground,1,1,18,18,5.56,#C38180,0.035,1.01219755,Hawks & eagles | On the ground: 1 of 18 species (5.6%). Categories may overlap.
+Hawks & eagles,Supported,Supported,2,17,18,18,94.44,#C38180,1.08219755,2.0593951,Hawks & eagles | Supported: 17 of 18 species (94.4%). Categories may overlap.
+Hawks & eagles,Hanging,Hanging,3,0,18,18,0.0,#C38180,2.1293951,3.10659265,Hawks & eagles | Hanging: 0 of 18 species (0.0%). Categories may overlap.
+Hawks & eagles,Burrow,In burrows,4,0,18,18,0.0,#C38180,3.17659265,4.1537902,Hawks & eagles | In burrows: 0 of 18 species (0.0%). Categories may overlap.
+Hawks & eagles,Hollow,In hollows,5,0,18,18,0.0,#C38180,4.2237902,5.20098776,Hawks & eagles | In hollows: 0 of 18 species (0.0%). Categories may overlap.
+Hawks & eagles,Floating,Floating,6,0,18,18,0.0,#C38180,5.27098776,6.24818531,Hawks & eagles | Floating: 0 of 18 species (0.0%). Categories may overlap.
