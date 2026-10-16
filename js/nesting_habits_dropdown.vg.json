@@ -482,34 +482,6 @@
             "value": 450
           },
           "y": {
-            "value": 627
-          },
-          "text": {
-            "value": "Wedge area reflects each share, so small non-zero values remain visible."
-          },
-          "align": {
-            "value": "center"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 14
-          },
-          "fill": {
-            "value": "#4d5e50"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 450
-          },
-          "y": {
             "value": 654
           },
           "text": {

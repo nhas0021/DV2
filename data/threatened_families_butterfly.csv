@@ -1,0 +1,13 @@
+Family,family_display,total_species,threatened_species,not_threatened_species,threatened_pct,rank,threatened_neg,pct_label,family_label,order
+Diomedeidae,Albatrosses,16,15,1,93.75,1,-15,93.8%,Albatrosses,12
+Scolopacidae,"Snipe, Sandpipers, Godwits, Curlew, Stints and Phalaropes",40,11,29,27.500000000000004,2,-11,27.5%,Sandpipers & allies,11
+Cacatuidae,Cockatoos and Corellas,14,3,11,21.428571428571427,3,-3,21.4%,Cockatoos,10
+Psittacidae,"Parrots, Lorikeets and Rosellas",46,8,38,17.391304347826086,4,-8,17.4%,Parrots,9
+Charadriidae,"Plovers, Dotterel and Lapwings",18,3,15,16.666666666666664,5,-3,16.7%,"Plovers, Dotterel and Lapwings",8
+Procellariidae,Petrels and Shearwaters,44,7,37,15.909090909090908,6,-7,15.9%,Petrels and Shearwaters,7
+Maluridae,"Fairy-wrens, Emu-wrens and Grasswrens",26,4,22,15.384615384615385,7,-4,15.4%,Fairy-wrens & allies,6
+Estrildidae,Weaver Finches,19,2,17,10.526315789473683,8,-2,10.5%,Weaver Finches,5
+Pachycephalidae,"Whistlers, Shrike-thrushes and allies",14,1,13,7.142857142857142,9,-1,7.1%,Whistlers & allies,4
+Rallidae,"Crakes, Rails and Swamphens",15,1,14,6.666666666666667,10,-1,6.7%,Rails & crakes,3
+Ardeidae,"Herons, Egrets and Bitterns",18,1,17,5.555555555555555,11,-1,5.6%,Herons & egrets,2
+Accipitridae,"Eagles, Kites, Goshawks and Osprey",19,1,18,5.263157894736842,12,-1,5.3%,Hawks & eagles,1

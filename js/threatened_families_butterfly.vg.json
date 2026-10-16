@@ -1,0 +1,1090 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Mirrored butterfly chart. Species are deduplicated nationally across eight state and territory CSVs. Threatened = EPBC Vulnerable, Endangered or Critically Endangered. Other means not flagged as threatened in these CSVs, not a guarantee of safety.",
+  "width": 1200,
+  "height": 646,
+  "padding": {
+    "top": 8,
+    "bottom": 8,
+    "left": 10,
+    "right": 10
+  },
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  },
+  "background": "#ffffff",
+  "data": [
+    {
+      "name": "families",
+      "url": "../data/threatened_families_butterfly.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "total_species": "number",
+          "threatened_species": "number",
+          "not_threatened_species": "number",
+          "threatened_pct": "number",
+          "rank": "number"
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 220
+          },
+          "y": {
+            "value": 28
+          },
+          "text": {
+            "value": "Threatened species"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 17
+          },
+          "fill": {
+            "value": "#b66d61"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontWeight": {
+            "value": 700
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 540
+          },
+          "y": {
+            "value": 28
+          },
+          "text": {
+            "value": "Bird family"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fill": {
+            "value": "#28352d"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontWeight": {
+            "value": 700
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 875
+          },
+          "y": {
+            "value": 28
+          },
+          "text": {
+            "value": "Other species"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 17
+          },
+          "fill": {
+            "value": "#7d997e"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontWeight": {
+            "value": 700
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 370.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 370.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "0"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 720.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 720.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "0"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 292.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 292.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "10"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 798.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 798.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "10"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 214.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 214.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "20"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 876.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 876.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "20"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 136.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 136.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "30"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 954.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 954.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "30"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 58.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 58.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "40"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 1032.0
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 1032.0
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "value": "40"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 123
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 163
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 203
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 243
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 283
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 323
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 363
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 403
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 443
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 483
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 20
+          },
+          "x2": {
+            "value": 1178
+          },
+          "y": {
+            "value": 523
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "370 - datum.threatened_species * 7.8"
+          },
+          "x2": {
+            "value": 370
+          },
+          "y": {
+            "signal": "92 + (datum.rank-1)*40"
+          },
+          "height": {
+            "value": 25
+          },
+          "fill": {
+            "value": "#b66d61"
+          },
+          "cornerRadius": {
+            "value": 2
+          },
+          "tooltip": {
+            "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
+          }
+        }
+      },
+      "from": {
+        "data": "families"
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 720
+          },
+          "x2": {
+            "signal": "720 + datum.not_threatened_species * 7.8"
+          },
+          "y": {
+            "signal": "92 + (datum.rank-1)*40"
+          },
+          "height": {
+            "value": 25
+          },
+          "fill": {
+            "value": "#7d997e"
+          },
+          "cornerRadius": {
+            "value": 2
+          },
+          "tooltip": {
+            "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
+          }
+        }
+      },
+      "from": {
+        "data": "families"
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 540
+          },
+          "y": {
+            "signal": "105 + (datum.rank-1)*40"
+          },
+          "text": {
+            "field": "family_label"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#28352d"
+          },
+          "tooltip": {
+            "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
+          }
+        }
+      },
+      "from": {
+        "data": "families"
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "370 - datum.threatened_species * 7.8 - 7"
+          },
+          "y": {
+            "signal": "105 + (datum.rank-1)*40"
+          },
+          "text": {
+            "field": "threatened_species"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#b66d61"
+          }
+        }
+      },
+      "from": {
+        "data": "families"
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "720 + datum.not_threatened_species * 7.8 + 8"
+          },
+          "y": {
+            "signal": "105 + (datum.rank-1)*40"
+          },
+          "text": {
+            "field": "not_threatened_species"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#4d6b52"
+          }
+        }
+      },
+      "from": {
+        "data": "families"
+      }
+    }
+  ],
+  "config": {
+    "text": {
+      "font": "DM Sans"
+    }
+  }
+}
