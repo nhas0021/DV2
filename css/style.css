@@ -48,7 +48,7 @@ body {
 
   font: 15px/1.6 var(--body);
 
-  zoom: 75%;
+  zoom: 80%;
 
 }
 
@@ -1225,6 +1225,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .waffle-analysis-column .finding-label {
     margin-bottom: 14px;
+    margin-left: 20px;
 }
 
 .waffle-analysis-column .chapter-insight p {
