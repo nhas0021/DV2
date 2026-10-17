@@ -10,8 +10,8 @@
     "color": "#263c2b",
     "offset": 17
   },
-  "width": 505,
-  "height": 340,
+  "width": 410,
+  "height": 392,
   "data": {
     "url": "../data/bird_length_histogram.csv",
     "format": {

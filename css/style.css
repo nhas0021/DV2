@@ -1008,11 +1008,6 @@ h1, h2, h3, p { margin-top: 0; }
     color: var(--ink);
 }
 
-/* ----------------------------------
-   NEW CHAPTERS / NESTING AND CONSERVATION
-   Existing layout and chart styling remain unchanged.
----------------------------------- */
-
 /* Keep the wide polar and butterfly insight areas in two readable columns. */
 .chapter--wide .chapter-insight.polar-insights,
 .chapter--wide .chapter-insight.butterfly-insights {
@@ -1044,7 +1039,7 @@ h1, h2, h3, p { margin-top: 0; }
     grid-column: auto;
     max-width: 55ch;
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.75;
 }
 
@@ -1100,5 +1095,245 @@ h1, h2, h3, p { margin-top: 0; }
         border-left: 0;
         border-top: 1px solid var(--line);
         padding: 15px 0 0;
+    }
+}
+
+
+/* Remove unwanted lines below Section 06 charts */
+
+.chapter[aria-labelledby="heading-body-size"] .vega-bindings {
+    display: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* -------------------------
+
+/* -------------------------
+   WAFFLE - RIGHT SIDE
+------------------------- */
+
+@media (min-width: 761px) {
+
+    .chapter .chart-figure.waffle-right-figure {
+        grid-column: 2 / 4 !important;
+        width: 100%;
+        min-width: 0;
+        justify-self: stretch;
+    }
+}
+
+/* Chart container */
+
+.waffle-right-figure .chart-shell {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 24px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Enlarge waffle to fit available space */
+
+.waffle-right-figure .vega-embed {
+    width: 100%;
+    max-width: 100%;
+}
+
+.waffle-right-figure .vega-embed svg,
+.waffle-right-figure .vega-embed canvas {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+@media (min-width: 761px) {
+
+    /* Move choropleth to the left two columns */
+    .chapter:has(#threatened_choropleth) .chart-figure {
+        grid-column: 1 / span 2 !important;
+        grid-row: 2 !important;
+        width: 100%;
+        min-width: 0;
+        justify-self: stretch;
+    }
+
+    /* Move insight box to the right column */
+    .chapter:has(#threatened_choropleth) .chapter-insight {
+        grid-column: 3 !important;
+        grid-row: 2 !important;
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Keep mobile layout stacked */
+
+@media (max-width: 760px) {
+
+    .chapter:has(#threatened_choropleth) .chart-figure,
+    .chapter:has(#threatened_choropleth) .chapter-insight {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+    }
+}
+
+
+.migration-insight-stack .analysis-sources {
+    margin-top: auto;
+    position: relative;
+    top: 49px;
+}
+
+
+/* ----------------------------------
+   SECTION 08 - WAFFLE WITH LEFT ANALYSIS
+---------------------------------- */
+
+/* Left analysis column */
+
+.waffle-analysis-column {
+    min-width: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    align-self: start;
+}
+
+/* Highlighted insight box */
+
+.chapter--wide .waffle-analysis-column .chapter-insight {
+    display: block;
+    grid-column: auto;
+
+    width: 100%;
+    padding: 20px 24px;
+
+    border-left: 3px solid var(--olive);
+    background: rgba(220, 229, 216, .28);
+}
+
+.waffle-analysis-column .finding-label {
+    margin-bottom: 14px;
+}
+
+.waffle-analysis-column .chapter-insight p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Additional analysis */
+
+.waffle-left-analysis {
+    border-top: none !important;
+    padding-top: 3px;
+}
+
+.waffle-left-analysis p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 32px;
+}
+
+.waffle-left-analysis p:last-child {
+    margin-bottom: 0;
+}
+
+/* Desktop positioning */
+
+@media (min-width: 761px) {
+
+    .chapter-grid > .waffle-analysis-column {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+    }
+
+    .chapter-grid > .waffle-right-figure {
+        grid-column: 2 / 4 !important;
+        grid-row: 2 !important;
+        width: 100%;
+        min-width: 0;
+    }
+
+  }
+
+  
+/* ----------------------------------
+   SECTION 09 - CHOROPLETH ANALYSIS
+---------------------------------- */
+
+.choropleth-insight-stack {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+
+    min-width: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    align-self: stretch;
+}
+
+/* Highlighted box */
+
+.choropleth-insight-stack .chapter-insight {
+    display: block;
+    grid-column: auto;
+    grid-row: auto;
+
+    padding: 20px 24px;
+}
+
+/* Analysis paragraphs */
+
+.choropleth-insight-stack .chapter-analysis {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
+    padding-top: 30px;
+}
+
+.choropleth-insight-stack .chapter-analysis p:not(.analysis-sources) {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 28px;
+}
+
+/* Sources near bottom of map */
+
+.choropleth-insight-stack .analysis-sources {
+    margin-top: 24px;
+    margin-bottom: 0;
+    padding-top: 15px;
+    font-size: 10.5px;
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+    .choropleth-insight-stack {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        gap: 22px;
+    }
+
+    .choropleth-insight-stack .analysis-sources {
+        margin-top: 20px;
     }
 }

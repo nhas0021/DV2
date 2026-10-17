@@ -1,11 +1,12 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Mirrored butterfly chart. Species are deduplicated nationally across eight state and territory CSVs. Threatened = EPBC Vulnerable, Endangered or Critically Endangered. Other means not flagged as threatened in these CSVs, not a guarantee of safety.",
-  "width": 1200,
+  "width": 1035,
   "height": 646,
   "padding": {
-    "top": 8,
-    "bottom": 8,
+    "top": 0,
+    "bottom": 0,
     "left": 10,
     "right": 10
   },
@@ -14,6 +15,24 @@
     "contains": "padding"
   },
   "background": "#ffffff",
+  "signals": [
+    {
+      "name": "chartCenter",
+      "update": "width / 2"
+    },
+    {
+      "name": "leftZero",
+      "update": "chartCenter - 143.5"
+    },
+    {
+      "name": "rightZero",
+      "update": "chartCenter + 143.5"
+    },
+    {
+      "name": "barScale",
+      "value": 6.4
+    }
+  ],
   "data": [
     {
       "name": "families",
@@ -28,15 +47,184 @@
           "rank": "number"
         }
       }
+    },
+    {
+      "name": "ticks",
+      "values": [
+        { "value": 0 },
+        { "value": 10 },
+        { "value": 20 },
+        { "value": 30 },
+        { "value": 40 }
+      ]
+    },
+    {
+      "name": "rows",
+      "values": [
+        { "rank": 1 },
+        { "rank": 2 },
+        { "rank": 3 },
+        { "rank": 4 },
+        { "rank": 5 },
+        { "rank": 6 },
+        { "rank": 7 },
+        { "rank": 8 },
+        { "rank": 9 },
+        { "rank": 10 },
+        { "rank": 11 }
+      ]
     }
   ],
   "marks": [
+    {
+      "type": "rule",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "leftZero - datum.value * barScale"
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "rightZero + datum.value * barScale"
+          },
+          "y": {
+            "value": 64
+          },
+          "y2": {
+            "value": 579
+          },
+          "stroke": {
+            "value": "#e8ede7"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "rows"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 60
+          },
+          "x2": {
+            "signal": "width - 60"
+          },
+          "y": {
+            "signal": "123 + (datum.rank - 1) * 40"
+          },
+          "stroke": {
+            "value": "#f3f5f1"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "leftZero - datum.value * barScale"
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "field": "value"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "ticks"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "rightZero + datum.value * barScale"
+          },
+          "y": {
+            "value": 600
+          },
+          "text": {
+            "field": "value"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fill": {
+            "value": "#657267"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
     {
       "type": "text",
       "encode": {
         "enter": {
           "x": {
-            "value": 220
+            "signal": "leftZero - 20 * barScale"
           },
           "y": {
             "value": 28
@@ -50,6 +238,9 @@
           "fontSize": {
             "value": 17
           },
+          "fontWeight": {
+            "value": 700
+          },
           "fill": {
             "value": "#b66d61"
           },
@@ -58,9 +249,6 @@
           },
           "baseline": {
             "value": "middle"
-          },
-          "fontWeight": {
-            "value": 700
           }
         }
       }
@@ -70,7 +258,7 @@
       "encode": {
         "enter": {
           "x": {
-            "value": 540
+            "signal": "chartCenter"
           },
           "y": {
             "value": 28
@@ -84,6 +272,9 @@
           "fontSize": {
             "value": 15
           },
+          "fontWeight": {
+            "value": 700
+          },
           "fill": {
             "value": "#28352d"
           },
@@ -92,9 +283,6 @@
           },
           "baseline": {
             "value": "middle"
-          },
-          "fontWeight": {
-            "value": 700
           }
         }
       }
@@ -104,7 +292,7 @@
       "encode": {
         "enter": {
           "x": {
-            "value": 875
+            "signal": "rightZero + 20 * barScale"
           },
           "y": {
             "value": 28
@@ -118,6 +306,9 @@
           "fontSize": {
             "value": 17
           },
+          "fontWeight": {
+            "value": 700
+          },
           "fill": {
             "value": "#7d997e"
           },
@@ -126,797 +317,25 @@
           },
           "baseline": {
             "value": "middle"
-          },
-          "fontWeight": {
-            "value": 700
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 370.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 370.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "0"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 720.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 720.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "0"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 292.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 292.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "10"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 798.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 798.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "10"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 214.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 214.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "20"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 876.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 876.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "20"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 136.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 136.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "30"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 954.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 954.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "30"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 58.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 58.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "40"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 1032.0
-          },
-          "y": {
-            "value": 64
-          },
-          "y2": {
-            "value": 579
-          },
-          "stroke": {
-            "value": "#e8ede7"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 1032.0
-          },
-          "y": {
-            "value": 600
-          },
-          "text": {
-            "value": "40"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 11
-          },
-          "fill": {
-            "value": "#657267"
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 123
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 163
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 203
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 243
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 283
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 323
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 363
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 403
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 443
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 483
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
-          }
-        }
-      }
-    },
-    {
-      "type": "rule",
-      "encode": {
-        "enter": {
-          "x": {
-            "value": 20
-          },
-          "x2": {
-            "value": 1178
-          },
-          "y": {
-            "value": 523
-          },
-          "stroke": {
-            "value": "#f3f5f1"
-          },
-          "strokeWidth": {
-            "value": 1
           }
         }
       }
     },
     {
       "type": "rect",
+      "from": {
+        "data": "families"
+      },
       "encode": {
         "enter": {
           "x": {
-            "signal": "370 - datum.threatened_species * 7.8"
+            "signal": "leftZero - datum.threatened_species * barScale"
           },
           "x2": {
-            "value": 370
+            "signal": "leftZero"
           },
           "y": {
-            "signal": "92 + (datum.rank-1)*40"
+            "signal": "92 + (datum.rank - 1) * 40"
           },
           "height": {
             "value": 25
@@ -931,23 +350,23 @@
             "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
           }
         }
-      },
-      "from": {
-        "data": "families"
       }
     },
     {
       "type": "rect",
+      "from": {
+        "data": "families"
+      },
       "encode": {
         "enter": {
           "x": {
-            "value": 720
+            "signal": "rightZero"
           },
           "x2": {
-            "signal": "720 + datum.not_threatened_species * 7.8"
+            "signal": "rightZero + datum.not_threatened_species * barScale"
           },
           "y": {
-            "signal": "92 + (datum.rank-1)*40"
+            "signal": "92 + (datum.rank - 1) * 40"
           },
           "height": {
             "value": 25
@@ -962,20 +381,20 @@
             "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
           }
         }
-      },
-      "from": {
-        "data": "families"
       }
     },
     {
       "type": "text",
+      "from": {
+        "data": "families"
+      },
       "encode": {
         "enter": {
           "x": {
-            "value": 540
+            "signal": "chartCenter"
           },
           "y": {
-            "signal": "105 + (datum.rank-1)*40"
+            "signal": "105 + (datum.rank - 1) * 40"
           },
           "text": {
             "field": "family_label"
@@ -1002,20 +421,20 @@
             "signal": "datum.family_label + ': ' + datum.threatened_species + ' threatened, ' + datum.not_threatened_species + ' other species (' + format(datum.threatened_pct, '.1f') + '% threatened)'"
           }
         }
-      },
-      "from": {
-        "data": "families"
       }
     },
     {
       "type": "text",
+      "from": {
+        "data": "families"
+      },
       "encode": {
         "enter": {
           "x": {
-            "signal": "370 - datum.threatened_species * 7.8 - 7"
+            "signal": "leftZero - datum.threatened_species * barScale - 6"
           },
           "y": {
-            "signal": "105 + (datum.rank-1)*40"
+            "signal": "105 + (datum.rank - 1) * 40"
           },
           "text": {
             "field": "threatened_species"
@@ -1039,20 +458,20 @@
             "value": "#b66d61"
           }
         }
-      },
-      "from": {
-        "data": "families"
       }
     },
     {
       "type": "text",
+      "from": {
+        "data": "families"
+      },
       "encode": {
         "enter": {
           "x": {
-            "signal": "720 + datum.not_threatened_species * 7.8 + 8"
+            "signal": "rightZero + datum.not_threatened_species * barScale + 7"
           },
           "y": {
-            "signal": "105 + (datum.rank-1)*40"
+            "signal": "105 + (datum.rank - 1) * 40"
           },
           "text": {
             "field": "not_threatened_species"
@@ -1076,9 +495,6 @@
             "value": "#4d6b52"
           }
         }
-      },
-      "from": {
-        "data": "families"
       }
     }
   ],

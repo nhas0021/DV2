@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Simple waffle chart showing the share of distinct Australian bird species classed as threatened based on the uploaded state and territory CSVs.",
@@ -84,14 +85,6 @@
           "tooltip": {
             "signal": "datum.category + ' | ' + datum.threatened_species + ' of ' + datum.total_species + ' distinct species nationally (' + datum.threatened_percentage + '%)'"
           }
-        },
-        "hover": {
-          "stroke": {
-            "value": "#425645"
-          },
-          "strokeWidth": {
-            "value": 1.5
-          }
         }
       }
     },
@@ -103,7 +96,7 @@
             "value": 350
           },
           "y": {
-            "value": 72
+            "value": 46
           },
           "text": {
             "value": "Threatened"
@@ -131,7 +124,7 @@
             "value": 350
           },
           "y": {
-            "value": 86
+            "value": 55
           },
           "width": {
             "value": 18
@@ -159,7 +152,7 @@
             "value": 376
           },
           "y": {
-            "value": 100
+            "value": 69
           },
           "text": {
             "value": "Species listed as Vulnerable, Endangered or Critically Endangered"
@@ -184,7 +177,7 @@
             "value": 350
           },
           "y": {
-            "value": 145
+            "value": 120
           },
           "text": {
             "value": "Other native birds"
@@ -212,7 +205,7 @@
             "value": 350
           },
           "y": {
-            "value": 159
+            "value": 130
           },
           "width": {
             "value": 18
@@ -240,7 +233,7 @@
             "value": 376
           },
           "y": {
-            "value": 173
+            "value": 144
           },
           "text": {
             "value": "All other distinct species in the national count"
@@ -253,6 +246,156 @@
           },
           "fill": {
             "value": "#5b685d"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "x2": {
+            "value": 590
+          },
+          "y": {
+            "value": 205
+          },
+          "stroke": {
+            "value": "#d6dfd3"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 234
+          },
+          "text": {
+            "value": "A SMALL SHARE, A SERIOUS CONCERN"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#304e3a"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 272
+          },
+          "text": {
+            "value": "About 9 in every 100 species"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#59665c"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 293
+          },
+          "text": {
+            "value": "are formally listed as threatened."
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#59665c"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 320
+          },
+          "text": {
+            "value": "Even a small share represents"
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#59665c"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 350
+          },
+          "y": {
+            "value": 341
+          },
+          "text": {
+            "value": "a serious conservation concern."
+          },
+          "font": {
+            "value": "DM Sans"
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#59665c"
           }
         }
       }

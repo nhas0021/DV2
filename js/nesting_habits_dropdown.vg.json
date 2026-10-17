@@ -3,21 +3,18 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Interactive nesting-habits radial area chart with centred layout and structured tooltips.",
   "width": 1047,
-  "height": 656,
+  "height": 565,
   "background": "#ffffff",
-
   "padding": {
     "left": 5,
     "right": 5,
     "top": 8,
-    "bottom": 10
+    "bottom": 0
   },
-
   "autosize": {
     "type": "pad",
     "contains": "padding"
   },
-
   "signals": [
     {
       "name": "centerX",
@@ -25,7 +22,7 @@
     },
     {
       "name": "centerY",
-      "update": "height / 2"
+      "value": 328
     },
     {
       "name": "selectedGroup",
@@ -44,7 +41,6 @@
       }
     }
   ],
-
   "data": [
     {
       "name": "nesting",
@@ -68,7 +64,6 @@
         }
       ]
     },
-
     {
       "name": "groupInfo",
       "source": "nesting",
@@ -83,7 +78,6 @@
         }
       ]
     },
-
     {
       "name": "labels",
       "values": [
@@ -131,7 +125,6 @@
         }
       ]
     },
-
     {
       "name": "spokes",
       "values": [
@@ -161,7 +154,6 @@
         }
       ]
     },
-
     {
       "name": "rings",
       "values": [
@@ -184,7 +176,6 @@
       ]
     }
   ],
-
   "marks": [
     {
       "type": "arc",
@@ -229,7 +220,6 @@
         }
       }
     },
-
     {
       "type": "arc",
       "from": {
@@ -274,7 +264,6 @@
             "signal": "{'Bird group': datum.group, 'Nesting location': datum.category_label, 'Species recorded': datum.species_count + ' of ' + datum.known_species, 'Percentage': format(datum.percentage, '.1f') + '%'}"
           }
         },
-
         "hover": {
           "fillOpacity": {
             "value": 1
@@ -288,7 +277,6 @@
         }
       }
     },
-
     {
       "type": "arc",
       "interactive": false,
@@ -324,7 +312,6 @@
         }
       }
     },
-
     {
       "type": "rule",
       "interactive": false,
@@ -354,7 +341,6 @@
         }
       }
     },
-
     {
       "type": "symbol",
       "interactive": false,
@@ -384,7 +370,6 @@
         }
       }
     },
-
     {
       "type": "text",
       "interactive": false,
@@ -420,7 +405,6 @@
         }
       }
     },
-
     {
       "type": "text",
       "interactive": false,
@@ -456,7 +440,6 @@
         }
       }
     },
-
     {
       "type": "text",
       "interactive": false,
@@ -491,48 +474,13 @@
           }
         }
       }
-    },
-
-    {
-      "type": "text",
-      "interactive": false,
-      "encode": {
-        "enter": {
-          "x": {
-            "signal": "centerX"
-          },
-          "y": {
-            "value": 636
-          },
-          "text": {
-            "value": "Hover for exact percentages. A species may use more than one location."
-          },
-          "align": {
-            "value": "center"
-          },
-          "baseline": {
-            "value": "middle"
-          },
-          "font": {
-            "value": "DM Sans"
-          },
-          "fontSize": {
-            "value": 12
-          },
-          "fill": {
-            "value": "#7a8579"
-          }
-        }
-      }
     }
   ],
-
   "config": {
     "text": {
       "font": "DM Sans"
     }
   },
-
   "usermeta": {
     "radius_scale": "sqrt(percent / 100) * 184; wedge area is proportional to percentage."
   }
