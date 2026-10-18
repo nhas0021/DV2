@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Share of bird species in the 16 most represented bird families in each Australian state and territory.",
@@ -13,6 +14,43 @@
   },
   "data": {
     "url": "../data/bird_family_heatmap.csv"
+  },
+  "encoding": {
+    "tooltip": [
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State / territory"
+      },
+      {
+        "field": "Family_Label",
+        "type": "nominal",
+        "title": "Bird family"
+      },
+      {
+        "field": "Family",
+        "type": "nominal",
+        "title": "Scientific family"
+      },
+      {
+        "field": "Species_Count",
+        "type": "quantitative",
+        "title": "Species in family",
+        "format": ",d"
+      },
+      {
+        "field": "Total_Species",
+        "type": "quantitative",
+        "title": "Total state species",
+        "format": ",d"
+      },
+      {
+        "field": "Percentage",
+        "type": "quantitative",
+        "title": "Share of species",
+        "format": ".1f"
+      }
+    ]
   },
   "layer": [
     {
@@ -104,42 +142,7 @@
             "titlePadding": 8,
             "titleLimit": 400
           }
-        },
-        "tooltip": [
-          {
-            "field": "State",
-            "type": "nominal",
-            "title": "State / territory"
-          },
-          {
-            "field": "Family_Label",
-            "type": "nominal",
-            "title": "Bird family"
-          },
-          {
-            "field": "Family",
-            "type": "nominal",
-            "title": "Scientific family"
-          },
-          {
-            "field": "Species_Count",
-            "type": "quantitative",
-            "title": "Species in family",
-            "format": ",d"
-          },
-          {
-            "field": "Total_Species",
-            "type": "quantitative",
-            "title": "Total state species",
-            "format": ",d"
-          },
-          {
-            "field": "Percentage",
-            "type": "quantitative",
-            "title": "Share of species",
-            "format": ".1f"
-          }
-        ]
+        }
       }
     },
     {

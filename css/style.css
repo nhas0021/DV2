@@ -1,1340 +1,989 @@
+
 :root {
-
   --outside: #e5e9e1;
-
   --paper: #faf8f2;
-
   --paper-bright: #ffffff;
-
   --ink: #25342c;
-
   --muted: #59665c;
-
   --sage: #dce5d8;
-
   --sage-pale: #edf1e9;
-
   --olive: #54765c;
-
   --olive-dark: #304e3a;
-
   --line: #c6d1c3;
-
   --sand: #efeadb;
-
   --display: "Fraunces", Georgia, serif;
-
   --body: "DM Sans", Arial, sans-serif;
-
   /* One grid system for every section: same padding, columns and gaps. */
-
   --page-gutter: clamp(24px, 5.25vw, 64px);
-
   --column-gap: clamp(18px, 2.2vw, 28px);
-
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
-
   margin: 0;
-
   background: var(--outside);
-
   color: var(--ink);
-
   font: 15px/1.6 var(--body);
-
-  zoom: 80%;
-
+  /* No CSS zoom, to avoid Vega pointer misalignment */
 }
 
 h1, h2, h3, p { margin-top: 0; }
 
 .dashboard {
-
   width: min(100%, 1220px);
-
   margin: 0 auto;
-
   overflow: hidden;
-
   background: var(--paper);
-
   box-shadow: 0 9px 42px rgba(27, 51, 34, .07);
-
 }
 
-/* This is the shared three-column grid. Every block uses it. */
-
+/* Shared three-column grid */
 .content-grid {
-
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   column-gap: var(--column-gap);
-
   padding-inline: var(--page-gutter);
-
 }
 
 .span-two { grid-column: span 2; min-width: 0; }
-
 .span-three { grid-column: 1 / -1; min-width: 0; }
 
 .eyebrow {
-
   color: var(--olive-dark);
-
   font-size: 10px;
-
   font-weight: 700;
-
   letter-spacing: .16em;
-
   text-transform: uppercase;
-
 }
 
-/* Cover: title 2 columns; introduction exactly column 3. */
-
+/* COVER */
 .cover {
-
   background: var(--sage);
-
   border-bottom: 1px solid #c0cfbc;
-
 }
 
 .cover-layout {
-
   row-gap: 25px;
-
   padding-top: 22px;
-
   padding-bottom: 38px;
-
 }
 
 .cover-topline {
-
   grid-column: 1 / -1;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   flex-wrap: wrap;
-
   gap: 10px;
-
   padding-bottom: 15px;
-
   border-bottom: 1px solid rgba(48, 78, 58, .24);
-
 }
 
 .cover-topline .edition {
-
   color: var(--muted);
-
   font-size: 11px;
-
   font-weight: 600;
-
 }
 
 .cover-title { min-width: 0; }
 
 .cover-title h1 {
-
   margin: 0 0 12px;
-
   font-family: var(--display);
-
   font-size: clamp(43px, 6.8vw, 82px);
-
   font-weight: 600;
-
   letter-spacing: -.054em;
-
   line-height: 1.06;
-
 }
 
 .cover .strapline {
-
   max-width: 570px;
-
   margin-bottom: 0;
-
   color: #425647;
-
   font-size: clamp(14px, 1.5vw, 18px);
-
   line-height: 1.55;
-
 }
 
 .cover-aside {
-
   align-self: end;
-
   min-width: 0;
-
   border-left: 2px solid var(--olive);
-
   padding-left: 19px;
-
   font-size: 14px;
-
   line-height: 1.65;
-
 }
 
 .cover-aside p { margin: 3px 0 0; }
 
-/* Metric dividers start on precisely the same grid lines as side notes. */
-
+/* SUMMARY */
 .summary-strip {
-
   background: var(--paper-bright);
-
   border-bottom: 1px solid var(--line);
-
 }
 
-.summary-grid { padding-top: 18px; padding-bottom: 18px; }
+.summary-grid {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
 
 .summary-item {
-
   display: flex;
-
   align-items: center;
-
   gap: 14px;
-
   min-width: 0;
-
 }
 
 .summary-item:not(:first-child) {
-
   border-left: 1px solid var(--line);
-
   padding-left: 19px;
-
 }
 
 .summary-number {
-
   flex: 0 0 auto;
-
   font-family: var(--display);
-
   font-size: clamp(26px, 3.6vw, 43px);
-
   color: var(--olive-dark);
-
   line-height: 1.08;
-
   white-space: nowrap;
-
 }
 
 .summary-text {
-
   max-width: 156px;
-
   color: var(--muted);
-
   font-size: 12px;
-
   line-height: 1.5;
-
 }
 
-/* Intro: 2 columns of copy, 1 aligned explanatory column. */
-
+/* INTRO */
 .story-intro {
-
   row-gap: 18px;
-
   padding-top: 31px;
-
   padding-bottom: 33px;
-
   border-bottom: 1px solid var(--line);
-
 }
 
 .story-intro .lead {
-
   margin: 9px 0 0;
-
   max-width: 760px;
-
   font-family: var(--display);
-
   font-size: clamp(18px, 2.2vw, 26px);
-
   line-height: 1.48;
-
 }
 
 .intro-note {
-
   align-self: center;
-
   min-width: 0;
-
   border-left: 1px solid var(--line);
-
   padding-left: 19px;
-
   color: var(--muted);
-
   font-size: 12px;
-
 }
 
 .intro-note p { margin: 5px 0 0; }
 
-/* Each chapter stays on the same three tracks. */
-
+/* CHAPTERS */
 .chapter { border-bottom: 1px solid var(--line); }
-
 .chapter--cool { background: var(--sage-pale); }
-
 .chapter--warm { background: var(--sand); }
-
 .chapter--paper { background: var(--paper); }
 
 .chapter-grid {
-
   row-gap: 24px;
-
   padding-top: 40px;
-
   padding-bottom: 43px;
-
   align-items: start;
-
 }
 
 .chapter-heading {
-
   display: flex;
-
   align-items: flex-start;
-
   gap: 20px;
-
   min-width: 0;
-
 }
 
 .chapter-number {
-
   flex: 0 0 76px;
-
   padding-right: 12px;
-
   border-right: 1px solid var(--line);
-
   color: var(--olive);
-
   font: 36px/1.1 var(--display);
-
 }
 
 .chapter-title { min-width: 0; }
 
 .chapter-title h2 {
-
   margin: 6px 0 8px;
-
   font-family: var(--display);
-
   font-size: clamp(25px, 3vw, 37px);
-
   font-weight: 600;
-
   letter-spacing: -.03em;
-
   line-height: 1.18;
-
 }
 
 .chapter-title .question {
-
   margin: 0;
-
   color: var(--muted);
-
   font-size: 12.5px;
-
 }
 
 .chapter-side {
-
   padding: 5px 0 0 19px;
-
   border-left: 1px solid var(--line);
-
   color: var(--muted);
-
   font-size: 12px;
-
   line-height: 1.65;
-
   min-width: 0;
-
 }
 
 .chapter-side p { margin: 6px 0 0; }
 
-/* Default chapters: chart occupies columns 1 + 2; finding occupies column 3. */
-
+/* CHART SHELL */
 .chart-figure { margin: 0; min-width: 0; }
 
 .chart-shell {
-
   min-height: 210px;
-
   padding: 18px 17px 17px;
-
   background: rgba(255, 255, 255, .83);
-
   border: 1px solid rgba(158, 174, 154, .26);
-
   overflow-x: auto;
-
   overflow-y: hidden;
-
 }
 
 .chapter--cool .chart-shell { background: #fff; }
-
 .chapter--warm .chart-shell { background: #fffdf9; }
 
-.chart-shell .vega-embed { display: block; max-width: 100%; }
+.chart-shell .vega-embed {
+  display: block;
+  max-width: 100%;
+}
 
-.chart-shell .vega-embed > div { max-width: 100%; }
+.chart-shell .vega-embed > div {
+  max-width: 100%;
+}
 
 .chart-shell .vega-embed svg,
-
 .chart-shell .vega-embed canvas {
-
   display: block;
-
   max-width: 100% !important;
-
   height: auto !important;
-
 }
 
 .chart-shell .vega-bindings {
-
   display: flex;
-
   align-items: center;
-
   flex-wrap: wrap;
-
   gap: 8px 22px;
-
   width: 100%;
-
   margin-top: 12px;
-
   padding-top: 11px;
-
   border-top: 1px solid #e2e7df;
-
   color: var(--ink);
-
   font: 12px var(--body);
-
 }
 
 .chart-shell .vega-bindings .vega-bind { margin: 0; }
 
 .chart-shell .vega-bindings select,
-
 .chart-shell .vega-bindings input {
-
   max-width: min(100%, 230px);
-
   padding: 6px 8px;
-
   border: 1px solid #aabbaa;
-
   border-radius: 0;
-
   background: var(--paper-bright);
-
   color: var(--ink);
-
   font: inherit;
-
 }
 
 .chart-loading {
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-height: 180px;
-
   color: var(--muted);
-
   font-size: 12px;
-
   letter-spacing: .04em;
-
 }
 
 .chart-error {
-
   padding: 22px;
-
   background: #fbefeb;
-
   color: #7d352d;
-
   font-size: 12px;
-
   overflow-wrap: anywhere;
-
 }
 
 .chart-caption {
-
   display: flex;
-
   justify-content: space-between;
-
   flex-wrap: wrap;
-
   gap: 5px 18px;
-
   margin-top: 9px;
-
   color: var(--muted);
-
   font-size: 10.5px;
-
   line-height: 1.5;
-
 }
 
 .chapter-insight {
-
   min-width: 0;
-
   padding: 15px 0 15px 19px;
-
   border-left: 3px solid var(--olive);
-
   background: rgba(220, 229, 216, .28);
-
   font-size: 13px;
-
   line-height: 1.7;
-
 }
 
 .chapter-insight .finding-label {
-
   margin-bottom: 10px;
-
   color: var(--olive-dark);
-
   font-size: 10px;
-
   font-weight: 700;
-
   letter-spacing: .11em;
-
   text-transform: uppercase;
-
 }
 
 .chapter-insight p { margin: 0; }
 
-/* Every chapter heading starts on the LEFT, with context on the RIGHT.
-
-   Only the visualisation and findings swap sides in alternating chapters. */
-
+/* REVERSE CHAPTER LAYOUT */
 .chapter--reverse .chapter-heading {
-
   grid-column: 1 / span 2;
-
   grid-row: 1;
-
 }
 
 .chapter--reverse .chapter-side {
-
   grid-column: 3;
-
   grid-row: 1;
-
 }
 
 .chapter--reverse .chart-figure {
-
   grid-column: 2 / span 2;
-
   grid-row: 2;
-
 }
 
 .chapter--reverse .chapter-insight {
-
   grid-column: 1;
-
   grid-row: 2;
-
 }
 
-/* Wide chapters still adhere to the 3-column system: chart spans all 3. */
-
-.chapter--wide .chart-figure { grid-column: 1 / -1; }
+/* WIDE CHAPTERS */
+.chapter--wide .chart-figure {
+  grid-column: 1 / -1;
+}
 
 .chapter--wide .chapter-insight {
-
   grid-column: 1 / -1;
-
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   column-gap: var(--column-gap);
-
   align-items: start;
-
   padding: 15px 18px;
-
 }
 
-.chapter--wide .chapter-insight .finding-label { margin: 3px 0 0; }
+.chapter--wide .chapter-insight .finding-label {
+  margin: 3px 0 0;
+}
 
-.chapter--wide .chapter-insight p { grid-column: span 2; }
+.chapter--wide .chapter-insight p {
+  grid-column: span 2;
+}
 
-/* Interlude: large thought on first 2 columns; note on column 3. */
+/* INTERLUDE */
+.interlude {
+  background: var(--olive-dark);
+  color: #f4f7ef;
+}
 
-.interlude { background: var(--olive-dark); color: #f4f7ef; }
-
-.interlude-grid { align-items: center; row-gap: 14px; padding-top: 24px; padding-bottom: 24px; }
+.interlude-grid {
+  align-items: center;
+  row-gap: 14px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
 
 .interlude .eyebrow { color: #cfe1cc; }
 
 .interlude blockquote {
-
   margin: 0;
-
   font-family: var(--display);
-
   font-size: clamp(20px, 2.8vw, 30px);
-
   line-height: 1.35;
-
 }
 
 .interlude p {
-
   min-width: 0;
-
   margin: 0;
-
   padding-left: 19px;
-
   border-left: 1px solid rgba(207, 225, 204, .55);
-
   color: #d9e6d7;
-
   font-size: 12px;
-
 }
 
-/* Closing credits use exactly the same three aligned columns. */
-
+/* CLOSING */
 .closing { background: #e1e7dc; }
 
 .closing-grid {
-
   row-gap: 12px;
-
   padding-top: 35px;
-
   padding-bottom: 38px;
-
 }
 
 .closing h2 {
-
   margin: 5px 0 6px;
-
   font-family: var(--display);
-
   font-size: clamp(25px, 3vw, 34px);
-
   font-weight: 600;
-
 }
 
 .source-item { min-width: 0; }
 
 .source-item + .source-item {
-
   padding-left: 19px;
-
   border-left: 1px solid #b5c5b2;
-
 }
 
 .source-item h3 {
-
   margin: 0 0 6px;
-
   color: var(--ink);
-
   font-size: 12px;
-
   font-weight: 700;
-
 }
 
-.source-item p { margin: 0; color: var(--muted); font-size: 11.5px; line-height: 1.65; }
+.source-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.65;
+}
 
-.source-item a { color: var(--olive-dark); overflow-wrap: anywhere; }
+.source-item a {
+  color: var(--olive-dark);
+  overflow-wrap: anywhere;
+}
 
 .footer-line {
-
   display: flex;
-
   justify-content: space-between;
-
   flex-wrap: wrap;
-
   gap: 8px;
-
   margin-top: 15px;
-
   padding-top: 12px;
-
   border-top: 1px solid #b5c5b2;
-
   color: #536354;
-
   font-size: 10px;
-
 }
 
-/* Stacked on mobile. Desktop/tablet preserve the same three tracks. */
-
+/* RESPONSIVE */
 @media (max-width: 760px) {
-
-  :root { --page-gutter: 25px; --column-gap: 16px; }
-
-  .content-grid { grid-template-columns: minmax(0, 1fr); }
-
-  .span-two, .span-three,
-
-  .cover-topline, .cover-title, .cover-aside,
-
-  .story-intro > *, .chapter-heading, .chapter-side,
-
-  .chart-figure, .chapter-insight,
-
-  .chapter--wide .chart-figure, .chapter--wide .chapter-insight,
-
-  .interlude-grid > *, .closing-grid > * {
-
-    grid-column: 1 / -1;
-
+  :root {
+    --page-gutter: 25px;
+    --column-gap: 16px;
   }
 
-  /* On phones, use the normal reading order for reversed chapters. */
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .span-two,
+  .span-three,
+  .cover-topline,
+  .cover-title,
+  .cover-aside,
+  .story-intro > *,
+  .chapter-heading,
+  .chapter-side,
+  .chart-figure,
+  .chapter-insight,
+  .chapter--wide .chart-figure,
+  .chapter--wide .chapter-insight,
+  .interlude-grid > *,
+  .closing-grid > * {
+    grid-column: 1 / -1;
+  }
 
   .chapter--reverse .chapter-heading,
-
   .chapter--reverse .chapter-side,
-
   .chapter--reverse .chart-figure,
-
   .chapter--reverse .chapter-insight {
-
     grid-column: 1 / -1;
-
     grid-row: auto;
-
   }
 
-  .cover-layout { row-gap: 20px; padding-bottom: 28px; }
+  .cover-layout {
+    row-gap: 20px;
+    padding-bottom: 28px;
+  }
 
-  .cover h1 { font-size: clamp(43px, 9.5vw, 64px); }
+  .cover h1 {
+    font-size: clamp(43px, 9.5vw, 64px);
+  }
 
   .cover-aside { align-self: start; }
-
   .summary-grid { row-gap: 12px; }
 
-  .summary-item:not(:first-child) { border-left: none; padding: 10px 0 0; border-top: 1px solid var(--line); }
+  .summary-item:not(:first-child) {
+    border-left: none;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--line);
+  }
 
   .summary-text { max-width: none; }
-
   .story-intro { row-gap: 17px; }
-
   .intro-note { align-self: start; }
 
-  .chapter-grid { row-gap: 18px; padding-top: 30px; padding-bottom: 32px; }
+  .chapter-grid {
+    row-gap: 18px;
+    padding-top: 30px;
+    padding-bottom: 32px;
+  }
 
   .chapter-heading { gap: 12px; }
-
   .chapter-number { flex-basis: 52px; font-size: 27px; }
-
   .chapter-title h2 { font-size: 26px; }
-
   .chapter-insight { padding: 13px 17px; }
 
-  .chapter--wide .chapter-insight { grid-template-columns: 1fr; row-gap: 8px; }
+  .chapter--wide .chapter-insight {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
 
   .chapter--wide .chapter-insight p { grid-column: 1; }
-
   .interlude-grid { row-gap: 16px; }
 
-  .source-item + .source-item { padding: 15px 0 0; border-left: none; border-top: 1px solid #b5c5b2; }
-
+  .source-item + .source-item {
+    padding: 15px 0 0;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
 }
 
 @media (max-width: 420px) {
-
   :root { --page-gutter: 18px; }
-
   .cover-topline { align-items: flex-start; }
-
   .summary-number { font-size: 34px; }
-
   .chart-shell { padding: 9px 6px; }
-
 }
 
-
-/* Right-hand column beside the lollipop chart */
-
+/* LOLLIPOP RIGHT COLUMN */
 .insight-stack {
-    grid-column: 3;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+  grid-column: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 .chapter-analysis {
-    border-top: 1px solid var(--line);
-    padding-top: 30px;
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
 }
 
-.chapter-analysis .eyebrow {
-    margin-bottom: 10px;
-}
+.chapter-analysis .eyebrow { margin-bottom: 10px; }
 
 .chapter-analysis p {
-    font-size: 12.5px;
-    line-height: 1.75;
-    color: var(--muted);
-    margin: 0 0 16px;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 16px;
 }
 
 .chapter-analysis .analysis-sources {
-    font-size: 10.5px;
-    margin-top: 29px;
-    margin-bottom: 0;
+  font-size: 10.5px;
+  margin-top: 29px;
+  margin-bottom: 0;
 }
 
 .chapter-analysis a {
-    color: var(--olive-dark);
-    text-decoration: underline;
+  color: var(--olive-dark);
+  text-decoration: underline;
 }
 
-.analysis-tasmania {
-    padding-top: 5px;
-}
-
-
-/* Species richness - analysis paragraphs */
+.analysis-tasmania { padding-top: 5px; }
 
 .chapter-analysis p:not(.analysis-sources) {
-    font-size: 14px;
-    line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-/* ----------------------------------
-   HEATMAP - TWO COLUMN INSIGHTS
----------------------------------- */
-
+/* HEATMAP INSIGHTS */
 .chapter--wide .chapter-insight.family-insights {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
-    padding: 15px 28px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding: 15px 28px;
+  align-items: start;
 }
 
-.family-insight {
-    min-width: 0;
-}
-
-/* Separate the two insights */
+.family-insight { min-width: 0; }
 
 .family-insight + .family-insight {
-    border-left: 1px solid var(--line);
-    padding-left: 28px;
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
 }
-
-/* Headings */
 
 .chapter--wide .family-insight .finding-label {
-    margin: 0 0 14px;
+  margin: 0 0 14px;
 }
-
-/* Keep lines short and readable */
 
 .chapter--wide .family-insight p {
-    grid-column: auto;
-    max-width: 50ch;
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--ink);
+  grid-column: auto;
+  max-width: 50ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
 }
 
-
-/* Hexbin - Reading the Pattern */
+/* HEXBIN */
 .chapter[aria-labelledby="heading-sightings"] .chapter-insight {
-    padding-right: 35px;
+  padding-right: 35px;
 }
-
-
-/* ----------------------------------
-   HEXBIN - LEFT COLUMN INSIGHTS
----------------------------------- */
 
 .chapter--reverse .hexbin-insights {
-    grid-column: 1;
-    grid-row: 2;
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
-
-/* Reading the Pattern box */
 
 .hexbin-insights .chapter-insight {
-    padding: 20px 28px;
-    grid-column: auto;
-    grid-row: auto;
+  padding: 20px 28px;
+  grid-column: auto;
+  grid-row: auto;
 }
-
-/* Additional analysis */
 
 .hexbin-analysis {
-    border-top: 1px solid var(--line);
-    padding-top: 25px;
+  border-top: 1px solid var(--line);
+  padding-top: 25px;
 }
 
-.hexbin-analysis .eyebrow {
-    margin-bottom: 14px;
-}
+.hexbin-analysis .eyebrow { margin-bottom: 14px; }
 
 .hexbin-analysis p {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--muted);
-    margin: 0 0 32px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 32px;
 }
 
-
-/* ----------------------------------
-   SANKEY - TWO COLUMN INSIGHTS
----------------------------------- */
-
+/* SANKEY INSIGHTS */
 .chapter--wide .chapter-insight.sankey-insights {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
-    padding: 10px 28px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  padding: 10px 28px;
+  align-items: start;
 }
 
-.sankey-insight {
-    min-width: 0;
-}
-
-/* Vertical divider between insights */
+.sankey-insight { min-width: 0; }
 
 .sankey-insight + .sankey-insight {
-    border-left: 1px solid var(--line);
-    padding-left: 28px;
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
 }
-
-/* Headings */
 
 .chapter--wide .sankey-insight .finding-label {
-    margin: 0 0 14px;
+  margin: 0 0 14px;
 }
-
-/* Paragraphs */
 
 .chapter--wide .sankey-insight p {
-    grid-column: auto;
-    max-width: 48ch;
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--ink);
+  grid-column: auto;
+  max-width: 48ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
 }
 
-/* Keep the wide polar and butterfly insight areas in two readable columns. */
+/* POLAR AND BUTTERFLY INSIGHTS */
 .chapter--wide .chapter-insight.polar-insights,
 .chapter--wide .chapter-insight.butterfly-insights {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 32px;
-    padding: 16px 28px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  padding: 16px 28px;
+  align-items: start;
 }
 
 .polar-insight,
-.butterfly-insight {
-    min-width: 0;
-}
+.butterfly-insight { min-width: 0; }
 
 .polar-insight + .polar-insight,
 .butterfly-insight + .butterfly-insight {
-    border-left: 1px solid var(--line);
-    padding-left: 28px;
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
 }
 
 .chapter--wide .polar-insight .finding-label,
 .chapter--wide .butterfly-insight .finding-label {
-    margin: 0 0 12px;
+  margin: 0 0 12px;
 }
 
 .chapter--wide .polar-insight p,
 .chapter--wide .butterfly-insight p {
-    grid-column: auto;
-    max-width: 55ch;
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.75;
+  grid-column: auto;
+  max-width: 55ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
 }
 
-/* Body-size section: two charts and two findings on a shared two-column row. */
+/* BODY SIZE */
 .dual-charts,
 .dual-findings {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--column-gap);
-    min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--column-gap);
+  min-width: 0;
 }
 
-.dual-chart {
-    min-width: 0;
-}
+.dual-chart { min-width: 0; }
 
 .dual-chart .chart-shell {
-    height: 100%;
-    min-height: 445px;
-    overflow-x: auto;
+  height: 100%;
+  min-height: 445px;
+  overflow-x: auto;
 }
 
 .dual-chart .chart-caption {
-    min-height: 36px;
-    align-items: flex-start;
+  min-height: 36px;
+  align-items: flex-start;
 }
 
 .dual-findings .chapter-insight {
-    min-width: 0;
-    padding: 15px 19px;
+  min-width: 0;
+  padding: 15px 19px;
 }
 
 @media (max-width: 900px) {
-    .dual-charts,
-    .dual-findings {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
-    }
+  .dual-charts,
+  .dual-findings {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
 
-    .dual-chart .chart-shell { min-height: 0; }
+  .dual-chart .chart-shell { min-height: 0; }
 }
 
 @media (max-width: 760px) {
-    .chapter--wide .chapter-insight.polar-insights,
-    .chapter--wide .chapter-insight.butterfly-insights {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 18px;
-        padding: 15px 18px;
-    }
+  .chapter--wide .chapter-insight.polar-insights,
+  .chapter--wide .chapter-insight.butterfly-insights {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 15px 18px;
+  }
 
-    .polar-insight + .polar-insight,
-    .butterfly-insight + .butterfly-insight {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding: 15px 0 0;
-    }
+  .polar-insight + .polar-insight,
+  .butterfly-insight + .butterfly-insight {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 15px 0 0;
+  }
 }
-
-
-/* Remove unwanted lines below Section 06 charts */
 
 .chapter[aria-labelledby="heading-body-size"] .vega-bindings {
-    display: none !important;
-    border: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  display: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-
-/* -------------------------
-
-/* -------------------------
-   WAFFLE - RIGHT SIDE
-------------------------- */
-
+/* WAFFLE */
 @media (min-width: 761px) {
-
-    .chapter .chart-figure.waffle-right-figure {
-        grid-column: 2 / 4 !important;
-        width: 100%;
-        min-width: 0;
-        justify-self: stretch;
-    }
+  .chapter .chart-figure.waffle-right-figure {
+    grid-column: 2 / 4 !important;
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+  }
 }
-
-/* Chart container */
 
 .waffle-right-figure .chart-shell {
-    width: 100%;
-    min-height: 0;
-    height: auto;
-    padding: 24px;
-    overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  padding: 24px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Enlarge waffle to fit available space */
-
 .waffle-right-figure .vega-embed {
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
 .waffle-right-figure .vega-embed svg,
 .waffle-right-figure .vega-embed canvas {
-    display: block;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
+/* CHOROPLETH */
 @media (min-width: 761px) {
+  .chapter:has(#threatened_choropleth) .chart-figure {
+    grid-column: 1 / span 2 !important;
+    grid-row: 2 !important;
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+  }
 
-    /* Move choropleth to the left two columns */
-    .chapter:has(#threatened_choropleth) .chart-figure {
-        grid-column: 1 / span 2 !important;
-        grid-row: 2 !important;
-        width: 100%;
-        min-width: 0;
-        justify-self: stretch;
-    }
-
-    /* Move insight box to the right column */
-    .chapter:has(#threatened_choropleth) .chapter-insight {
-        grid-column: 3 !important;
-        grid-row: 2 !important;
-        width: 100%;
-        min-width: 0;
-    }
+  .chapter:has(#threatened_choropleth) .chapter-insight {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+    width: 100%;
+    min-width: 0;
+  }
 }
-
-/* Keep mobile layout stacked */
 
 @media (max-width: 760px) {
-
-    .chapter:has(#threatened_choropleth) .chart-figure,
-    .chapter:has(#threatened_choropleth) .chapter-insight {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
-    }
+  .chapter:has(#threatened_choropleth) .chart-figure,
+  .chapter:has(#threatened_choropleth) .chapter-insight {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
 }
-
 
 .migration-insight-stack .analysis-sources {
-    margin-top: auto;
-    position: relative;
-    top: 49px;
+  margin-top: auto;
+  position: relative;
+  top: 49px;
 }
 
-
-/* ----------------------------------
-   SECTION 08 - WAFFLE WITH LEFT ANALYSIS
----------------------------------- */
-
-/* Left analysis column */
-
+/* WAFFLE LEFT ANALYSIS */
 .waffle-analysis-column {
-    min-width: 0;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-    align-self: start;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-self: start;
 }
-
-/* Highlighted insight box */
 
 .chapter--wide .waffle-analysis-column .chapter-insight {
-    display: block;
-    grid-column: auto;
-
-    width: 100%;
-    padding: 20px 24px;
-
-    border-left: 3px solid var(--olive);
-    background: rgba(220, 229, 216, .28);
+  display: block;
+  grid-column: auto;
+  width: 100%;
+  padding: 20px 24px;
+  border-left: 3px solid var(--olive);
+  background: rgba(220, 229, 216, .28);
 }
 
 .waffle-analysis-column .finding-label {
-    margin-bottom: 14px;
-    margin-left: 20px;
+  margin-bottom: 14px;
+  margin-left: 20px;
 }
 
 .waffle-analysis-column .chapter-insight p {
-    font-size: 13px;
-    line-height: 1.75;
-    margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 0;
 }
 
-/* Additional analysis */
-
 .waffle-left-analysis {
-    border-top: none !important;
-    padding-top: 3px;
+  border-top: none !important;
+  padding-top: 0px;
 }
 
 .waffle-left-analysis p {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--muted);
-    margin: 0 0 32px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 32px;
 }
 
 .waffle-left-analysis p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-
-/* Desktop positioning */
 
 @media (min-width: 761px) {
-
-    .chapter-grid > .waffle-analysis-column {
-        grid-column: 1 !important;
-        grid-row: 2 !important;
-    }
-
-    .chapter-grid > .waffle-right-figure {
-        grid-column: 2 / 4 !important;
-        grid-row: 2 !important;
-        width: 100%;
-        min-width: 0;
-    }
-
+  .chapter-grid > .waffle-analysis-column {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
   }
 
-  
-/* ----------------------------------
-   SECTION 09 - CHOROPLETH ANALYSIS
----------------------------------- */
-
-.choropleth-insight-stack {
-    grid-column: 3 !important;
+  .chapter-grid > .waffle-right-figure {
+    grid-column: 2 / 4 !important;
     grid-row: 2 !important;
-
-    min-width: 0;
     width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-    align-self: stretch;
+    min-width: 0;
+  }
 }
 
-/* Highlighted box */
+/* SECTION 09 */
+.choropleth-insight-stack {
+  grid-column: 3 !important;
+  grid-row: 2 !important;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-self: stretch;
+}
 
 .choropleth-insight-stack .chapter-insight {
-    display: block;
-    grid-column: auto;
-    grid-row: auto;
-
-    padding: 20px 24px;
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
+  padding: 20px 24px;
 }
 
-/* Analysis paragraphs */
-
 .choropleth-insight-stack .chapter-analysis {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--line);
-    padding-top: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
 }
 
 .choropleth-insight-stack .chapter-analysis p:not(.analysis-sources) {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--muted);
-    margin-bottom: 28px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 28px;
 }
-
-/* Sources near bottom of map */
 
 .choropleth-insight-stack .analysis-sources {
-    margin-top: 24px;
-    margin-bottom: 0;
-    padding-top: 15px;
-    font-size: 10.5px;
+  margin-top: 24px;
+  margin-bottom: 0;
+  padding-top: 15px;
+  font-size: 10.5px;
 }
 
-/* Mobile */
-
 @media (max-width: 760px) {
-    .choropleth-insight-stack {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
-        gap: 22px;
-    }
+  .choropleth-insight-stack {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    gap: 22px;
+  }
 
-    .choropleth-insight-stack .analysis-sources {
-        margin-top: 20px;
-    }
+  .choropleth-insight-stack .analysis-sources {
+    margin-top: 20px;
+  }
+}
+
+/* HEATMAP HOVER FIX */
+#family_heatmap {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#family_heatmap .vega-embed,
+#family_heatmap .vega-embed > div {
+  max-width: none;
+}
+
+#family_heatmap .vega-embed svg,
+#family_heatmap .vega-embed canvas {
+  display: block;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
 }

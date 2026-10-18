@@ -125,7 +125,7 @@
                 "value": "pointer"
               },
               "tooltip": {
-                "signal": "'Habitat: ' + datum.habitat + '\\nDiet: ' + datum.diet + '\\nLifestyle: ' + datum.lifestyle + '\\nSpecies: ' + datum.count"
+                "signal": "{'Habitat': datum.habitat, 'Diet': datum.diet, 'Lifestyle': datum.lifestyle, 'Species': datum.count}"
               }
             },
             "update": {

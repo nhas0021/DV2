@@ -23,10 +23,12 @@ vegaEmbed("#threatened_choropleth", vg_2, {
     .catch(console.error);
 
 
+
 var vg_3 = "bird_family_heatmap.vl.json";
 
 vegaEmbed("#family_heatmap", vg_3, {
     actions: false,
+    renderer: "svg",
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
@@ -35,17 +37,18 @@ vegaEmbed("#family_heatmap", vg_3, {
     .catch(console.error);
 
 
-var vg_4 = "bird_sankey_external.vg.json";
+
+var vg_4 = "bird_sankey_external.vg.json?v=3";
 
 vegaEmbed("#habitat_sankey", vg_4, {
     actions: false,
+    tooltip: { theme: "light" },
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
+        console.log("Sankey loaded successfully");
     })
     .catch(console.error);
-
 
 var vg_5 = "migratory_symbol_map.vl.json";
 
