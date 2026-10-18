@@ -1,12 +1,11 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Twelve Australian bird families with highest median body mass among families with measurements for at least five species. Source: Australian Bird Data workbook.",
   "title": {
     "text": "Which bird families are the heaviest?",
     "anchor": "start",
     "font": "DM Sans",
-    "fontSize": 18,
+    "fontSize": 15,
     "fontWeight": 600,
     "color": "#263c2b",
     "offset": 17

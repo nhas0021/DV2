@@ -1,4 +1,3 @@
-
 var vg_1 = "species_by_state_lollipop.vg.json";
 
 vegaEmbed("#species_lollipop", vg_1, {
@@ -6,7 +5,7 @@ vegaEmbed("#species_lollipop", vg_1, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
+
     })
     .catch(console.error);
 
@@ -18,11 +17,8 @@ vegaEmbed("#threatened_choropleth", vg_2, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
-
-
 
 var vg_3 = "bird_family_heatmap.vl.json";
 
@@ -32,11 +28,8 @@ vegaEmbed("#family_heatmap", vg_3, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
-
-
 
 var vg_4 = "bird_sankey_external.vg.json?v=3";
 
@@ -57,7 +50,6 @@ vegaEmbed("#migratory_symbols", vg_5, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -69,7 +61,6 @@ vegaEmbed("#victoria_hexbin", vg_6, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -81,7 +72,6 @@ vegaEmbed("#threatened_waffle", vg_7, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -93,7 +83,6 @@ vegaEmbed("#nesting_habits", vg_8, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -104,7 +93,6 @@ vegaEmbed("#threatened_families", vg_9, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -115,7 +103,6 @@ vegaEmbed("#bird_length_histogram", vg_10, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);
 
@@ -126,6 +113,5 @@ vegaEmbed("#bird_family_mass", vg_11, {
     loader: { baseURL: "js/" }
 })
     .then(function(result) {
-        // Vega view available as result.view
     })
     .catch(console.error);

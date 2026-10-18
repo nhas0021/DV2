@@ -1,11 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Histogram of Australian bird average body lengths in adjacent 10 cm bins. Each rectangle runs from zero to the species count; data is kept in an external CSV.",
   "title": {
     "text": "Are most Australian birds small or large?",
     "anchor": "start",
     "font": "DM Sans",
-    "fontSize": 18,
+    "fontSize": 15,
     "fontWeight": 600,
     "color": "#263c2b",
     "offset": 17

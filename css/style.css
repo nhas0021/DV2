@@ -1,4 +1,3 @@
-
 :root {
   --outside: #e5e9e1;
   --paper: #faf8f2;
@@ -332,6 +331,7 @@ h1, h2, h3, p { margin-top: 0; }
   background: rgba(220, 229, 216, .28);
   font-size: 13px;
   line-height: 1.7;
+  border-radius: 0 5px 5px 0;
 }
 
 .chapter-insight .finding-label {
@@ -986,4 +986,10 @@ h1, h2, h3, p { margin-top: 0; }
   width: auto !important;
   max-width: none !important;
   height: auto !important;
+}
+
+
+/* Section 08 — Waffle background */
+.chapter:has(.waffle-right-figure) {
+    background: var(--paper);
 }
